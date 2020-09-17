@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">BrogApp</string>
+
+    <string name="edit_profile">
+        <u>Rediger profil</u>
+    </string>
 </resources>

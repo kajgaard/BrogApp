@@ -6,19 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ProfilePage">
 
-    <ImageView
-        android:id="@+id/profilePicIV"
-        android:layout_width="76dp"
-        android:layout_height="76dp"
-        android:background="@drawable/circle"
-        android:padding="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoBgIV"
-        tools:srcCompat="@tools:sample/avatars" />
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigationbar"
         android:layout_width="match_parent"
@@ -31,16 +18,229 @@
 
     <ImageView
         android:id="@+id/logoBgIV"
-        android:layout_width="420dp"
-        android:layout_height="274dp"
-        android:layout_marginBottom="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
         android:background="@drawable/circle"
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toTopOf="parent"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_splash" />
+        app:srcCompat="@drawable/logo_splash_small" />
+
+    <ImageView
+        android:id="@+id/profilePicIV"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/circle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/smallpb" />
+
+    <TextView
+        android:id="@+id/welcomeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Velkommen Gitte!"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profilePicIV" />
+
+    <TextView
+        android:id="@+id/editProfileTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/edit_profile"
+
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeTV" />
+
+    <View
+        android:id="@+id/line1"
+        android:layout_width="350dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/Grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editProfileTV" />
+
+    <View
+        android:id="@+id/line2"
+        android:layout_width="350dp"
+        android:layout_height="1dp"
+        android:background="@color/Grey"
+        app:layout_constraintBottom_toTopOf="@+id/historyTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/favesTV" />
+
+    <View
+        android:id="@+id/line3"
+        android:layout_width="350dp"
+        android:layout_height="1dp"
+        android:background="@color/Grey"
+        app:layout_constraintBottom_toTopOf="@+id/settingsTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/historyTV" />
+
+    <View
+        android:id="@+id/line4"
+        android:layout_width="350dp"
+        android:layout_height="1dp"
+        android:background="@color/Grey"
+        app:layout_constraintBottom_toTopOf="@+id/supportTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settingsTV" />
+
+    <View
+        android:id="@+id/line5"
+        android:layout_width="350dp"
+        android:layout_height="1dp"
+        android:background="@color/Grey"
+        app:layout_constraintBottom_toTopOf="@+id/logOutTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/supportTV" />
+
+    <View
+        android:id="@+id/line6"
+        android:layout_width="350dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="60dp"
+        android:background="@color/Grey"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigationbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/favesTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Mine favoritter"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/line2"
+        app:layout_constraintStart_toEndOf="@+id/heartIconIV"
+        app:layout_constraintTop_toBottomOf="@+id/line1" />
+
+    <TextView
+        android:id="@+id/historyTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Min historik"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/line3"
+        app:layout_constraintStart_toEndOf="@+id/historyIV"
+        app:layout_constraintTop_toBottomOf="@+id/line2" />
+
+    <TextView
+        android:id="@+id/settingsTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Indstillinger"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/line4"
+        app:layout_constraintStart_toEndOf="@+id/settingsIV"
+        app:layout_constraintTop_toBottomOf="@+id/line3" />
+
+    <TextView
+        android:id="@+id/supportTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Support"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/line5"
+        app:layout_constraintStart_toEndOf="@+id/supportIV"
+        app:layout_constraintTop_toBottomOf="@+id/line4" />
+
+    <TextView
+        android:id="@+id/logOutTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Log ud"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/line6"
+        app:layout_constraintStart_toEndOf="@+id/leaveIV"
+        app:layout_constraintTop_toBottomOf="@+id/line5" />
+
+    <ImageView
+        android:id="@+id/heartIconIV"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/line2"
+        app:layout_constraintStart_toStartOf="@+id/line1"
+        app:layout_constraintTop_toBottomOf="@+id/line1"
+        app:srcCompat="@drawable/heart_icon" />
+
+    <ImageView
+        android:id="@+id/historyIV"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/line3"
+        app:layout_constraintStart_toStartOf="@+id/line2"
+        app:layout_constraintTop_toBottomOf="@+id/line2"
+        app:srcCompat="@drawable/history_icon" />
+
+    <ImageView
+        android:id="@+id/supportIV"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/line5"
+        app:layout_constraintStart_toStartOf="@+id/line4"
+        app:layout_constraintTop_toBottomOf="@+id/line4"
+        app:srcCompat="@drawable/chat_icon" />
+
+    <ImageView
+        android:id="@+id/settingsIV"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/line4"
+        app:layout_constraintStart_toStartOf="@+id/line3"
+        app:layout_constraintTop_toBottomOf="@+id/line3"
+        app:srcCompat="@drawable/settings_icon" />
+
+    <ImageView
+        android:id="@+id/leaveIV"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/line6"
+        app:layout_constraintStart_toStartOf="@+id/line5"
+        app:layout_constraintTop_toBottomOf="@+id/line5"
+        app:srcCompat="@drawable/leave_icon" />
+
+    <TextView
+        android:id="@+id/versionNoTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ver 0.0.1"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigationbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line6" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
