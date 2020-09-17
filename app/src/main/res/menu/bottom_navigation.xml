@@ -1,4 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/home_icon"
+        android:title="Home"/>
+
+    <item
+        android:id="@+id/nav_scan"
+        android:icon="@drawable/barcode_icon"
+        android:title="Scan"/>
+
+    <item
+        android:id="@+id/nav_brew"
+        android:icon="@drawable/coffee_icon"
+        android:title="Brew"/>
+
+    <item
+        android:id="@+id/nav_wash"
+        android:icon="@drawable/wash_icon"
+        android:title="Clean"/>
+
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/user_icon"
+        android:title="Profile"/>
 </menu>
