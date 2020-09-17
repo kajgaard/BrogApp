@@ -9,12 +9,17 @@
     tools:context=".HomePage">
     
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigationbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_navigation"
         app:labelVisibilityMode="labeled"
-        android:backgroundTint="@color/AccentColorGreen"/>
+        app:itemBackground="@color/Highlight"/>
+    <!--Farver
+        app:itemIconTint="@color/TextColor"
+        app:itemTextColor="@color/TextColor" -->
+
 
 
     <TextView
