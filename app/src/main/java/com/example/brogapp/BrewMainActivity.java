@@ -34,7 +34,7 @@ public class BrewMainActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.nav_scan:
-                        //startActivity(new Intent(getApplicationContext(),ScanActivity.class));
+                        startActivity(new Intent(getApplicationContext(),ScanActivity.class));
                         overridePendingTransition(0,0); //Dont know what this does
                         return true;
 
@@ -44,7 +44,7 @@ public class BrewMainActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.nav_wash:
-                        //startActivity(new Intent(getApplicationContext(),CleanActivity.class));
+                        startActivity(new Intent(getApplicationContext(),CleanActivity.class));
                         overridePendingTransition(0,0); //Dont know what this does
                         return true;
 
