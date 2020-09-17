@@ -9,18 +9,18 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class BrewMainActivity extends AppCompatActivity {
+public class CleanActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_brew_main);
+        setContentView(R.layout.activity_clean);
 
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);
 
         //Set home iteam as selected
-        bottomNavigationView.setSelectedItemId(R.id.nav_brew);
+        bottomNavigationView.setSelectedItemId(R.id.nav_wash);
 
         //Set up listener, for determine if other icon is pressed
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -34,7 +34,7 @@ public class BrewMainActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.nav_scan:
-                        //startActivity(new Intent(getApplicationContext(),ScanActivity.class));
+                        startActivity(new Intent(getApplicationContext(),ScanActivity.class));
                         overridePendingTransition(0,0); //Dont know what this does
                         return true;
 
@@ -44,7 +44,7 @@ public class BrewMainActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.nav_wash:
-                        //startActivity(new Intent(getApplicationContext(),CleanActivity.class));
+                        startActivity(new Intent(getApplicationContext(),CleanActivity.class));
                         overridePendingTransition(0,0); //Dont know what this does
                         return true;
 
@@ -53,7 +53,6 @@ public class BrewMainActivity extends AppCompatActivity {
                         overridePendingTransition(0,0); //Dont know what this does
                         return true;
                 }
-
                 return false;
             }
         });
