@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:background="@drawable/rounded_square"
+    android:backgroundTint="@color/Highlight">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/itemPicIV"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:background="@drawable/rounded_square"
+        android:backgroundTint="@color/AccentColorGreen"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        />
+
+    <TextView
+        android:id="@+id/brewNameTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Manhatten"
+        android:textSize="30sp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/TextColor"
+        />
+
+    <TextView
+        android:id="@+id/brewDescriptionTV"
+        android:layout_width="190dp"
+        android:layout_height="75dp"
+        android:textSize="20sp"
+        android:lineSpacingExtra="0dp"
+        android:lineHeight="19dp"
+        android:text="Super god kaffe som bare er mega god og lækker."
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="50dp"/>
+
+    <ImageView
+        android:id="@+id/starIV"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:src="@drawable/star_icon"
+        android:layout_marginStart="355dp"
+        android:layout_marginTop="35dp"
+       />
+
+    <TextView
+        android:id="@+id/scoreTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4.3"
+        android:textColor="@color/TextColor"
+        android:textSize="26sp"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="360dp"
+        />
+
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>
