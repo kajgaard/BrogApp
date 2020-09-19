@@ -4,17 +4,32 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class ProfilePage extends AppCompatActivity {
+public class ProfilePage extends AppCompatActivity implements View.OnClickListener {
+
+    TextView favorites;
+    ImageView favoritesIV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_page);
+
+
+        favorites = findViewById(R.id.favesTV);
+        favorites.setOnClickListener(this);
+
+        favoritesIV  =findViewById(R.id.heartIconIV);
+        favoritesIV.setOnClickListener(this);
+
 
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);
@@ -57,5 +72,13 @@ public class ProfilePage extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        if(v == favorites || v == favoritesIV){
+            startActivity(new Intent(getApplicationContext(),FavoritesActivity.class));
+        }
     }
 }
