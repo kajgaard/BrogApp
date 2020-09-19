@@ -2,12 +2,14 @@ package com.example.brogapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,6 +19,7 @@ public class ProfilePage extends AppCompatActivity implements View.OnClickListen
 
     TextView favorites;
     ImageView favoritesIV;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

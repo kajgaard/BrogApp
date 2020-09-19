@@ -6,12 +6,12 @@ public class BrewItem {
 
     public BrewItem(int imageResource, String name, String description, String score){
         mImageResource = imageResource;
-        brewDescription = name;
+        brewName = name;
         brewDescription = description;
         brewScore = score;
     }
 
-    public int getmImageResource() {
+    public int getImageResource() {
         return mImageResource;
     }
 

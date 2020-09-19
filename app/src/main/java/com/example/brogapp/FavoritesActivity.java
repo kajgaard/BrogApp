@@ -2,6 +2,8 @@ package com.example.brogapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,10 +15,33 @@ import java.util.ArrayList;
 
 public class FavoritesActivity extends AppCompatActivity {
 
+    RecyclerView mRecyclerView;
+    RecyclerView.Adapter mAdapter;
+    RecyclerView.LayoutManager mLayoutManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites);
+
+    //Fill out recyclerView
+        ArrayList<BrewItem> listOfFaves = new ArrayList<>();
+        listOfFaves.add(new BrewItem(R.drawable.ic_android,"Manhatten", "Dette er bare en tester, bare rolig","4.6"));
+        listOfFaves.add(new BrewItem(R.drawable.ic_android,"Manhatten", "Dette er bare en tester, bare rolig","4.6"));
+        listOfFaves.add(new BrewItem(R.drawable.ic_android,"Manhatten", "Dette er bare en tester, bare rolig","4.6"));
+        listOfFaves.add(new BrewItem(R.drawable.ic_android,"Manhatten", "Dette er bare en tester, bare rolig","4.6"));
+        listOfFaves.add(new BrewItem(R.drawable.ic_android,"Manhatten", "Dette er bare en tester, bare rolig","4.6"));
+        listOfFaves.add(new BrewItem(R.drawable.ic_android,"Manhatten", "Dette er bare en tester, bare rolig","4.6"));
+
+        mRecyclerView = findViewById(R.id.favesHolderRV);
+        mRecyclerView.setHasFixedSize(true);
+
+        mLayoutManager = new LinearLayoutManager(this);
+        mAdapter = new BrewListAdapter(listOfFaves);
+
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mAdapter);
+
 
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);
@@ -60,14 +85,6 @@ public class FavoritesActivity extends AppCompatActivity {
             }
         });
 
-    //Fill out recyclerView
-        ArrayList<BrewItem> listOfFaves = new ArrayList<>();
-        listOfFaves.add(new BrewItem(R.drawable.chat_icon,"Manhatten", "Dette er bare en tester, bare rolig","4.6"));
-        listOfFaves.add(new BrewItem(R.drawable.chat_icon,"Manhatten", "Dette er bare en tester, bare rolig","4.6"));
-        listOfFaves.add(new BrewItem(R.drawable.chat_icon,"Manhatten", "Dette er bare en tester, bare rolig","4.6"));
-        listOfFaves.add(new BrewItem(R.drawable.chat_icon,"Manhatten", "Dette er bare en tester, bare rolig","4.6"));
-        listOfFaves.add(new BrewItem(R.drawable.chat_icon,"Manhatten", "Dette er bare en tester, bare rolig","4.6"));
-        listOfFaves.add(new BrewItem(R.drawable.chat_icon,"Manhatten", "Dette er bare en tester, bare rolig","4.6"));
 
     }
 
