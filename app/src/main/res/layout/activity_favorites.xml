@@ -20,17 +20,18 @@
         android:id="@+id/favesTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
         android:text="FAVORITTER"
-        android:textSize="36sp"
+        android:textColor="@color/TextColor"
+        android:textSize="45sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/logoIV"
         android:layout_width="61dp"
-        android:layout_height="74dp"
+        android:layout_height="85dp"
         android:layout_marginEnd="30dp"
         app:layout_constraintBottom_toBottomOf="@+id/favesTV"
         app:layout_constraintEnd_toEndOf="parent"
