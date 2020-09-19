@@ -26,6 +26,8 @@
             android:background="@drawable/rounded_square"
             android:backgroundTint="@color/AccentColorGreen" />
 
+
+
         <TextView
             android:id="@+id/brewNameTV"
             android:layout_width="wrap_content"

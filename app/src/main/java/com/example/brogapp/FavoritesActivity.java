@@ -26,12 +26,12 @@ public class FavoritesActivity extends AppCompatActivity {
 
     //Fill out recyclerView
         ArrayList<BrewItem> listOfFaves = new ArrayList<>();
-        listOfFaves.add(new BrewItem(R.drawable.ic_android,"Manhatten", "Dette er bare en tester, bare rolig","4.6"));
-        listOfFaves.add(new BrewItem(R.drawable.ic_android,"Manhatten", "Dette er bare en tester, bare rolig","4.6"));
-        listOfFaves.add(new BrewItem(R.drawable.ic_android,"Manhatten", "Dette er bare en tester, bare rolig","4.6"));
-        listOfFaves.add(new BrewItem(R.drawable.ic_android,"Manhatten", "Dette er bare en tester, bare rolig","4.6"));
-        listOfFaves.add(new BrewItem(R.drawable.ic_android,"Manhatten", "Dette er bare en tester, bare rolig","4.6"));
-        listOfFaves.add(new BrewItem(R.drawable.ic_android,"Manhatten", "Dette er bare en tester, bare rolig","4.6"));
+        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"Manhatten", "Super lækkert bryg som jeg vil drikke hver dag","4.6"));
+        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"New York", "Smager også ok, men den er bedst om mandagen","4.6"));
+        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"Torronto", "Den er skidego' til hygge med veninderne","4.6"));
+        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"Skagen", "Når man bare skal have kaffe, og det skal gå stærkt","4.6"));
+        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"San Francisco", "Minder om den vi fik på caféen i USA","4.6"));
+        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"Malmø", "Shit den her er fandme også lækker","4.6"));
 
         mRecyclerView = findViewById(R.id.favesHolderRV);
         mRecyclerView.setHasFixedSize(true);
