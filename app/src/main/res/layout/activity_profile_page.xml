@@ -28,17 +28,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo_splash_small" />
 
+
+
     <ImageView
         android:id="@+id/profilePicIV"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginTop="40dp"
+        android:elevation="10dp"
         android:background="@drawable/circle"
+        android:backgroundTint="@color/Highlight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/smallpb" />
+
 
     <TextView
         android:id="@+id/welcomeTV"
