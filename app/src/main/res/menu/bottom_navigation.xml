@@ -5,7 +5,7 @@
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/home_icon"
-        android:title="Home"/>
+        android:title="Start"/>
 
     <item
         android:id="@+id/nav_scan"
@@ -15,15 +15,15 @@
     <item
         android:id="@+id/nav_brew"
         android:icon="@drawable/coffee_icon"
-        android:title="Brew"/>
+        android:title="Bryg"/>
 
     <item
         android:id="@+id/nav_wash"
         android:icon="@drawable/wash_icon"
-        android:title="Clean"/>
+        android:title="Rens"/>
 
     <item
         android:id="@+id/nav_profile"
         android:icon="@drawable/user_icon"
-        android:title="Profile"/>
+        android:title="Profil"/>
 </menu>

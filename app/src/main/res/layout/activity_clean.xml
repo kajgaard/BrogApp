@@ -25,6 +25,7 @@
         android:layout_alignParentBottom="true"
         app:itemBackground="@color/Highlight"
         app:labelVisibilityMode="labeled"
+        app:itemIconSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_navigation" />
 
