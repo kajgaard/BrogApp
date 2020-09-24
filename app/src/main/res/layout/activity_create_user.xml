@@ -9,7 +9,7 @@
 
 
     <Button
-        android:id="@+id/signIndBtn"
+        android:id="@+id/createUserBtn"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_square"
@@ -23,10 +23,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordET" />
+        app:layout_constraintTop_toBottomOf="@+id/newPasswordET" />
 
     <EditText
-        android:id="@+id/emailET"
+        android:id="@+id/newEmailET"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginStart="30dp"
@@ -37,7 +37,7 @@
         android:hint="Email Adresse"
         android:inputType="textEmailAddress"
         android:paddingLeft="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/passwordET"
+        app:layout_constraintBottom_toTopOf="@+id/newPasswordET"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +61,7 @@
         app:layout_constraintTop_toBottomOf="@+id/logoIV" />
 
     <EditText
-        android:id="@+id/passwordET"
+        android:id="@+id/newPasswordET"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginStart="30dp"
@@ -101,6 +101,16 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logoIV" />
+
+    <TextView
+        android:id="@+id/alreadyUserTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Allerede bruger? Log ind her!"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="@+id/newPasswordET"
+        app:layout_constraintTop_toBottomOf="@+id/newPasswordET" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
