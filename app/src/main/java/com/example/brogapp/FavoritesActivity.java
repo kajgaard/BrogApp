@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 public class FavoritesActivity extends AppCompatActivity {
 
+    private static final String TAG = "FavoritesActivity";
     RecyclerView mRecyclerView;
     RecyclerView.Adapter mAdapter;
     RecyclerView.LayoutManager mLayoutManager;
