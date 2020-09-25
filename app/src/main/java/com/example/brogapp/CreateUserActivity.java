@@ -42,11 +42,7 @@ public class CreateUserActivity extends AppCompatActivity implements View.OnClic
         save = findViewById(R.id.createUserBtn);
         save.setOnClickListener(this);
 
-        //Checks is user is already signed in
-        if(fAuth.getCurrentUser()!= null){
-            startActivity(new Intent(getApplicationContext(),HomePage.class));
-            finish();
-        }
+
 
 
     }
