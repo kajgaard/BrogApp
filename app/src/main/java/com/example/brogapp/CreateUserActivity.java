@@ -85,6 +85,9 @@ public class CreateUserActivity extends AppCompatActivity implements View.OnClic
                     }
                 }
             });
+        }else if(view == logIn){
+            startActivity(new Intent(getApplicationContext(),LogInActivity.class));
+            finish();
         }
     }
 }

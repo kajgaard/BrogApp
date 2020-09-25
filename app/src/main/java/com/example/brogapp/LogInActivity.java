@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class LogInActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button login;
+    TextView createUser, forgotPswd;
     EditText mailET, pswdET;
     FirebaseAuth fAuth;
     ProgressBar progressBar;
@@ -36,6 +38,10 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
         mailET =  findViewById(R.id.emailET);
         pswdET =  findViewById(R.id.passwordET);
+        forgotPswd = findViewById(R.id.forgotPswTV);
+        forgotPswd.setOnClickListener(this);
+        createUser = findViewById(R.id.newUserTV);
+        createUser.setOnClickListener(this);
 
         progressBar = findViewById(R.id.progressBar2);
 
@@ -74,16 +80,21 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
                     if(task.isSuccessful()){
                         startActivity(new Intent(getApplicationContext(),HomePage.class));
                         Toast.makeText(LogInActivity.this, "Login succesfuld", Toast.LENGTH_SHORT).show();
+                        finish();
                     }else{
                         Toast.makeText(LogInActivity.this, "Fejl: "+ task.getException().toString(), Toast.LENGTH_SHORT).show();
                     }
-
 
                 }
 
             });
 
 
+        }else if(view == forgotPswd){
+            Toast.makeText(this, "Ikke implementeret endnu", Toast.LENGTH_SHORT).show();
+        }else if(view == createUser){
+            startActivity(new Intent(getApplicationContext(),CreateUserActivity.class));
+            finish();
         }
 
     }
