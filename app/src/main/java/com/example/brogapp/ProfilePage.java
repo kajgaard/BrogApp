@@ -14,10 +14,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class ProfilePage extends AppCompatActivity implements View.OnClickListener {
 
-    TextView favorites;
+    TextView favorites, logout;
     ImageView favoritesIV;
 
 
@@ -26,6 +27,8 @@ public class ProfilePage extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_page);
 
+        logout = findViewById(R.id.logOutTV);
+        logout.setOnClickListener(this);
 
         favorites = findViewById(R.id.favesTV);
         favorites.setOnClickListener(this);
@@ -82,6 +85,9 @@ public class ProfilePage extends AppCompatActivity implements View.OnClickListen
 
         if(v == favorites || v == favoritesIV){
             startActivity(new Intent(getApplicationContext(),FavoritesActivity.class));
+        }else if(v == logout){
+            FirebaseAuth.getInstance().signOut(); //logs user out
+            startActivity(new Intent(getApplicationContext(),LogInActivity.class));
         }
     }
 }
