@@ -1,6 +1,7 @@
 package com.example.brogapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,11 +16,19 @@ import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class ProfilePage extends AppCompatActivity implements View.OnClickListener {
 
-    TextView favorites, logout;
+    TextView favorites, logout, header;
     ImageView favoritesIV;
+    String name, userID;
+    FirebaseFirestore fStore;
+    FirebaseAuth fAuth;
 
 
     @Override
@@ -35,6 +44,21 @@ public class ProfilePage extends AppCompatActivity implements View.OnClickListen
 
         favoritesIV  =findViewById(R.id.heartIconIV);
         favoritesIV.setOnClickListener(this);
+
+        header = findViewById(R.id.welcomeTV);
+
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+        userID = fAuth.getCurrentUser().getUid();
+
+        DocumentReference documentReference = fStore.collection("users").document(userID);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                name = value.getString("name");
+                header.setText("Velkommen "+ name.substring(0,name.indexOf(" ")) + "!");
+            }
+        });
 
 
         //Initialize and assign navbar variable
