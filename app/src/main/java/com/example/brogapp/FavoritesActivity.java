@@ -2,11 +2,13 @@ package com.example.brogapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.paging.PagedList;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,8 +18,13 @@ import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.firebase.ui.firestore.SnapshotParser;
+import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
+import com.firebase.ui.firestore.paging.FirestorePagingOptions;
+import com.firebase.ui.firestore.paging.LoadingState;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
@@ -31,7 +38,7 @@ public class FavoritesActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
-    FirestoreRecyclerAdapter mAdapter;
+    FirestorePagingAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,12 +64,29 @@ public class FavoritesActivity extends AppCompatActivity {
         //Query for database
         Query query = fStore.collection("users").document(userID).collection("favorites");
 
-        //Recycler options (github dependency)
-        FirestoreRecyclerOptions<BrewItem> options = new FirestoreRecyclerOptions.Builder<BrewItem>()
-                .setQuery(query,BrewItem.class).build();
+        //Paging so in case we have a lot of data in database, it loads in pages
+        PagedList.Config config = new PagedList.Config.Builder()
+                .setInitialLoadSizeHint(15)
+                .setPageSize(5)
+                .build();
+
+        //Recycler options (github dependency) //se youtube.com/watch?v=LatlcDZhpd4
+        FirestorePagingOptions<BrewItem> options = new FirestorePagingOptions.Builder<BrewItem>()
+                .setLifecycleOwner(this) //No longer need onStart() and onStop()
+                .setQuery(query, config, new SnapshotParser<BrewItem>() {
+                    @NonNull
+                    @Override
+                    public BrewItem parseSnapshot(@NonNull DocumentSnapshot snapshot) { //so we can get ID for all documents in collection
+                        BrewItem brewItem = snapshot.toObject(BrewItem.class);
+                        String brewId = snapshot.getId();
+                        brewItem.setbrewID();
+                        return brewItem;
+                    }
+                })
+                .build();
 
         //Adapter
-        mAdapter = new FirestoreRecyclerAdapter<BrewItem,BrewViewHolderFirestore>(options) {
+        mAdapter = new FirestorePagingAdapter<BrewItem,BrewViewHolderFirestore>(options) {
             @NonNull
             @Override
             public BrewViewHolderFirestore onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -77,6 +101,34 @@ public class FavoritesActivity extends AppCompatActivity {
                 holder.brewName.setText(model.getBrewName());
                 holder.brewDescription.setText(model.getBrewDescription());
                 holder.brewScore.setText(model.getBrewScore());
+            }
+
+            @Override
+            protected void onLoadingStateChanged(@NonNull LoadingState state) {
+                super.onLoadingStateChanged(state);
+
+                switch(state){
+                    case ERROR:
+                        Log.d("PAGING_LOG","Error while loading data");
+                        break;
+
+                    case FINISHED:
+                        Log.d("PAGING_LOG","Finished loading data");
+                        break;
+
+                    case LOADED:
+                        Log.d("PAGING_LOG","Items loaded" + getItemCount());
+                        break;
+
+                    case LOADING_MORE:
+                        Log.d("PAGING_LOG","currently loading next page" + getItemCount());
+                        break;
+
+                    case LOADING_INITIAL:
+                        Log.d("PAGING_LOG","Loading first page" + getItemCount());
+                        break;
+
+                }
             }
         };
 
@@ -134,28 +186,25 @@ public class FavoritesActivity extends AppCompatActivity {
 
     }
 
-    private class BrewViewHolderFirestore extends RecyclerView.ViewHolder {
+
+    private class BrewViewHolderFirestore extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView mImage;
         TextView brewName, brewDescription, brewScore;
         public BrewViewHolderFirestore(@NonNull View itemView) {
             super(itemView);
 
+            itemView.setOnClickListener(this);
             mImage = itemView.findViewById(R.id.itemPicIV);
             brewName = itemView.findViewById(R.id.brewNameTV);
             brewDescription = itemView.findViewById(R.id.brewDescriptionTV);
             brewScore = itemView.findViewById(R.id.scoreTV);
         }
+
+        @Override
+        public void onClick(View view) {
+
+        }
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        mAdapter.stopListening();
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        mAdapter.startListening();
-    }
 }
