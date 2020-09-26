@@ -101,7 +101,7 @@ public class CreateUserActivity extends AppCompatActivity implements View.OnClic
                         userID = fAuth.getCurrentUser().getUid();
                         DocumentReference documentReference = fStore.collection("users").document(userID);
                         Map<String,Object> user = new HashMap<>();
-                        user.put("name",name);
+                        user.put("name",name + " ");
                         user.put("email",email);
                         user.put("userID",userID);
                         documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
