@@ -35,6 +35,7 @@ public class CreateUserActivity extends AppCompatActivity implements View.OnClic
 
         fAuth = FirebaseAuth.getInstance();
         nameET = findViewById(R.id.nameET);
+        nameET.requestFocus();
         emailET = findViewById(R.id.newEmailET);
         passwordET = findViewById(R.id.newPasswordET);
         alreadyUser = findViewById(R.id.alreadyUserTV);
