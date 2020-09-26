@@ -38,7 +38,7 @@ public class FavoritesActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
-    FirestorePagingAdapter mAdapter;
+    FavoritesAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,51 +86,7 @@ public class FavoritesActivity extends AppCompatActivity {
                 .build();
 
         //Adapter
-        mAdapter = new FirestorePagingAdapter<BrewItem,BrewViewHolderFirestore>(options) {
-            @NonNull
-            @Override
-            public BrewViewHolderFirestore onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.faves_adapter, parent, false);
-
-                return new BrewViewHolderFirestore(v);
-            }
-
-            @Override
-            protected void onBindViewHolder(@NonNull BrewViewHolderFirestore holder, int position, @NonNull BrewItem model) {
-                holder.mImage.setImageResource(model.getImageResource());
-                holder.brewName.setText(model.getBrewName());
-                holder.brewDescription.setText(model.getBrewDescription());
-                holder.brewScore.setText(model.getBrewScore());
-            }
-
-            @Override
-            protected void onLoadingStateChanged(@NonNull LoadingState state) {
-                super.onLoadingStateChanged(state);
-
-                switch(state){
-                    case ERROR:
-                        Log.d("PAGING_LOG","Error while loading data");
-                        break;
-
-                    case FINISHED:
-                        Log.d("PAGING_LOG","Finished loading data");
-                        break;
-
-                    case LOADED:
-                        Log.d("PAGING_LOG","Items loaded" + getItemCount());
-                        break;
-
-                    case LOADING_MORE:
-                        Log.d("PAGING_LOG","currently loading next page" + getItemCount());
-                        break;
-
-                    case LOADING_INITIAL:
-                        Log.d("PAGING_LOG","Loading first page" + getItemCount());
-                        break;
-
-                }
-            }
-        };
+        mAdapter = new FavoritesAdapter(options);
 
         mRecyclerView = findViewById(R.id.favesHolderRV);
         mRecyclerView.setHasFixedSize(true);
@@ -183,28 +139,6 @@ public class FavoritesActivity extends AppCompatActivity {
             }
         });
 
-
     }
-
-
-    private class BrewViewHolderFirestore extends RecyclerView.ViewHolder implements View.OnClickListener {
-        ImageView mImage;
-        TextView brewName, brewDescription, brewScore;
-        public BrewViewHolderFirestore(@NonNull View itemView) {
-            super(itemView);
-
-            itemView.setOnClickListener(this);
-            mImage = itemView.findViewById(R.id.itemPicIV);
-            brewName = itemView.findViewById(R.id.brewNameTV);
-            brewDescription = itemView.findViewById(R.id.brewDescriptionTV);
-            brewScore = itemView.findViewById(R.id.scoreTV);
-        }
-
-        @Override
-        public void onClick(View view) {
-
-        }
-    }
-
 
 }
