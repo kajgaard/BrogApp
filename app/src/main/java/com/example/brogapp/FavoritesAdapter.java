@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,12 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 import com.firebase.ui.firestore.paging.LoadingState;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 public class FavoritesAdapter extends FirestorePagingAdapter<BrewItem, FavoritesAdapter.FavoritesViewHolder> {
 
+    private OnListItemClick onListItemClick;
 
-    public FavoritesAdapter(@NonNull FirestorePagingOptions<BrewItem> options) {
+    public FavoritesAdapter(@NonNull FirestorePagingOptions<BrewItem> options, OnListItemClick onListItemClick) {
         super(options);
+        this.onListItemClick = onListItemClick;
     }
 
     @Override
@@ -64,7 +68,7 @@ public class FavoritesAdapter extends FirestorePagingAdapter<BrewItem, Favorites
         }
     }
 
-    public class FavoritesViewHolder extends RecyclerView.ViewHolder{
+    public class FavoritesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     ImageView mImage;
     TextView brewName, brewDescription, brewScore;
 
@@ -75,8 +79,18 @@ public class FavoritesAdapter extends FirestorePagingAdapter<BrewItem, Favorites
         brewName = itemView.findViewById(R.id.brewNameTV);
         brewDescription = itemView.findViewById(R.id.brewDescriptionTV);
         brewScore = itemView.findViewById(R.id.scoreTV);
+
+        itemView.setOnClickListener(this);
     }
 
+        @Override
+        public void onClick(View view) {
+            onListItemClick.onItemClick(getItem(getAdapterPosition()),getAdapterPosition());
+        }
+    }
+
+    public interface OnListItemClick {
+        void onItemClick (DocumentSnapshot snapshot, int position);
     }
 
 }

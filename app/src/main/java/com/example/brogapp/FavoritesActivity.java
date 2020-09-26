@@ -30,7 +30,7 @@ import com.google.firebase.firestore.Query;
 
 import java.util.ArrayList;
 
-public class FavoritesActivity extends AppCompatActivity {
+public class FavoritesActivity extends AppCompatActivity implements FavoritesAdapter.OnListItemClick {
 
     private static final String TAG = "FavoritesActivity";
     RecyclerView mRecyclerView;
@@ -86,7 +86,7 @@ public class FavoritesActivity extends AppCompatActivity {
                 .build();
 
         //Adapter
-        mAdapter = new FavoritesAdapter(options);
+        mAdapter = new FavoritesAdapter(options, this);
 
         mRecyclerView = findViewById(R.id.favesHolderRV);
         mRecyclerView.setHasFixedSize(true);
@@ -141,4 +141,8 @@ public class FavoritesActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onItemClick(DocumentSnapshot snapshot, int position) {
+        Log.d("CLICK","item was clicked at pos. " + position + "\nID is " + snapshot.getId());
+    }
 }
