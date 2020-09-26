@@ -4,6 +4,8 @@ public class BrewItem {
     private int mImageResource;
     private String brewName, brewDescription, brewScore;
 
+    public BrewItem(){} //Emty constructor for Firestore
+
     public BrewItem(int imageResource, String name, String description, String score){
         mImageResource = imageResource;
         brewName = name;
