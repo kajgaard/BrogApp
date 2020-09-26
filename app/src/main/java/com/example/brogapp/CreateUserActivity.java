@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class CreateUserActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView logIn;
+    TextView alreadyUser;
     EditText nameET, emailET, passwordET;
     Button save;
     ProgressBar progressBar;
@@ -37,7 +37,9 @@ public class CreateUserActivity extends AppCompatActivity implements View.OnClic
         nameET = findViewById(R.id.nameET);
         emailET = findViewById(R.id.newEmailET);
         passwordET = findViewById(R.id.newPasswordET);
-        logIn = findViewById(R.id.alreadyUserTV);
+        alreadyUser = findViewById(R.id.alreadyUserTV);
+        alreadyUser.setOnClickListener(this);
+
         progressBar = findViewById(R.id.progressBar);
         save = findViewById(R.id.createUserBtn);
         save.setOnClickListener(this);
@@ -49,7 +51,11 @@ public class CreateUserActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View view) {
-        if(view == save){
+
+        if(view == alreadyUser){
+            startActivity(new Intent(getApplicationContext(),LogInActivity.class));
+            finish();
+        }else if(view == save){
             String name = nameET.getText().toString().trim();
             String email = emailET.getText().toString().trim();
             String password = passwordET.getText().toString().trim();
@@ -85,9 +91,7 @@ public class CreateUserActivity extends AppCompatActivity implements View.OnClic
                     }
                 }
             });
-        }else if(view == logIn){
-            startActivity(new Intent(getApplicationContext(),LogInActivity.class));
-            finish();
         }
+
     }
 }
