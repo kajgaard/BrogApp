@@ -69,7 +69,7 @@ public class CreateUserActivity extends AppCompatActivity implements View.OnClic
             startActivity(new Intent(getApplicationContext(),LogInActivity.class));
             finish();
         }else if(view == save){
-            final String name = nameET.getText().toString().trim();
+            final String name = nameET.getText().toString();
             final String email = emailET.getText().toString().trim();
             String password = passwordET.getText().toString().trim();
 

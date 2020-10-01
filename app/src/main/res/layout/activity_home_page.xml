@@ -14,15 +14,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:itemBackground="@color/Highlight"
-        app:labelVisibilityMode="labeled"
         app:itemIconSize="30dp"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_navigation" />
     <!--Farver
         app:itemIconTint="@color/TextColor"
         app:itemTextColor="@color/TextColor"
         -->
-
 
 
     <TextView

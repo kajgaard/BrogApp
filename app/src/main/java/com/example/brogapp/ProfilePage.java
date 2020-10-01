@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Adapter;
@@ -30,6 +31,7 @@ public class ProfilePage extends AppCompatActivity implements View.OnClickListen
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
 
+    public ProfilePage(){}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +57,16 @@ public class ProfilePage extends AppCompatActivity implements View.OnClickListen
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                name = value.getString("name");
-                header.setText("Velkommen "+ name.substring(0,name.indexOf(" ")) + "!");
+
+                if (value != null) {
+
+                    name = value.getString("name");
+                    //header.setText("Velkommen " + name + "!");
+                    header.setText("Velkommen "+ name.substring(0,name.indexOf(" ")).trim() + "!");
+                    if (error != null) {
+                        Log.d("STRING", "fejl " + error.getMessage());
+                    }
+                }
             }
         });
 
@@ -110,8 +120,11 @@ public class ProfilePage extends AppCompatActivity implements View.OnClickListen
         if(v == favorites || v == favoritesIV){
             startActivity(new Intent(getApplicationContext(),FavoritesActivity.class));
         }else if(v == logout){
+
             FirebaseAuth.getInstance().signOut(); //logs user out
             startActivity(new Intent(getApplicationContext(),LogInActivity.class));
+            finish();
+
         }
     }
 }
