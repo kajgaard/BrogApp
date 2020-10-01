@@ -6,6 +6,7 @@
     <color name="BackgroundGrey">#E3E4E4</color>
     <color name="Highlight">#EEEEEE</color>
     <color name="AccentColorGreen">#C8D4D4</color>
+    <color name="AccentColorGreenLight">#DAE1E1</color>
     <color name="TextColor">#3F3E3E</color>
     <color name="Grey">#C4C4C4</color>
 

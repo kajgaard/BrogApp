@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "983396391385",
+    "firebase_url": "https://brogapp-20e21.firebaseio.com",
+    "project_id": "brogapp-20e21",
+    "storage_bucket": "brogapp-20e21.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:983396391385:android:bb21e9482ff8b1eac8a1c8",
+        "android_client_info": {
+          "package_name": "com.example.brogapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "983396391385-8sa3ftgcmp3gps8fl4hdv358i5i3ljrg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrY0whoUJbJY80HNUApwktknjpaFJxU3E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "983396391385-8sa3ftgcmp3gps8fl4hdv358i5i3ljrg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
