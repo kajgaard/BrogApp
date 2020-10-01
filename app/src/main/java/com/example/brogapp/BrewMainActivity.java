@@ -2,6 +2,8 @@ package com.example.brogapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,12 +11,63 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+
 public class BrewMainActivity extends AppCompatActivity {
+
+    RecyclerView faveRecyclerView;
+    RecyclerView.Adapter faveAdapter;
+    RecyclerView.LayoutManager faveLayoutManager;
+
+    RecyclerView flereForslagRecyclerView;
+    RecyclerView.Adapter flereForslagAdapter;
+    RecyclerView.LayoutManager flereForslagLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_brew_main);
+
+        //Fill out recyclerView Favoritter
+        ArrayList<BrewItem> listOfFaves = new ArrayList<>();
+        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"Manhatten", "None","4.6"));
+        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"New York", "None","4.6"));
+        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"Torronto", "None","4.6"));
+        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"Skagen", "None","4.6"));
+        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"San Francisco", "None","4.6"));
+        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"Malmø", "None","4.6"));
+
+        faveRecyclerView = findViewById(R.id.favesRV);
+        faveRecyclerView.setHasFixedSize(true);
+
+        faveLayoutManager = new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
+        faveAdapter = new BrewFaveAdapter(listOfFaves);
+
+        faveRecyclerView.setLayoutManager(faveLayoutManager);
+        faveRecyclerView.setAdapter(faveAdapter);
+
+
+
+        //Fill out recyclerView Flere Forslag
+        ArrayList<BrewItem> listOfFlereForslag = new ArrayList<>();
+        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"Manhatten", "None","4.6"));
+        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"yo yo yo", "None","4.6"));
+        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"Torronto", "None","4.6"));
+        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"Skagen", "None","4.6"));
+        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"San Francisco", "None","4.6"));
+        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"Malmø", "None","4.6"));
+
+        flereForslagRecyclerView = findViewById(R.id.flereForslagRV);
+        flereForslagRecyclerView.setHasFixedSize(true);
+
+        flereForslagLayoutManager = new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
+        flereForslagAdapter = new BrewForslagAdapter(listOfFlereForslag);
+
+        flereForslagRecyclerView.setLayoutManager(flereForslagLayoutManager);
+        flereForslagRecyclerView.setAdapter(flereForslagAdapter);
+
+
+
 
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);

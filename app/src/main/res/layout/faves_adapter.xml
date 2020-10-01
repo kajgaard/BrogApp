@@ -11,8 +11,9 @@
     card_view:cardUseCompatPadding="5dp">
 
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
 
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -21,11 +22,12 @@
             android:id="@+id/itemPicIV"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"
             android:background="@drawable/rounded_square"
-            android:backgroundTint="@color/AccentColorGreen" />
-
+            android:backgroundTint="@color/AccentColorGreen"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
@@ -36,7 +38,9 @@
             android:layout_marginTop="10dp"
             android:text="Manhatten"
             android:textColor="@color/TextColor"
-            android:textSize="26sp" />
+            android:textSize="26sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/brewDescriptionTV"
@@ -46,7 +50,9 @@
             android:layout_marginTop="40dp"
             android:lineSpacingMultiplier="0.9"
             android:text="Super god kaffe som bare er mega god og lækker og jeg vil have den hver dag"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/starIV"
@@ -54,7 +60,9 @@
             android:layout_height="37dp"
             android:layout_marginStart="325dp"
             android:layout_marginTop="35dp"
-            android:src="@drawable/star_icon" />
+            android:src="@drawable/star_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/scoreTV"
@@ -64,10 +72,12 @@
             android:layout_marginTop="70dp"
             android:text="4.3"
             android:textColor="@color/TextColor"
-            android:textSize="26sp" />
+            android:textSize="26sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.cardview.widget.CardView>

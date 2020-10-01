@@ -33,7 +33,12 @@
         android:layout_height="100dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
-        android:text="+"
+        android:foreground="@android:drawable/ic_menu_add"
+        android:foregroundGravity="center"
+        android:gravity="bottom|center"
+        android:shadowColor="@color/AccentColorGreen"
+        android:text="NYT BRYG"
+        android:textSize="10sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logoIV" />
 
@@ -43,17 +48,52 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
-        android:text="Favoritter"
+        android:text="Favoritter >"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newBrewBtn" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/favesRV"
-        android:layout_width="382dp"
-        android:layout_height="143dp"
+        android:layout_width="0dp"
+        android:layout_height="145dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/favesTV" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="183dp"
+        android:layout_height="107dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:text="Her kan du lave dit eget bryg"
+        android:textSize="25sp"
+        app:layout_constraintStart_toEndOf="@+id/newBrewBtn"
+        app:layout_constraintTop_toTopOf="@+id/newBrewBtn" />
+
+    <TextView
+        android:id="@+id/flereForslagTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:text="Flere Forslag >"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/favesRV" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/flereForslagRV"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/flereForslagTV" />
 </androidx.constraintlayout.widget.ConstraintLayout>
