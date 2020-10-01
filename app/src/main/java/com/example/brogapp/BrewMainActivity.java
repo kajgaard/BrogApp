@@ -33,12 +33,12 @@ public class BrewMainActivity extends AppCompatActivity {
 
         //Fill out recyclerView Favoritter
         ArrayList<BrewItem> listOfFaves = new ArrayList<>();
-        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"Manhatten", "None","4.6"));
-        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"New York", "None","4.6"));
-        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"Torronto", "None","4.6"));
-        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"Skagen", "None","4.6"));
-        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"San Francisco", "None","4.6"));
-        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"Malmø", "None","4.6"));
+        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"Manhatten", "None","4.6","none"));
+        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"New York", "None","4.6","none"));
+        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"Torronto", "None","4.6","none"));
+        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"Skagen", "None","4.6","none"));
+        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"San Francisco", "None","4.6","none"));
+        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"Malmø", "None","4.6","none"));
 
         faveRecyclerView = findViewById(R.id.favesRV);
         faveRecyclerView.setHasFixedSize(true);
@@ -53,12 +53,12 @@ public class BrewMainActivity extends AppCompatActivity {
 
         //Fill out recyclerView Flere Forslag
         ArrayList<BrewItem> listOfFlereForslag = new ArrayList<>();
-        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"Manhatten", "None","4.6"));
-        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"yo yo yo", "None","4.6"));
-        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"Torronto", "None","4.6"));
-        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"Skagen", "None","4.6"));
-        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"San Francisco", "None","4.6"));
-        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"Malmø", "None","4.6"));
+        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"Manhatten", "None","4.6","none"));
+        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"yo yo yo", "None","4.6","none"));
+        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"Torronto", "None","4.6","none"));
+        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"Skagen", "None","4.6","none"));
+        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"San Francisco", "None","4.6","none"));
+        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"Malmø", "None","4.6","none"));
 
         flereForslagRecyclerView = findViewById(R.id.flereForslagRV);
         flereForslagRecyclerView.setHasFixedSize(true);
