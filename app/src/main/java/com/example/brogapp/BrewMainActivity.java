@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -22,6 +23,8 @@ public class BrewMainActivity extends AppCompatActivity {
     RecyclerView flereForslagRecyclerView;
     RecyclerView.Adapter flereForslagAdapter;
     RecyclerView.LayoutManager flereForslagLayoutManager;
+
+    Button newBrewBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +70,8 @@ public class BrewMainActivity extends AppCompatActivity {
         flereForslagRecyclerView.setAdapter(flereForslagAdapter);
 
 
+//        newBrewBtn = (Button) findViewById(R.id.newBrewBtn);
+//        newBrewBtn.setOnClickListener();
 
 
         //Initialize and assign navbar variable
