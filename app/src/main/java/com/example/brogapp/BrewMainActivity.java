@@ -29,11 +29,12 @@ public class BrewMainActivity extends AppCompatActivity {
 
     // When pushing the "nyt bryg" button
     public void newBrewButtonPushed(View view){
-        Toast.makeText(this,"New brew button pushed",Toast.LENGTH_SHORT).show();
-        Log.i("Button","New brew button pushed");
         ArrayList<String> brewValues = new ArrayList<>();
-        brewValues.add("Test A");
-        brewValues.add("Test B");
+        brewValues.add("20");
+        brewValues.add("Medium");
+        Toast.makeText(this, brewValues.toString(), Toast.LENGTH_SHORT).show();
+        Log.i("Button","New brew button pushed");
+
         Intent intent = new Intent(BrewMainActivity.this,EnterGramsActivity.class);
         intent.putExtra("brewValues",brewValues);
         startActivity(intent);
