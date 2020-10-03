@@ -36,6 +36,7 @@
         android:foreground="@android:drawable/ic_menu_add"
         android:foregroundGravity="center"
         android:gravity="bottom|center"
+        android:onClick="newBrewButtonPushed"
         android:shadowColor="@color/AccentColorGreen"
         android:text="NYT BRYG"
         android:textSize="10sp"

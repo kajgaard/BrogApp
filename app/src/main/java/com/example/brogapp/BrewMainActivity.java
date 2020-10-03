@@ -7,8 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -24,7 +27,18 @@ public class BrewMainActivity extends AppCompatActivity {
     RecyclerView.Adapter flereForslagAdapter;
     RecyclerView.LayoutManager flereForslagLayoutManager;
 
-    Button newBrewBtn;
+    // When pushing the "nyt bryg" button
+    public void newBrewButtonPushed(View view){
+        Toast.makeText(this,"New brew button pushed",Toast.LENGTH_SHORT).show();
+        Log.i("Button","New brew button pushed");
+        ArrayList<String> brewValues = new ArrayList<>();
+        brewValues.add("Test A");
+        brewValues.add("Test B");
+        Intent intent = new Intent(BrewMainActivity.this,EnterGramsActivity.class);
+        intent.putExtra("brewValues",brewValues);
+        startActivity(intent);
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,10 +82,6 @@ public class BrewMainActivity extends AppCompatActivity {
 
         flereForslagRecyclerView.setLayoutManager(flereForslagLayoutManager);
         flereForslagRecyclerView.setAdapter(flereForslagAdapter);
-
-
-//        newBrewBtn = (Button) findViewById(R.id.newBrewBtn);
-//        newBrewBtn.setOnClickListener();
 
 
         //Initialize and assign navbar variable
