@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EnterWaterPerGramActivity">
+
+
+    <Button
+        android:id="@+id/waterPreviousButton"
+        android:layout_width="130dp"
+        android:layout_height="71dp"
+
+        android:layout_marginStart="45dp"
+        android:layout_marginBottom="168dp"
+        android:background="@drawable/rounded_button"
+        android:onClick="waterPreviousButtonPushed"
+        android:text="Forrige"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/waterNextButton"
+        android:layout_width="130dp"
+        android:layout_height="71dp"
+        android:layout_marginEnd="45dp"
+
+        android:layout_marginBottom="168dp"
+        android:background="@drawable/rounded_button"
+        android:onClick="waterNextButtonPushed"
+        android:text="Næste"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/waterLogoImageView"
+        android:layout_width="111dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/big_logo"
+
+
+
+        />
+
+    <ImageView
+        android:id="@+id/waterBottomImageView"
+        android:layout_width="0dp"
+        android:layout_height="105dp"
+        android:scaleType="fitCenter"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/coffee_beans_wide"
+        />
+
+    <TextView
+        android:id="@+id/waterIntroTextView"
+        android:layout_width="327dp"
+        android:layout_height="134dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Hvor meget vand pr. gram kaffe vil du brygge?"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/waterLogoImageView" />
+
+    <TextView
+        android:id="@+id/waterValueTextView"
+        android:layout_width="157dp"
+        android:layout_height="69dp"
+        android:gravity="center_horizontal"
+        android:text="60 g"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toTopOf="@+id/waterNextButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/waterIntroTextView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/waterUpButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/up"
+        android:onClick="waterUpButtonPush"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.368"
+        app:layout_constraintStart_toEndOf="@+id/waterValueTextView"
+        app:layout_constraintTop_toTopOf="@+id/waterValueTextView"
+        app:layout_constraintVertical_bias="0.073" />
+
+    <Button
+        android:id="@+id/waterDownButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/down"
+        android:onClick="waterDownButtonPush"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/waterValueTextView"
+        app:layout_constraintHorizontal_bias="0.649"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/waterValueTextView"
+        app:layout_constraintVertical_bias="0.073" />
+
+    <SeekBar
+        android:id="@+id/waterSeekBar"
+        style="@android:style/Widget.Material.SeekBar.Discrete"
+        android:layout_width="341dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:max="6"
+        android:progress="0"
+        android:progressDrawable="@drawable/seek_bar"
+        android:thumb="@drawable/seek_thumb"
+        app:layout_constraintBottom_toTopOf="@+id/waterBottomImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/WaterLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="_______"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/waterValueTextView" />
+
+    <TextView
+        android:id="@+id/WaterLitertextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="liter"
+        android:textSize="50sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/waterIntroTextView" />
+
+    <TextView
+        android:id="@+id/waterTotalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:text="Samlet mængde kaffebryg: 600 ml"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/WaterLitertextView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
