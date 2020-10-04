@@ -7,6 +7,19 @@
     tools:context=".EnterWaterPerGramActivity">
 
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigationbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/Highlight"
+        app:itemIconSize="30dp"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation" />
+
     <Button
         android:id="@+id/waterPreviousButton"
         android:layout_width="130dp"
@@ -47,11 +60,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/big_logo"
-
-
-
-        />
+        app:srcCompat="@drawable/big_logo"/>
 
     <ImageView
         android:id="@+id/waterBottomImageView"

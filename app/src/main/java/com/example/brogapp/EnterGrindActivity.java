@@ -10,61 +10,30 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
-public class EnterGramsActivity extends AppCompatActivity {
+public class EnterGrindActivity extends AppCompatActivity {
 
     ArrayList<String> brewValues;
     SeekBar seekBar;
-    int gramsInteger;
-    int minimumGrams = 10;
-    int maximumGrams = 50;
-
-    TextView gramsTextView;
-
-    public void nextButtonPushed(View view) {
-        brewValues.set(0,Integer.toString(gramsInteger));
-        Toast.makeText(this, brewValues.toString(), Toast.LENGTH_SHORT).show();
-        Log.i("Button","Next button pushed");
-
-        Intent intent = new Intent(EnterGramsActivity.this,EnterWaterPerGramActivity.class);
-        intent.putExtra("brewValues",brewValues);
-        startActivity(intent);
-
-    }
-
-    public void upButtonpush(View view){
-        if(gramsInteger<maximumGrams) {
-            gramsInteger++;
-            gramsTextView.setText(gramsInteger + " g");
-        }
-    }
-
-    public void downButtonpush(View view){
-        if(gramsInteger>minimumGrams) {
-            gramsInteger--;
-            gramsTextView.setText(gramsInteger + " g");
-        }
-    }
+    TextView grindValueTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_enter_grams);
+        setContentView(R.layout.activity_enter_grind);
 
-        seekBar = findViewById(R.id.gramsSeekBar);
+        seekBar = findViewById(R.id.grindSeekBar);
         seekBar.setEnabled(false);
+        seekBar.setProgress(2);
 
         brewValues = (ArrayList<String>) getIntent().getSerializableExtra("brewValues");
 
-        gramsTextView = findViewById(R.id.gramsTextView);
-        gramsInteger=Integer.parseInt(brewValues.get(0));
-        gramsTextView.setText(gramsInteger+" g");
-
+        grindValueTextView = findViewById(R.id.grindValueTextView);
+        grindValueTextView.setText(brewValues.get(2));
 
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);
@@ -107,5 +76,44 @@ public class EnterGramsActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    public void grindNextButtonPushed(View view) {
+        Log.i("Grind", "Next button pushed");
+//        brewValues.set(2,grindValueTextView.getText().toString());
+//        Intent intent = new Intent(EnterGrindActivity.this, EnterTempActivity.class);
+//        intent.putExtra("brewValues", brewValues);
+//        startActivity(intent);
+    }
+
+    public void GrindPreviousButtonPushed(View view) {
+        Log.i("Grind", "Previous button pushed");
+        brewValues.set(2, grindValueTextView.getText().toString());
+        Intent intent = new Intent(EnterGrindActivity.this, EnterWaterPerGramActivity.class);
+        intent.putExtra("brewValues", brewValues);
+        startActivity(intent);
+    }
+
+
+    public void grindUpButtonPush(View view) {
+        Log.i("Grind", "Up button pushed");
+        if (!grindValueTextView.getText().equals("Grov")) {
+            if (grindValueTextView.getText().equals("Fin")) {
+                grindValueTextView.setText("Medium");
+            } else {
+                grindValueTextView.setText("Grov");
+            }
+        }
+    }
+
+    public void grindDownButtonPush(View view) {
+        Log.i("Grind", "Down button pushed");
+        if (!grindValueTextView.getText().equals("Fin")) {
+            if (grindValueTextView.getText().equals("Grov")) {
+                grindValueTextView.setText("Medium");
+            } else {
+                grindValueTextView.setText("Fin");
+            }
+        }
     }
 }

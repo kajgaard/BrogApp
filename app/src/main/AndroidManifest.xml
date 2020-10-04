@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EnterWaterPerGramActivity"></activity>
+        <activity android:name=".EnterGrindActivity"></activity>
+        <activity android:name=".EnterWaterPerGramActivity" />
         <activity
             android:name=".EnterGramsActivity"
             android:label="@string/title_activity_enter_grams"

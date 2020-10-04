@@ -10,10 +10,12 @@
         android:id="@+id/bottom_navigationbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:itemIconSize="30dp"
         app:itemBackground="@color/Highlight"
+        app:itemIconSize="30dp"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_navigation" />
 
     <ImageView

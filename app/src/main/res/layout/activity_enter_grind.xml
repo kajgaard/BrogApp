@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EnterGramsActivity">
+    tools:context=".EnterGrindActivity">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigationbar"
@@ -20,39 +20,50 @@
         app:menu="@menu/bottom_navigation" />
 
     <Button
-        android:id="@+id/gramsNextButton"
+        android:id="@+id/grindPreviousButton"
         android:layout_width="130dp"
         android:layout_height="71dp"
+
+        android:layout_marginStart="45dp"
+        android:layout_marginBottom="168dp"
         android:background="@drawable/rounded_button"
-        android:onClick="nextButtonPushed"
+        android:onClick="GrindPreviousButtonPushed"
+        android:text="Forrige"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/grindNextButton"
+        android:layout_width="130dp"
+        android:layout_height="71dp"
+        android:layout_marginEnd="45dp"
+
+        android:layout_marginBottom="168dp"
+        android:background="@drawable/rounded_button"
+        android:onClick="grindNextButtonPushed"
         android:text="Næste"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.71" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
-        android:id="@+id/gramsLogoImageView"
+        android:id="@+id/grindLogoImageView"
         android:layout_width="111dp"
         android:layout_height="80dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/big_logo"
-
-
-
-        />
+        app:srcCompat="@drawable/big_logo"/>
 
     <ImageView
-        android:id="@+id/gramsBottomImageView"
-                android:layout_width="0dp"
+        android:id="@+id/grindBottomImageView"
+        android:layout_width="0dp"
         android:layout_height="105dp"
         android:scaleType="fitCenter"
 
@@ -64,58 +75,60 @@
         />
 
     <TextView
-        android:id="@+id/gramsIntroTextView"
-        android:layout_width="324dp"
-        android:layout_height="114dp"
-        android:layout_marginTop="25dp"
+        android:id="@+id/grindIntroTextView"
+        android:layout_width="327dp"
+        android:layout_height="134dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="Hvor mange gram kaffe vil du bruge?"
+        android:text="Hvilken kværnstørrelse anvendes?"
         android:textAlignment="center"
-        android:textSize="35sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gramsLogoImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/grindLogoImageView" />
 
     <TextView
-        android:id="@+id/gramsTextView"
-        android:layout_width="147dp"
-        android:layout_height="114dp"
-        android:gravity="center"
-        android:text="10 g"
-        android:textSize="50sp"
-        app:layout_constraintBottom_toTopOf="@+id/gramsNextButton"
+        android:id="@+id/grindValueTextView"
+        android:layout_width="157dp"
+        android:layout_height="69dp"
+        android:gravity="center_horizontal"
+        android:text="Medium"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/grindNextButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gramsIntroTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/grindIntroTextView"
+        app:layout_constraintVertical_bias="0.297" />
 
     <Button
-        android:id="@+id/gramsUpButton"
+        android:id="@+id/grindUpButton"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:background="@drawable/up"
-        android:onClick="upButtonpush"
+        android:onClick="grindUpButtonPush"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.368"
-        app:layout_constraintStart_toEndOf="@+id/gramsTextView"
-        app:layout_constraintTop_toTopOf="@+id/gramsTextView"
-        app:layout_constraintVertical_bias="0.073" />
+        app:layout_constraintHorizontal_bias="0.326"
+        app:layout_constraintStart_toEndOf="@+id/grindValueTextView"
+        app:layout_constraintTop_toTopOf="@+id/grindValueTextView"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/gramsDownButton"
+        android:id="@+id/grindDownButton"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:background="@drawable/down"
-        android:onClick="downButtonpush"
+        android:onClick="grindDownButtonPush"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/gramsTextView"
-        app:layout_constraintHorizontal_bias="0.649"
+        app:layout_constraintEnd_toStartOf="@+id/grindValueTextView"
+        app:layout_constraintHorizontal_bias="0.673"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/gramsTextView"
-        app:layout_constraintVertical_bias="0.073" />
+        app:layout_constraintTop_toTopOf="@+id/grindValueTextView"
+        app:layout_constraintVertical_bias="0.0" />
 
     <SeekBar
-        android:id="@+id/gramsSeekBar"
+        android:id="@+id/grindSeekBar"
         style="@android:style/Widget.Material.SeekBar.Discrete"
         android:layout_width="341dp"
         android:layout_height="wrap_content"
@@ -124,7 +137,7 @@
         android:progress="0"
         android:progressDrawable="@drawable/seek_bar"
         android:thumb="@drawable/seek_thumb"
-        app:layout_constraintBottom_toTopOf="@+id/gramsBottomImageView"
+        app:layout_constraintBottom_toTopOf="@+id/grindBottomImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

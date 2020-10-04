@@ -1,13 +1,17 @@
 package com.example.brogapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
@@ -26,11 +30,10 @@ public class EnterWaterPerGramActivity extends AppCompatActivity {
 
     public void waterNextButtonPushed(View view) {
         Log.i("Water per gram", "Next button pushed");
-//        brewValues.set(1,Integer.toString(gramsInteger));
-//        Intent intent = new Intent(EnterWaterPerGramActivity.this, EnterCoarseActivity.class);
-//        intent.putExtra("brewValues", brewValues);
-//        startActivity(intent);
-
+        brewValues.set(1,Integer.toString(gramsInteger));
+        Intent intent = new Intent(EnterWaterPerGramActivity.this, EnterGrindActivity.class);
+        intent.putExtra("brewValues", brewValues);
+        startActivity(intent);
     }
 
     public void waterUpButtonPush(View view) {
@@ -63,7 +66,6 @@ public class EnterWaterPerGramActivity extends AppCompatActivity {
         Intent intent = new Intent(EnterWaterPerGramActivity.this, EnterGramsActivity.class);
         intent.putExtra("brewValues", brewValues);
         startActivity(intent);
-
     }
 
 
@@ -90,6 +92,48 @@ public class EnterWaterPerGramActivity extends AppCompatActivity {
             totalBrew = (int) (Integer.parseInt(brewValues.get(0)) * 1000 / gramsInteger);
         }
         waterTotalTextView.setText("Samlet mængde kaffebryg: " + totalBrew);
+
+        //Initialize and assign navbar variable
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);
+
+        //Set home iteam as selected
+        bottomNavigationView.setSelectedItemId(R.id.nav_brew);
+
+        //Set up listener, for determine if other icon is pressed
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+
+                    case R.id.nav_home:
+                        startActivity(new Intent(getApplicationContext(),HomePage.class));
+                        overridePendingTransition(0,0); //Dont know what this does
+                        return true;
+
+                    case R.id.nav_scan:
+                        startActivity(new Intent(getApplicationContext(),ScanActivity.class));
+                        overridePendingTransition(0,0); //Dont know what this does
+                        return true;
+
+                    case R.id.nav_brew:
+                        startActivity(new Intent(getApplicationContext(),BrewMainActivity.class));
+                        overridePendingTransition(0,0); //Dont know what this does
+                        return true;
+
+                    case R.id.nav_wash:
+                        startActivity(new Intent(getApplicationContext(),CleanActivity.class));
+                        overridePendingTransition(0,0); //Dont know what this does
+                        return true;
+
+                    case R.id.nav_profile:
+                        startActivity(new Intent(getApplicationContext(),ProfilePage.class));
+                        overridePendingTransition(0,0); //Dont know what this does
+                        return true;
+                }
+
+                return false;
+            }
+        });
     }
 
 
