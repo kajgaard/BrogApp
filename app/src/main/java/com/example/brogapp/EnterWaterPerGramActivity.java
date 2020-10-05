@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -92,6 +93,9 @@ public class EnterWaterPerGramActivity extends AppCompatActivity {
             totalBrew = (int) (Integer.parseInt(brewValues.get(0)) * 1000 / gramsInteger);
         }
         waterTotalTextView.setText("Samlet mængde kaffebryg: " + totalBrew);
+
+        Toast.makeText(this,brewValues.toString(),Toast.LENGTH_SHORT).show();
+
 
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);

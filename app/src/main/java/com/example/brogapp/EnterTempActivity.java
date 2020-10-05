@@ -16,57 +16,65 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
-public class EnterGramsActivity extends AppCompatActivity {
+public class EnterTempActivity extends AppCompatActivity {
 
     ArrayList<String> brewValues;
     SeekBar seekBar;
-    int gramsInteger;
-    int minimumGrams = 10;
-    int maximumGrams = 50;
+    int tempInteger;
+    int minimumTemp = 80;
+    int maximumTemp = 100;
+    TextView tempValueTextView;
 
-    TextView gramsTextView;
-
-    public void nextButtonPushed(View view) {
-        brewValues.set(0,Integer.toString(gramsInteger));
-        Log.i("Button","Next button pushed");
-
-        Intent intent = new Intent(EnterGramsActivity.this,EnterWaterPerGramActivity.class);
-        intent.putExtra("brewValues",brewValues);
+    public void tempPreviousButtonPushed(View view) {
+        Log.i("Temp", "Previous button pushed");
+        brewValues.set(3, Integer.toString(tempInteger));
+        Intent intent = new Intent(EnterTempActivity.this, EnterGrindActivity.class);
+        intent.putExtra("brewValues", brewValues);
         startActivity(intent);
-
     }
 
-    public void upButtonpush(View view){
-        if(gramsInteger<maximumGrams) {
-            gramsInteger++;
-            gramsTextView.setText(gramsInteger + " g");
+    public void tempNextButtonPushed(View view) {
+        Log.i("Temp", "Next button pushed");
+//        brewValues.set(3,tempValueTextView.getText().toString());
+//        Intent intent = new Intent(EnterTempActivity.this, EnterTimeActivity.class);
+//        intent.putExtra("brewValues", brewValues);
+//        startActivity(intent);
+    }
+
+    public void tempUpButtonPush(View view) {
+        Log.i("Temp", "Up button pushed");
+        if (tempInteger < maximumTemp) {
+            tempInteger = tempInteger + 1;
+            tempValueTextView.setText(tempInteger + " \u00B0C");
         }
     }
 
-    public void downButtonpush(View view){
-        if(gramsInteger>minimumGrams) {
-            gramsInteger--;
-            gramsTextView.setText(gramsInteger + " g");
+    public void tempDownButtonPush(View view) {
+        Log.i("Temp", "Down button pushed");
+        if (tempInteger > minimumTemp) {
+            tempInteger = tempInteger - 1;
+            tempValueTextView.setText(tempInteger + " \u00B0C");
         }
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_enter_grams);
+        setContentView(R.layout.activity_enter_temp);
 
-        seekBar = findViewById(R.id.gramsSeekBar);
+        seekBar = findViewById(R.id.tempSeekBar);
         seekBar.setEnabled(false);
+        seekBar.setProgress(3);
 
         brewValues = (ArrayList<String>) getIntent().getSerializableExtra("brewValues");
 
-        gramsTextView = findViewById(R.id.gramsTextView);
-        gramsInteger=Integer.parseInt(brewValues.get(0));
-        gramsTextView.setText(gramsInteger+" g");
+        tempValueTextView = findViewById(R.id.tempValueTextView);
+        tempValueTextView.setText(brewValues.get(3)+" \u00B0C");
+
+        tempInteger = Integer.parseInt(brewValues.get(3));
 
         Toast.makeText(this,brewValues.toString(),Toast.LENGTH_SHORT).show();
-
-
 
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);
@@ -110,4 +118,5 @@ public class EnterGramsActivity extends AppCompatActivity {
             }
         });
     }
+
 }
