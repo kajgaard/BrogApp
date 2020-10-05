@@ -16,63 +16,63 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
-public class EnterTempActivity extends AppCompatActivity {
+public class EnterBloomWaterActivity extends AppCompatActivity {
 
     ArrayList<String> brewValues;
     SeekBar seekBar;
-    int tempInteger;
-    int minimumTemp = 80;
-    int maximumTemp = 100;
-    TextView tempValueTextView;
+    int bloomWaterInteger;
+    int minimumBloomWater = 20;
+    int maximumBloomWater = 80;
+    TextView bloomWaterValueTextView;
 
-    public void tempPreviousButtonPushed(View view) {
-        Log.i("Temp", "Previous button pushed");
-        brewValues.set(3, Integer.toString(tempInteger));
-        Intent intent = new Intent(EnterTempActivity.this, EnterGrindActivity.class);
-        intent.putExtra("brewValues", brewValues);
-        startActivity(intent);
-    }
 
-    public void tempNextButtonPushed(View view) {
-        Log.i("Temp", "Next button pushed");
-        brewValues.set(3,Integer.toString(tempInteger));
-        Intent intent = new Intent(EnterTempActivity.this, EnterBloomWaterActivity.class);
-        intent.putExtra("brewValues", brewValues);
-        startActivity(intent);
-    }
-
-    public void tempUpButtonPush(View view) {
+    public void bloomWaterDownButtonPush(View view) {
         Log.i("Temp", "Up button pushed");
-        if (tempInteger < maximumTemp) {
-            tempInteger = tempInteger + 1;
-            tempValueTextView.setText(tempInteger + " \u00B0C");
+        if (bloomWaterInteger > minimumBloomWater) {
+            bloomWaterInteger = bloomWaterInteger - 1;
+            bloomWaterValueTextView.setText(bloomWaterInteger + " ml");
         }
     }
 
-    public void tempDownButtonPush(View view) {
-        Log.i("Temp", "Down button pushed");
-        if (tempInteger > minimumTemp) {
-            tempInteger = tempInteger - 1;
-            tempValueTextView.setText(tempInteger + " \u00B0C");
+    public void bloomWaterUpButtonPush(View view) {
+        Log.i("Temp", "Up button pushed");
+        if (bloomWaterInteger < maximumBloomWater) {
+            bloomWaterInteger = bloomWaterInteger + 1;
+            bloomWaterValueTextView.setText(bloomWaterInteger + " ml");
         }
     }
 
+    public void bloomWaterNextButtonPushed(View view) {
+        Log.i("Temp", "Next button pushed");
+//        brewValues.set(3, Integer.toString(bloomWaterValueInteger));
+//        Intent intent = new Intent(EnterBloomWaterActivity.this, EnterBloomTimeActivity.class);
+//        intent.putExtra("brewValues", brewValues);
+//        startActivity(intent);
+    }
+
+    public void bloomWaterPreviousButtonPushed(View view) {
+        Log.i("Temp", "Previous button pushed");
+        brewValues.set(4, Integer.toString(bloomWaterInteger));
+        Intent intent = new Intent(EnterBloomWaterActivity.this, EnterTempActivity.class);
+        intent.putExtra("brewValues", brewValues);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_enter_temp);
+        setContentView(R.layout.activity_enter_bloom_water);
 
-        seekBar = findViewById(R.id.tempSeekBar);
+        seekBar = findViewById(R.id.bloomWaterSeekBar);
         seekBar.setEnabled(false);
-        seekBar.setProgress(3);
+        seekBar.setProgress(4);
 
         brewValues = (ArrayList<String>) getIntent().getSerializableExtra("brewValues");
 
-        tempValueTextView = findViewById(R.id.tempValueTextView);
-        tempValueTextView.setText(brewValues.get(3)+" \u00B0C");
+        bloomWaterValueTextView = findViewById(R.id.bloomWaterValueTextView);
+        bloomWaterValueTextView.setText(brewValues.get(4)+" ml");
 
-        tempInteger = Integer.parseInt(brewValues.get(3));
+        bloomWaterInteger = Integer.parseInt(brewValues.get(4));
 
         Toast.makeText(this,brewValues.toString(),Toast.LENGTH_SHORT).show();
 
@@ -118,5 +118,4 @@ public class EnterTempActivity extends AppCompatActivity {
             }
         });
     }
-
 }
