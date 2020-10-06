@@ -10,50 +10,49 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
-public class EnterBloomTimeActivity extends AppCompatActivity {
+public class EnterBrewTimeActivity extends AppCompatActivity {
 
     ArrayList<String> brewValues;
     SeekBar seekBar;
-    int bloomTimeInteger;
-    int minimumBloomTime = 20;
-    int maximumBloomTime = 120;
-    TextView bloomTimeValueTextView;
+    int brewTimeInteger;
+    int minimumBrewTime = 120;
+    int maximumBrewTime = 240;
+    TextView brewTimeValueTextView;
 
-
-    public void bloomTimeUpButtonPush(View view) {
-        Log.i("BloomTime", "Up button pushed");
-        if (bloomTimeInteger < maximumBloomTime) {
-            bloomTimeInteger = bloomTimeInteger + 1;
-            bloomTimeValueTextView.setText(convertTime(bloomTimeInteger));
+    public void brewTimeUpButtonPush(View view) {
+        Log.i("BrewTime", "Up button pushed");
+        if (brewTimeInteger < maximumBrewTime) {
+            brewTimeInteger = brewTimeInteger + 1;
+            brewTimeValueTextView.setText(convertTime(brewTimeInteger));
         }
     }
 
-    public void bloomTimeDownButtonPush(View view) {
-        Log.i("BloomTime", "Up button pushed");
-        if (bloomTimeInteger > minimumBloomTime) {
-            bloomTimeInteger = bloomTimeInteger - 1;
-            bloomTimeValueTextView.setText(convertTime(bloomTimeInteger));
+    public void brewTimeDownButtonPush(View view) {
+        Log.i("BrewTime", "Up button pushed");
+        if (brewTimeInteger > minimumBrewTime) {
+            brewTimeInteger = brewTimeInteger - 1;
+            brewTimeValueTextView.setText(convertTime(brewTimeInteger));
         }
+
     }
 
-    public void bloomTimeNextButtonPushed(View view) {
+    public void brewTimeNextButtonPushed(View view) {
         Log.i("Temp", "Next button pushed");
-        brewValues.set(5, Integer.toString(bloomTimeInteger));
-        Intent intent = new Intent(EnterBloomTimeActivity.this, EnterBrewTimeActivity.class);
-        intent.putExtra("brewValues", brewValues);
-        startActivity(intent);
+        brewValues.set(6, Integer.toString(brewTimeInteger));
+        //Intent intent = new Intent(EnterBrewTimeActivity.this, EnterBrewTimeActivity.class);
+        //intent.putExtra("brewValues", brewValues);
+        //startActivity(intent);
     }
 
-    public void bloomTimePreviousButtonPushed(View view) {
+    public void brewTimePreviousButtonPushed(View view) {
         Log.i("Temp", "Previous button pushed");
-        brewValues.set(5, Integer.toString(bloomTimeInteger));
-        Intent intent = new Intent(EnterBloomTimeActivity.this, EnterBloomWaterActivity.class);
+        brewValues.set(6, Integer.toString(brewTimeInteger));
+        Intent intent = new Intent(EnterBrewTimeActivity.this, EnterBloomWaterActivity.class);
         intent.putExtra("brewValues", brewValues);
         startActivity(intent);
     }
@@ -71,23 +70,20 @@ public class EnterBloomTimeActivity extends AppCompatActivity {
         }
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_enter_bloom_time);
+        setContentView(R.layout.activity_enter_brew_time);
 
-        seekBar = findViewById(R.id.bloomTimeSeekBar);
+        seekBar = findViewById(R.id.brewTimeSeekBar);
         seekBar.setEnabled(false);
-        seekBar.setProgress(5);
+        seekBar.setProgress(6);
 
         brewValues = (ArrayList<String>) getIntent().getSerializableExtra("brewValues");
 
-        bloomTimeInteger = Integer.parseInt(brewValues.get(5));
-        bloomTimeValueTextView = findViewById(R.id.bloomTimeValueTextView);
-        bloomTimeValueTextView.setText(convertTime(bloomTimeInteger));
-
-        Toast.makeText(this, brewValues.toString(), Toast.LENGTH_SHORT).show();
+        brewTimeInteger = Integer.parseInt(brewValues.get(6));
+        brewTimeValueTextView = findViewById(R.id.brewTimeValueTextView);
+        brewTimeValueTextView.setText(convertTime(brewTimeInteger));
 
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);
@@ -131,4 +127,5 @@ public class EnterBloomTimeActivity extends AppCompatActivity {
             }
         });
     }
-}
+
+    }

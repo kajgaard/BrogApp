@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EnterBrewTimeActivity">
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigationbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/Highlight"
+        app:itemIconSize="30dp"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation" />
+
+    <Button
+        android:id="@+id/brewTimePreviousButton"
+        android:layout_width="130dp"
+        android:layout_height="71dp"
+
+        android:layout_marginStart="45dp"
+        android:layout_marginBottom="168dp"
+        android:background="@drawable/rounded_button"
+        android:onClick="brewTimePreviousButtonPushed"
+        android:text="Forrige"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/brewTimeNextButton"
+        android:layout_width="130dp"
+        android:layout_height="71dp"
+        android:layout_marginEnd="45dp"
+
+        android:layout_marginBottom="168dp"
+        android:background="@drawable/rounded_button"
+        android:onClick="brewTimeNextButtonPushed"
+        android:text="Næste"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/brewTimeLogoImageView"
+        android:layout_width="111dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/big_logo"/>
+
+    <ImageView
+        android:id="@+id/brewTimeBottomImageView"
+        android:layout_width="0dp"
+        android:layout_height="105dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/coffee_beans_wide"
+        />
+
+    <TextView
+        android:id="@+id/brewTimeIntroTextView"
+        android:layout_width="327dp"
+        android:layout_height="134dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Vælg varigheden af den totale bryggetid"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/brewTimeLogoImageView" />
+
+    <TextView
+        android:id="@+id/brewTimeValueTextView"
+        android:layout_width="146dp"
+        android:layout_height="112dp"
+        android:gravity="center"
+        android:text="60 sek"
+        android:textAlignment="center"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/brewTimeNextButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/brewTimeIntroTextView"
+        app:layout_constraintVertical_bias="0.297" />
+
+    <Button
+        android:id="@+id/brewWaterUpButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/up"
+        android:onClick="brewTimeUpButtonPush"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.385"
+        app:layout_constraintStart_toEndOf="@+id/brewTimeValueTextView"
+        app:layout_constraintTop_toTopOf="@+id/brewTimeValueTextView"
+        app:layout_constraintVertical_bias="0.037" />
+
+    <Button
+        android:id="@+id/brewTimeDownButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/down"
+        android:onClick="brewTimeDownButtonPush"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/brewTimeValueTextView"
+        app:layout_constraintHorizontal_bias="0.724"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/brewTimeValueTextView"
+        app:layout_constraintVertical_bias="0.037" />
+
+    <SeekBar
+        android:id="@+id/brewTimeSeekBar"
+        style="@android:style/Widget.Material.SeekBar.Discrete"
+        android:layout_width="341dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:max="6"
+        android:progress="0"
+        android:progressDrawable="@drawable/seek_bar"
+        android:thumb="@drawable/seek_thumb"
+        app:layout_constraintBottom_toTopOf="@+id/brewTimeBottomImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

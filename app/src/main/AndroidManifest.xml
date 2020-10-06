@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EnterBloomTimeActivity"></activity>
+        <activity android:name=".EnterBrewTimeActivity"></activity>
+        <activity android:name=".EnterBloomTimeActivity" />
         <activity android:name=".EnterBloomWaterActivity" />
         <activity android:name=".EnterTempActivity" />
         <activity android:name=".EnterGrindActivity" />
