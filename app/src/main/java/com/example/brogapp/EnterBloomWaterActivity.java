@@ -27,7 +27,7 @@ public class EnterBloomWaterActivity extends AppCompatActivity {
 
 
     public void bloomWaterDownButtonPush(View view) {
-        Log.i("Temp", "Up button pushed");
+        Log.i("BloomWater", "Up button pushed");
         if (bloomWaterInteger > minimumBloomWater) {
             bloomWaterInteger = bloomWaterInteger - 1;
             bloomWaterValueTextView.setText(bloomWaterInteger + " ml");
@@ -35,7 +35,7 @@ public class EnterBloomWaterActivity extends AppCompatActivity {
     }
 
     public void bloomWaterUpButtonPush(View view) {
-        Log.i("Temp", "Up button pushed");
+        Log.i("BloomWater", "Up button pushed");
         if (bloomWaterInteger < maximumBloomWater) {
             bloomWaterInteger = bloomWaterInteger + 1;
             bloomWaterValueTextView.setText(bloomWaterInteger + " ml");
@@ -44,10 +44,10 @@ public class EnterBloomWaterActivity extends AppCompatActivity {
 
     public void bloomWaterNextButtonPushed(View view) {
         Log.i("Temp", "Next button pushed");
-//        brewValues.set(3, Integer.toString(bloomWaterValueInteger));
-//        Intent intent = new Intent(EnterBloomWaterActivity.this, EnterBloomTimeActivity.class);
-//        intent.putExtra("brewValues", brewValues);
-//        startActivity(intent);
+        brewValues.set(4, Integer.toString(bloomWaterInteger));
+        Intent intent = new Intent(EnterBloomWaterActivity.this, EnterBloomTimeActivity.class);
+        intent.putExtra("brewValues", brewValues);
+        startActivity(intent);
     }
 
     public void bloomWaterPreviousButtonPushed(View view) {
