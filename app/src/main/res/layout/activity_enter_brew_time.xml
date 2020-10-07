@@ -79,7 +79,7 @@
         android:layout_height="134dp"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="Vælg varigheden af den totale bryggetid"
+        android:text="Indstil den totale\nbryggetid"
         android:textAlignment="center"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"

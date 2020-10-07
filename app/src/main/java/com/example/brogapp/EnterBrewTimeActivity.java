@@ -38,15 +38,14 @@ public class EnterBrewTimeActivity extends AppCompatActivity {
             brewTimeInteger = brewTimeInteger - 1;
             brewTimeValueTextView.setText(convertTime(brewTimeInteger));
         }
-
     }
 
     public void brewTimeNextButtonPushed(View view) {
         Log.i("Temp", "Next button pushed");
         brewValues.set(6, Integer.toString(brewTimeInteger));
-        //Intent intent = new Intent(EnterBrewTimeActivity.this, EnterBrewTimeActivity.class);
-        //intent.putExtra("brewValues", brewValues);
-        //startActivity(intent);
+        Intent intent = new Intent(EnterBrewTimeActivity.this, EnterFinalPageActivity.class);
+        intent.putExtra("brewValues", brewValues);
+        startActivity(intent);
     }
 
     public void brewTimePreviousButtonPushed(View view) {

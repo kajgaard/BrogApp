@@ -36,7 +36,7 @@ public class BrewMainActivity extends AppCompatActivity {
         brewValues.add("92");       // Water temperature
         brewValues.add("40");       // Bloom water
         brewValues.add("30");       // Bloom Time
-        brewValues.add("120");      // Brew time
+        brewValues.add("180");      // Brew time
         Toast.makeText(this, brewValues.toString(), Toast.LENGTH_SHORT).show();
         Log.i("Button","New brew button pushed");
 

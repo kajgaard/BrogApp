@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <Button
+        android:id="@+id/enterFinalPreviousButton"
+        android:layout_width="130dp"
+        android:layout_height="71dp"
+
+        android:layout_marginStart="45dp"
+        android:layout_marginBottom="168dp"
+        android:background="@drawable/rounded_button"
+        android:onClick="finalPreviousButtonPushed"
+        android:text="Forrige"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/enterFinalNextButton"
+        android:layout_width="130dp"
+        android:layout_height="71dp"
+        android:layout_marginEnd="45dp"
+
+        android:layout_marginBottom="168dp"
+        android:background="@drawable/rounded_button"
+        android:onClick="finalStartButtonPushed"
+        android:text="START!"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigationbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/Highlight"
+        app:itemIconSize="30dp"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation" />
+
+    <TextView
+        android:id="@+id/finalIntroTextView"
+        android:layout_width="213dp"
+        android:layout_height="88dp"
+        android:gravity="center"
+        android:text="DIT BRYG"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.409"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/finalLogoImageView" />
+
+    <SeekBar
+        android:id="@+id/finalSeekBar"
+        style="@android:style/Widget.Material.SeekBar.Discrete"
+        android:layout_width="341dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:max="7"
+        android:progress="7"
+        android:progressDrawable="@drawable/seek_bar"
+        android:thumb="@drawable/seek_thumb"
+        app:layout_constraintBottom_toTopOf="@+id/finalBottomImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/finalBottomImageView"
+        android:layout_width="0dp"
+        android:layout_height="105dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/coffee_beans_wide" />
+
+    <ImageView
+        android:id="@+id/finalLogoImageView"
+        android:layout_width="111dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/big_logo" />
+
+    <Button
+        android:id="@+id/finalGreyHeartButton"
+        android:layout_width="32dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/heart_icon"
+        android:backgroundTint="@android:color/tertiary_text_dark"
+        android:onClick="pushGreyHeart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.223"
+        app:layout_constraintStart_toEndOf="@+id/finalIntroTextView"
+        app:layout_constraintTop_toTopOf="@+id/finalIntroTextView" />
+
+    <Button
+        android:id="@+id/finalRedHeartButton"
+        android:layout_width="32dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="32dp"
+        android:alpha="0"
+        android:background="@drawable/redheart"
+        android:onClick="pushRedHeart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.223"
+        app:layout_constraintStart_toEndOf="@+id/finalIntroTextView"
+        app:layout_constraintTop_toTopOf="@+id/finalIntroTextView" />
+
+    <TextView
+        android:id="@+id/finalListTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="150dp"
+        android:text="Kaffemængde\nVand pr. gram\nKværnstørrelse\nTemperatur\nbloom-vand\nbloom-tid\nbryggetid"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/finalIntroTextView" />
+
+    <TextView
+        android:id="@+id/finalValuesTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="end"
+        android:text="5 g\n5 ml / g\nMedium\n5 \u00B0C\n5 ml\n1 min 50 sek\n2 min 10 sek"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/finalListTextView"
+        app:layout_constraintTop_toBottomOf="@+id/finalIntroTextView" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
