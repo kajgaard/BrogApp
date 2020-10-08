@@ -40,7 +40,6 @@
         android:layout_width="130dp"
         android:layout_height="71dp"
         android:layout_marginEnd="45dp"
-
         android:layout_marginBottom="168dp"
         android:background="@drawable/rounded_button"
         android:onClick="brewTimeNextButtonPushed"
@@ -133,7 +132,7 @@
         android:layout_width="341dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:max="6"
+        android:max="7"
         android:progress="0"
         android:progressDrawable="@drawable/seek_bar"
         android:thumb="@drawable/seek_thumb"

@@ -51,7 +51,7 @@ public class EnterBrewTimeActivity extends AppCompatActivity {
     public void brewTimePreviousButtonPushed(View view) {
         Log.i("Temp", "Previous button pushed");
         brewValues.set(6, Integer.toString(brewTimeInteger));
-        Intent intent = new Intent(EnterBrewTimeActivity.this, EnterBloomWaterActivity.class);
+        Intent intent = new Intent(EnterBrewTimeActivity.this, EnterBloomTimeActivity.class);
         intent.putExtra("brewValues", brewValues);
         startActivity(intent);
     }

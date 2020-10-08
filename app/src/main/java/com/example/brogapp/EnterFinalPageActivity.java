@@ -31,7 +31,7 @@ public class EnterFinalPageActivity extends AppCompatActivity {
     String finalValues;
 
     public void finalStartButtonPushed(View view) {
-        Toast.makeText(this,"START!",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, brewValues.toString(), Toast.LENGTH_SHORT).show();
     }
 
     public void finalPreviousButtonPushed(View view) {
