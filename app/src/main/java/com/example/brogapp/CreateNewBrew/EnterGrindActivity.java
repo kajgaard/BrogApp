@@ -1,4 +1,4 @@
-package com.example.brogapp;
+package com.example.brogapp.CreateNewBrew;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,69 +12,77 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.brogapp.BrewMainActivity;
+import com.example.brogapp.CleanActivity;
+import com.example.brogapp.HomePage;
+import com.example.brogapp.ProfilePage;
+import com.example.brogapp.R;
+import com.example.brogapp.ScanActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
-public class EnterTempActivity extends AppCompatActivity {
+public class EnterGrindActivity extends AppCompatActivity {
 
     ArrayList<String> brewValues;
     SeekBar seekBar;
-    int tempInteger;
-    int minimumTemp = 80;
-    int maximumTemp = 100;
-    TextView tempValueTextView;
+    TextView grindValueTextView;
 
-    public void tempPreviousButtonPushed(View view) {
-        Log.i("Temp", "Previous button pushed");
-        brewValues.set(3, Integer.toString(tempInteger));
-        Intent intent = new Intent(EnterTempActivity.this, EnterGrindActivity.class);
+    public void grindNextButtonPushed(View view) {
+        Log.i("Grind", "Next button pushed");
+        brewValues.set(2,grindValueTextView.getText().toString());
+        Intent intent = new Intent(EnterGrindActivity.this, EnterTempActivity.class);
         intent.putExtra("brewValues", brewValues);
         startActivity(intent);
     }
 
-    public void tempNextButtonPushed(View view) {
-        Log.i("Temp", "Next button pushed");
-        brewValues.set(3,Integer.toString(tempInteger));
-        Intent intent = new Intent(EnterTempActivity.this, EnterBloomWaterActivity.class);
+    public void GrindPreviousButtonPushed(View view) {
+        Log.i("Grind", "Previous button pushed");
+        brewValues.set(2, grindValueTextView.getText().toString());
+        Intent intent = new Intent(EnterGrindActivity.this, EnterWaterPerGramActivity.class);
         intent.putExtra("brewValues", brewValues);
         startActivity(intent);
     }
 
-    public void tempUpButtonPush(View view) {
-        Log.i("Temp", "Up button pushed");
-        if (tempInteger < maximumTemp) {
-            tempInteger = tempInteger + 1;
-            tempValueTextView.setText(tempInteger + " \u00B0C");
+
+    public void grindUpButtonPush(View view) {
+        Log.i("Grind", "Up button pushed");
+        if (!grindValueTextView.getText().equals("Grov")) {
+            if (grindValueTextView.getText().equals("Fin")) {
+                grindValueTextView.setText("Medium");
+            } else {
+                grindValueTextView.setText("Grov");
+            }
         }
     }
 
-    public void tempDownButtonPush(View view) {
-        Log.i("Temp", "Down button pushed");
-        if (tempInteger > minimumTemp) {
-            tempInteger = tempInteger - 1;
-            tempValueTextView.setText(tempInteger + " \u00B0C");
+    public void grindDownButtonPush(View view) {
+        Log.i("Grind", "Down button pushed");
+        if (!grindValueTextView.getText().equals("Fin")) {
+            if (grindValueTextView.getText().equals("Grov")) {
+                grindValueTextView.setText("Medium");
+            } else {
+                grindValueTextView.setText("Fin");
+            }
         }
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_enter_temp);
+        setContentView(R.layout.activity_enter_grind);
 
-        seekBar = findViewById(R.id.tempSeekBar);
+        seekBar = findViewById(R.id.grindSeekBar);
         seekBar.setEnabled(false);
-        seekBar.setProgress(3);
+        seekBar.setProgress(2);
 
         brewValues = (ArrayList<String>) getIntent().getSerializableExtra("brewValues");
 
-        tempValueTextView = findViewById(R.id.tempValueTextView);
-        tempValueTextView.setText(brewValues.get(3)+" \u00B0C");
-
-        tempInteger = Integer.parseInt(brewValues.get(3));
+        grindValueTextView = findViewById(R.id.grindValueTextView);
+        grindValueTextView.setText(brewValues.get(2));
 
         Toast.makeText(this,brewValues.toString(),Toast.LENGTH_SHORT).show();
+
 
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);
@@ -89,27 +97,27 @@ public class EnterTempActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()){
 
                     case R.id.nav_home:
-                        startActivity(new Intent(getApplicationContext(),HomePage.class));
+                        startActivity(new Intent(getApplicationContext(), HomePage.class));
                         overridePendingTransition(0,0); //Dont know what this does
                         return true;
 
                     case R.id.nav_scan:
-                        startActivity(new Intent(getApplicationContext(),ScanActivity.class));
+                        startActivity(new Intent(getApplicationContext(), ScanActivity.class));
                         overridePendingTransition(0,0); //Dont know what this does
                         return true;
 
                     case R.id.nav_brew:
-                        startActivity(new Intent(getApplicationContext(),BrewMainActivity.class));
+                        startActivity(new Intent(getApplicationContext(), BrewMainActivity.class));
                         overridePendingTransition(0,0); //Dont know what this does
                         return true;
 
                     case R.id.nav_wash:
-                        startActivity(new Intent(getApplicationContext(),CleanActivity.class));
+                        startActivity(new Intent(getApplicationContext(), CleanActivity.class));
                         overridePendingTransition(0,0); //Dont know what this does
                         return true;
 
                     case R.id.nav_profile:
-                        startActivity(new Intent(getApplicationContext(),ProfilePage.class));
+                        startActivity(new Intent(getApplicationContext(), ProfilePage.class));
                         overridePendingTransition(0,0); //Dont know what this does
                         return true;
                 }
@@ -118,5 +126,4 @@ public class EnterTempActivity extends AppCompatActivity {
             }
         });
     }
-
 }

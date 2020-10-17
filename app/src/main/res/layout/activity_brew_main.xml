@@ -6,6 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".BrewMainActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:alpha="0.7"
+        android:elevation="6dp"
+        app:layout_constraintEnd_toEndOf="@+id/newBrewBtn"
+        app:layout_constraintStart_toStartOf="@+id/newBrewBtn"
+        app:layout_constraintTop_toTopOf="@+id/newBrewBtn"
+        app:srcCompat="@drawable/add_icon" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:elevation="5dp"
+        android:text="NYT BRYG"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/newBrewBtn"
+        app:layout_constraintEnd_toEndOf="@+id/newBrewBtn"
+        app:layout_constraintStart_toStartOf="@+id/newBrewBtn" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigationbar"
         android:layout_width="match_parent"
@@ -23,6 +47,7 @@
         android:layout_width="84dp"
         android:layout_height="74dp"
         android:layout_marginTop="10dp"
+        android:alpha="0.8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,17 +56,15 @@
 
     <Button
         android:id="@+id/newBrewBtn"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp"
-        android:foreground="@android:drawable/ic_menu_add"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/rounded_square"
+        android:backgroundTint="@color/AccentColorGreen"
         android:foregroundGravity="center"
         android:gravity="bottom|center"
         android:onClick="newBrewButtonPushed"
-        android:shadowColor="@color/AccentColorGreen"
-        android:text="NYT BRYG"
-        android:textSize="10sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logoIV" />
 
@@ -50,8 +73,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:text="Favoritter >"
+        android:layout_marginTop="20dp"
+        android:text="Favoritter "
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newBrewBtn" />
@@ -62,7 +85,9 @@
         android:layout_height="145dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="30dp"
+        android:fadingEdgeLength="40dp"
+        android:requiresFadingEdge="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/favesTV" />
@@ -74,7 +99,8 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="4dp"
         android:text="Her kan du lave dit eget bryg"
-        android:textSize="25sp"
+        android:textColor="@color/TextColor"
+        android:textSize="28sp"
         app:layout_constraintStart_toEndOf="@+id/newBrewBtn"
         app:layout_constraintTop_toTopOf="@+id/newBrewBtn" />
 
@@ -84,7 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
-        android:text="Flere Forslag >"
+        android:text="Flere Forslag "
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/favesRV" />
@@ -96,7 +122,32 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
+        android:fadingEdgeLength="40dp"
+        android:requiresFadingEdge="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/flereForslagTV" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:alpha="0.6"
+        android:rotation="90"
+        app:layout_constraintBottom_toBottomOf="@+id/favesTV"
+        app:layout_constraintStart_toEndOf="@+id/favesTV"
+        app:layout_constraintTop_toTopOf="@+id/favesTV"
+        app:srcCompat="@drawable/arrow_icon" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:alpha="0.6"
+        android:rotation="90"
+        app:layout_constraintBottom_toBottomOf="@+id/flereForslagTV"
+        app:layout_constraintStart_toEndOf="@+id/flereForslagTV"
+        app:layout_constraintTop_toTopOf="@+id/flereForslagTV"
+        app:srcCompat="@drawable/arrow_icon" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

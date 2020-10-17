@@ -1,4 +1,4 @@
-package com.example.brogapp;
+package com.example.brogapp.Favorites;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.brogapp.BrewItem;
+import com.example.brogapp.R;
+
 import java.util.ArrayList;
 
 public class BrewFaveAdapter extends RecyclerView.Adapter<BrewFaveAdapter.BrewFaveHolder> {

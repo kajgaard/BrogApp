@@ -1,4 +1,4 @@
-package com.example.brogapp;
+package com.example.brogapp.LogOnActivities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.brogapp.HomePage;
+import com.example.brogapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -47,7 +49,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
         //Checks is user is already signed in
         if(fAuth.getCurrentUser()!= null){
-            startActivity(new Intent(getApplicationContext(),HomePage.class));
+            startActivity(new Intent(getApplicationContext(), HomePage.class));
             finish();
         }
 
@@ -93,7 +95,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         }else if(view == forgotPswd){
             Toast.makeText(this, "Ikke implementeret endnu", Toast.LENGTH_SHORT).show();
         }else if(view == createUser){
-            startActivity(new Intent(getApplicationContext(),CreateUserActivity.class));
+            startActivity(new Intent(getApplicationContext(), CreateUserActivity.class));
             finish();
         }
 

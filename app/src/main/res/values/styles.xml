@@ -6,6 +6,7 @@
         <item name="colorPrimaryDark">@color/TextColor</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="fontFamily">@font/rokkitt</item>
+        <item name="android:textColor">@color/TextColor</item>
         <item name="android:colorBackground">@color/BackgroundGrey</item>
 
     </style>

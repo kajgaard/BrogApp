@@ -9,8 +9,9 @@
     android:backgroundTint="@color/Highlight"
     app:cardCornerRadius="15dp"
     app:cardElevation="2dp"
-    app:contentPadding="10dp"
     card_view:cardUseCompatPadding="5dp">
+    <!--
+  app:contentPadding="10dp" -->
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,20 +25,22 @@
             android:id="@+id/brewForslagPic"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@drawable/rounded_square"
-            android:backgroundTint="@color/AccentColorGreen"
+            android:background="@drawable/coffee_pic"
+
             android:foregroundGravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            />
+        <!--android:src="@drawable/gradient_dark"-->
 
 
         <TextView
             android:id="@+id/brewForslagName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="15dp"
             android:text="Manhatten"
             android:textColor="@android:color/background_light"
             android:textSize="16sp"
@@ -48,8 +51,8 @@
             android:id="@+id/brewForslagStar"
             android:layout_width="23dp"
             android:layout_height="28dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginBottom="2dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="12dp"
             android:src="@drawable/whitestar_icon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -58,7 +61,7 @@
             android:id="@+id/brewForslagScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="3dp"
+            android:layout_marginBottom="13dp"
             android:text="4.3"
             android:textColor="@color/cardview_light_background"
             android:textSize="16sp"
@@ -67,6 +70,12 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+
+        android:background="@drawable/gradient_dark" />
 
 
 </androidx.cardview.widget.CardView>
