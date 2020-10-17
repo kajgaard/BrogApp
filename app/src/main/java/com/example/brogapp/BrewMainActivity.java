@@ -73,7 +73,7 @@ public class BrewMainActivity extends AppCompatActivity {
 
         //Fill out recyclerView Flere Forslag
         ArrayList<BrewItem> listOfFlereForslag = new ArrayList<>();
-        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"Manhatten", "None","4.6","none"));
+        listOfFlereForslag.add(new BrewItem(0,"Manhatten", "None","4.6","none"));
         listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"yo yo yo", "None","4.6","none"));
         listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"Torronto", "None","4.6","none"));
         listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"Skagen", "None","4.6","none"));
