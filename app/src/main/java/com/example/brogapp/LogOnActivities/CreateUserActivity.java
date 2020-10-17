@@ -1,4 +1,4 @@
-package com.example.brogapp;
+package com.example.brogapp.LogOnActivities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +14,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.brogapp.HomePage;
+import com.example.brogapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -66,7 +68,7 @@ public class CreateUserActivity extends AppCompatActivity implements View.OnClic
     public void onClick(View view) {
 
         if(view == alreadyUser){
-            startActivity(new Intent(getApplicationContext(),LogInActivity.class));
+            startActivity(new Intent(getApplicationContext(), LogInActivity.class));
             finish();
         }else if(view == save){
             final String name = nameET.getText().toString();
@@ -115,7 +117,7 @@ public class CreateUserActivity extends AppCompatActivity implements View.OnClic
                                 Log.d(TAG, "onFailure" + e.toString());
                             }
                         });
-                        startActivity(new Intent(getApplicationContext(),HomePage.class));
+                        startActivity(new Intent(getApplicationContext(), HomePage.class));
                     }else{
                         Toast.makeText(CreateUserActivity.this, "Fejl " + task.getException(), Toast.LENGTH_SHORT).show();
                     }

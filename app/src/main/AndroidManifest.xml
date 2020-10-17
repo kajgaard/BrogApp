@@ -11,27 +11,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EnterFinalPageActivity"></activity>
-        <activity android:name=".EnterBrewTimeActivity" />
-        <activity android:name=".EnterBloomTimeActivity" />
-        <activity android:name=".EnterBloomWaterActivity" />
-        <activity android:name=".EnterTempActivity" />
-        <activity android:name=".EnterGrindActivity" />
-        <activity android:name=".EnterWaterPerGramActivity" />
+        <activity android:name=".CreateNewBrew.EnterFinalPageActivity"></activity>
+        <activity android:name=".CreateNewBrew.EnterBrewTimeActivity" />
+        <activity android:name=".CreateNewBrew.EnterBloomTimeActivity" />
+        <activity android:name=".CreateNewBrew.EnterBloomWaterActivity" />
+        <activity android:name=".CreateNewBrew.EnterTempActivity" />
+        <activity android:name=".CreateNewBrew.EnterGrindActivity" />
+        <activity android:name=".CreateNewBrew.EnterWaterPerGramActivity" />
         <activity
-            android:name=".EnterGramsActivity"
+            android:name=".CreateNewBrew.EnterGramsActivity"
             android:label="@string/title_activity_enter_grams"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".HistoryActivity" />
-        <activity android:name=".CreateUserActivity" />
-        <activity android:name=".LogInActivity">
+        <activity android:name=".LogOnActivities.CreateUserActivity" />
+        <activity android:name=".LogOnActivities.LogInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FavoritesActivity" />
+        <activity android:name=".Favorites.FavoritesActivity" />
         <activity android:name=".ScanActivity" />
         <activity android:name=".CleanActivity" />
         <activity android:name=".BrewMainActivity" />

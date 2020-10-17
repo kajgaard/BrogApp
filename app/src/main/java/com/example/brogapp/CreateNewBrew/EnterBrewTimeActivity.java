@@ -1,4 +1,4 @@
-package com.example.brogapp;
+package com.example.brogapp.CreateNewBrew;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,12 @@ import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.example.brogapp.BrewMainActivity;
+import com.example.brogapp.CleanActivity;
+import com.example.brogapp.HomePage;
+import com.example.brogapp.ProfilePage;
+import com.example.brogapp.R;
+import com.example.brogapp.ScanActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;

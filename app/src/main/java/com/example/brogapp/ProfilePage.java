@@ -3,18 +3,17 @@ package com.example.brogapp;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.brogapp.Favorites.FavoritesActivity;
+import com.example.brogapp.LogOnActivities.LogInActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -118,11 +117,11 @@ public class ProfilePage extends AppCompatActivity implements View.OnClickListen
     public void onClick(View v) {
 
         if(v == favorites || v == favoritesIV){
-            startActivity(new Intent(getApplicationContext(),FavoritesActivity.class));
+            startActivity(new Intent(getApplicationContext(), FavoritesActivity.class));
         }else if(v == logout){
 
             FirebaseAuth.getInstance().signOut(); //logs user out
-            startActivity(new Intent(getApplicationContext(),LogInActivity.class));
+            startActivity(new Intent(getApplicationContext(), LogInActivity.class));
             finish();
 
         }

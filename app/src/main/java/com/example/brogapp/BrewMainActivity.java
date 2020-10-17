@@ -10,9 +10,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.brogapp.CreateNewBrew.EnterGramsActivity;
+import com.example.brogapp.Favorites.BrewFaveAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class BrewMainActivity extends AppCompatActivity {
         Toast.makeText(this, brewValues.toString(), Toast.LENGTH_SHORT).show();
         Log.i("Button","New brew button pushed");
 
-        Intent intent = new Intent(BrewMainActivity.this,EnterGramsActivity.class);
+        Intent intent = new Intent(BrewMainActivity.this, EnterGramsActivity.class);
         intent.putExtra("brewValues",brewValues);
         startActivity(intent);
 
