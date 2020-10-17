@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.SeekBar;
@@ -17,16 +18,60 @@ import com.example.brogapp.ProfilePage;
 import com.example.brogapp.R;
 import com.example.brogapp.ScanActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 public class BrewStartedActivity extends AppCompatActivity {
 
     ArrayList<String> brewValues;
+    FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
+    String userID;
+    Date date;
+    String dateName;
 
     public void okPushed(View view){
         Toast.makeText(this,"OK",Toast.LENGTH_SHORT).show();
         finish();
+    }
+
+    private void saveBrew(){
+
+        date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM HH:mm",Locale.GERMAN);
+        dateName = formatter.format(date);
+        Log.i("date",formatter.format(date));
+        Toast.makeText(this,formatter.format(date),Toast.LENGTH_SHORT).show();
+
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+        userID = fAuth.getCurrentUser().getUid();
+
+        Map<String, Object> newbrew = new HashMap<>();
+        newbrew.put("brewName", dateName);
+        newbrew.put("brewDescription", "Nyt bryg. Du har endnu ikke tilføjet en beskrivelse.");
+        newbrew.put("brewScore", "0.0");
+        newbrew.put("imageRessource", "0");
+        newbrew.put("coffeeAmount", brewValues.get(0));
+        newbrew.put("grindSize", brewValues.get(2));
+        newbrew.put("waterRatio", brewValues.get(1));
+        newbrew.put("brewTemp", brewValues.get(3));
+        newbrew.put("bloomWater", brewValues.get(4));
+        newbrew.put("bloomTime", brewValues.get(5));
+        newbrew.put("brewTime", brewValues.get(6));
+
+        fStore.collection("users").document(userID).collection("history").document().set(newbrew);
+
+
     }
 
     @Override
@@ -34,8 +79,11 @@ public class BrewStartedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_brew_started);
 
+
         brewValues = (ArrayList<String>) getIntent().getSerializableExtra("brewValues");
         Toast.makeText(this,brewValues.toString(),Toast.LENGTH_SHORT).show();
+
+        saveBrew();
 
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);
