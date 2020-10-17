@@ -37,6 +37,11 @@ public class EnterFinalPageActivity extends AppCompatActivity {
 
     public void finalStartButtonPushed(View view) {
         Toast.makeText(this, brewValues.toString(), Toast.LENGTH_SHORT).show();
+        Log.i("Final Page", "Bryg button pushed");
+        Intent intent = new Intent(EnterFinalPageActivity.this, BrewStartedActivity.class);
+        intent.putExtra("brewValues", brewValues);
+        startActivity(intent);
+        finish();
     }
 
     public void finalPreviousButtonPushed(View view) {
