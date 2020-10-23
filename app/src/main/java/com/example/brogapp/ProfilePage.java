@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.brogapp.Favorites.FavoritesActivity;
+import com.example.brogapp.History.HistoryActivity;
 import com.example.brogapp.LogOnActivities.LogInActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,13 +25,14 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class ProfilePage extends AppCompatActivity implements View.OnClickListener {
 
-    TextView favorites, logout, header;
-    ImageView favoritesIV;
+    TextView favorites, logout, header, history;
+    ImageView favoritesIV, historyIV, favoritesArrow, historyArrow;
     String name, userID;
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
 
-    public ProfilePage(){}
+    public ProfilePage() {
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +44,18 @@ public class ProfilePage extends AppCompatActivity implements View.OnClickListen
 
         favorites = findViewById(R.id.favesTV);
         favorites.setOnClickListener(this);
-
-        favoritesIV  =findViewById(R.id.heartIconIV);
+        favoritesIV = findViewById(R.id.heartIconIV);
         favoritesIV.setOnClickListener(this);
+        favoritesArrow = findViewById(R.id.arrow1IV);
+        favoritesArrow.setOnClickListener(this);
+
+        history = findViewById(R.id.historyTV);
+        historyIV = findViewById(R.id.historyIV);
+        historyArrow = findViewById(R.id.arrow2IV);
+        history.setOnClickListener(this);
+        historyIV.setOnClickListener(this);
+        historyArrow.setOnClickListener(this);
+
 
         header = findViewById(R.id.welcomeTV);
 
@@ -61,7 +72,7 @@ public class ProfilePage extends AppCompatActivity implements View.OnClickListen
 
                     name = value.getString("name");
                     //header.setText("Velkommen " + name + "!");
-                    header.setText("Velkommen "+ name.substring(0,name.indexOf(" ")).trim() + "!");
+                    header.setText("Velkommen " + name.substring(0, name.indexOf(" ")).trim() + "!");
                     if (error != null) {
                         Log.d("STRING", "fejl " + error.getMessage());
                     }
@@ -80,31 +91,31 @@ public class ProfilePage extends AppCompatActivity implements View.OnClickListen
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()){
+                switch (menuItem.getItemId()) {
 
                     case R.id.nav_home:
-                        startActivity(new Intent(getApplicationContext(),HomePage.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        startActivity(new Intent(getApplicationContext(), HomePage.class));
+                        overridePendingTransition(0, 0); //Dont know what this does
                         return true;
 
                     case R.id.nav_scan:
-                        startActivity(new Intent(getApplicationContext(),ScanActivity.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        startActivity(new Intent(getApplicationContext(), ScanActivity.class));
+                        overridePendingTransition(0, 0); //Dont know what this does
                         return true;
 
                     case R.id.nav_brew:
-                        startActivity(new Intent(getApplicationContext(),BrewMainActivity.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        startActivity(new Intent(getApplicationContext(), BrewMainActivity.class));
+                        overridePendingTransition(0, 0); //Dont know what this does
                         return true;
 
                     case R.id.nav_wash:
-                        startActivity(new Intent(getApplicationContext(),CleanActivity.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        startActivity(new Intent(getApplicationContext(), CleanActivity.class));
+                        overridePendingTransition(0, 0); //Dont know what this does
                         return true;
 
                     case R.id.nav_profile:
-                        startActivity(new Intent(getApplicationContext(),ProfilePage.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        startActivity(new Intent(getApplicationContext(), ProfilePage.class));
+                        overridePendingTransition(0, 0); //Dont know what this does
                         return true;
                 }
 
@@ -116,9 +127,11 @@ public class ProfilePage extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
 
-        if(v == favorites || v == favoritesIV){
+        if (v == favorites || v == favoritesIV || v == favoritesArrow) {
             startActivity(new Intent(getApplicationContext(), FavoritesActivity.class));
-        }else if(v == logout){
+        } else if (v == history || v == historyIV || v == historyArrow) {
+            startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
+        } else if (v == logout) {
 
             FirebaseAuth.getInstance().signOut(); //logs user out
             startActivity(new Intent(getApplicationContext(), LogInActivity.class));

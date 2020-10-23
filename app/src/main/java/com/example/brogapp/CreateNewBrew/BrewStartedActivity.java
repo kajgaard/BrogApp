@@ -20,10 +20,8 @@ import com.example.brogapp.ScanActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -68,6 +66,7 @@ public class BrewStartedActivity extends AppCompatActivity {
         newbrew.put("bloomWater", brewValues.get(4));
         newbrew.put("bloomTime", brewValues.get(5));
         newbrew.put("brewTime", brewValues.get(6));
+        newbrew.put("timeStamp",System.currentTimeMillis());
 
         fStore.collection("users").document(userID).collection("history").document().set(newbrew);
 

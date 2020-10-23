@@ -23,7 +23,7 @@
             android:name=".CreateNewBrew.EnterGramsActivity"
             android:label="@string/title_activity_enter_grams"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".HistoryActivity" />
+        <activity android:name=".History.HistoryActivity" />
         <activity android:name=".LogOnActivities.CreateUserActivity" />
         <activity android:name=".LogOnActivities.LogInActivity">
             <intent-filter>
