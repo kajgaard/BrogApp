@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="300dp"
+    android:backgroundTint="@color/AccentColorGreenLight"
+    android:background="@drawable/rounded_square">
+
+
+    <TextView
+        android:id="@+id/inquiryTV"
+        android:layout_width="217dp"
+        android:layout_height="74dp"
+        android:layout_marginTop="48dp"
+        android:text="Vil du brygge denne kaffe? "
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/yesBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Ja"
+        android:textSize="24sp"
+        android:background="@drawable/rounded_square"
+        android:backgroundTint="@color/Highlight"
+        app:layout_constraintEnd_toStartOf="@+id/noTV"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inquiryTV" />
+
+    <TextView
+        android:id="@+id/noTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="...nej tak"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/yesBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/yesBtn"
+        app:layout_constraintTop_toTopOf="@+id/yesBtn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
