@@ -54,6 +54,7 @@ public class EnterBloomWaterActivity extends AppCompatActivity {
         Intent intent = new Intent(EnterBloomWaterActivity.this, EnterBloomTimeActivity.class);
         intent.putExtra("brewValues", brewValues);
         startActivity(intent);
+        finish();
     }
 
     public void bloomWaterPreviousButtonPushed(View view) {
@@ -62,6 +63,7 @@ public class EnterBloomWaterActivity extends AppCompatActivity {
         Intent intent = new Intent(EnterBloomWaterActivity.this, EnterTempActivity.class);
         intent.putExtra("brewValues", brewValues);
         startActivity(intent);
+        finish();
     }
 
     @Override

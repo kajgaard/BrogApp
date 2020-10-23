@@ -49,6 +49,7 @@ public class EnterFinalPageActivity extends AppCompatActivity {
         Intent intent = new Intent(EnterFinalPageActivity.this, EnterBrewTimeActivity.class);
         intent.putExtra("brewValues", brewValues);
         startActivity(intent);
+        finish();
     }
 
     public void pushGreyHeart(View view) {

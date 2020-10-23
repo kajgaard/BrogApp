@@ -34,6 +34,7 @@ public class EnterGrindActivity extends AppCompatActivity {
         Intent intent = new Intent(EnterGrindActivity.this, EnterTempActivity.class);
         intent.putExtra("brewValues", brewValues);
         startActivity(intent);
+        finish();
     }
 
     public void GrindPreviousButtonPushed(View view) {
@@ -42,6 +43,7 @@ public class EnterGrindActivity extends AppCompatActivity {
         Intent intent = new Intent(EnterGrindActivity.this, EnterWaterPerGramActivity.class);
         intent.putExtra("brewValues", brewValues);
         startActivity(intent);
+        finish();
     }
 
 

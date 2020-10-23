@@ -37,6 +37,7 @@ public class EnterTempActivity extends AppCompatActivity {
         Intent intent = new Intent(EnterTempActivity.this, EnterGrindActivity.class);
         intent.putExtra("brewValues", brewValues);
         startActivity(intent);
+        finish();
     }
 
     public void tempNextButtonPushed(View view) {
@@ -45,6 +46,7 @@ public class EnterTempActivity extends AppCompatActivity {
         Intent intent = new Intent(EnterTempActivity.this, EnterBloomWaterActivity.class);
         intent.putExtra("brewValues", brewValues);
         startActivity(intent);
+        finish();
     }
 
     public void tempUpButtonPush(View view) {
