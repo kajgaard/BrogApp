@@ -9,8 +9,8 @@
     android:backgroundTint="@color/Highlight"
     app:cardCornerRadius="15dp"
     app:cardElevation="2dp"
-    app:contentPadding="10dp"
     card_view:cardUseCompatPadding="5dp">
+    <!--     app:contentPadding="10dp"-->
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,46 +24,54 @@
             android:id="@+id/brewFavePic"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@drawable/rounded_square"
-            android:backgroundTint="@color/AccentColorGreen"
+            android:background="@drawable/coffee_pic"
             android:foregroundGravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/gradient_tester"
+            app:layout_constraintBottom_toBottomOf="@+id/brewForslagPic"
+            card_view:layout_editor_absoluteX="-16dp" />
+
 
         <TextView
             android:id="@+id/brewFavName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="10dp"
             android:text="Manhatten"
             android:textColor="@android:color/background_light"
-            android:textSize="20sp"
+            android:textSize="22sp"
             app:layout_constraintBottom_toTopOf="@+id/brewFaveScore"
             app:layout_constraintStart_toStartOf="parent" />
 
+
         <ImageView
             android:id="@+id/brewFavStar"
-            android:layout_width="23dp"
-            android:layout_height="28dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginBottom="2dp"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="2dp"
             android:src="@drawable/whitestar_icon"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@+id/brewFaveScore"
+            app:layout_constraintStart_toEndOf="@+id/brewFaveScore"
+            app:layout_constraintTop_toTopOf="@+id/brewFaveScore" />
 
         <TextView
             android:id="@+id/brewFaveScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="3dp"
+            android:layout_marginBottom="8dp"
             android:text="4.3"
             android:textColor="@color/cardview_light_background"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/brewFavStar" />
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/brewFavePic"
+            app:layout_constraintStart_toStartOf="@+id/brewFavName" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

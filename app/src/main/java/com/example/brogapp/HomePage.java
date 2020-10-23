@@ -6,15 +6,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
+import com.example.brogapp.Favorites.FavoritesActivity;
+import com.example.brogapp.LogOnActivities.LogInActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class HomePage extends AppCompatActivity {
+public class HomePage extends AppCompatActivity implements View.OnClickListener {
+
+    Button favorites, history;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+
+        favorites = findViewById(R.id.favesBtn);
+        favorites.setOnClickListener(this);
+        history = findViewById(R.id.histBtn);
+        history.setOnClickListener(this);
 
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);
@@ -57,5 +68,16 @@ public class HomePage extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(view == favorites){
+            startActivity(new Intent(getApplicationContext(), FavoritesActivity.class));
+            finish();
+        }else if(view == history){
+            startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
+            finish();
+        }
     }
 }
