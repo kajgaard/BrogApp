@@ -10,34 +10,54 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:screenOrientation="portrait"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreateNewBrew.BrewStartedActivity"></activity>
-        <activity android:name=".CreateNewBrew.EnterFinalPageActivity" />
-        <activity android:name=".CreateNewBrew.EnterBrewTimeActivity" />
-        <activity android:name=".CreateNewBrew.EnterBloomTimeActivity" />
-        <activity android:name=".CreateNewBrew.EnterBloomWaterActivity" />
-        <activity android:name=".CreateNewBrew.EnterTempActivity" />
-        <activity android:name=".CreateNewBrew.EnterGrindActivity" />
-        <activity android:name=".CreateNewBrew.EnterWaterPerGramActivity" />
+        <activity android:name=".CreateNewBrew.BrewStartedActivity">
+            android:screenOrientation="portrait"
+        </activity>
+        <activity android:name=".CreateNewBrew.EnterFinalPageActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".CreateNewBrew.EnterBrewTimeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".CreateNewBrew.EnterBloomTimeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".CreateNewBrew.EnterBloomWaterActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".CreateNewBrew.EnterTempActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".CreateNewBrew.EnterGrindActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".CreateNewBrew.EnterWaterPerGramActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".CreateNewBrew.EnterGramsActivity"
             android:label="@string/title_activity_enter_grams"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".History.HistoryActivity" />
-        <activity android:name=".LogOnActivities.CreateUserActivity" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".History.HistoryActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".LogOnActivities.CreateUserActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".LogOnActivities.LogInActivity">
+            android:screenOrientation="portrait"
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Favorites.FavoritesActivity" />
-        <activity android:name=".ScanActivity" />
-        <activity android:name=".CleanActivity" />
-        <activity android:name=".BrewMainActivity" />
-        <activity android:name=".ProfilePage" />
-        <activity android:name=".HomePage" />
+        <activity android:name=".Favorites.FavoritesActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ScanActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".CleanActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".BrewMainActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ProfilePage"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".HomePage"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
