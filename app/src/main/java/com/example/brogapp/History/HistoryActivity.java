@@ -28,6 +28,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
+import static com.example.brogapp.R.id.container;
 import static com.example.brogapp.R.id.historyHolderRV;
 
 public class HistoryActivity extends AppCompatActivity implements HistoryAdapter.OnListItemClick{
@@ -134,6 +135,7 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
     @Override
     public void onItemClick(DocumentSnapshot snapshot, int position) {
         Log.d("CLICK","item was clicked at pos. " + position + "\nID is " + snapshot.getId());
-
+        HistoryAddToFavorites hatf = new HistoryAddToFavorites();
+        hatf.show(getSupportFragmentManager(),"test");
     }
 }

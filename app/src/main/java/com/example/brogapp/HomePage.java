@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.brogapp.Favorites.FavoritesActivity;
+import com.example.brogapp.History.HistoryActivity;
 import com.example.brogapp.LogOnActivities.LogInActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
