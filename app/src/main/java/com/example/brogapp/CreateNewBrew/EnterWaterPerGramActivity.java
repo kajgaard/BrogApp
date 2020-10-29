@@ -41,6 +41,7 @@ public class EnterWaterPerGramActivity extends AppCompatActivity {
         Intent intent = new Intent(EnterWaterPerGramActivity.this, EnterGrindActivity.class);
         intent.putExtra("brewValues", brewValues);
         startActivity(intent);
+        finish();
     }
 
     public void waterUpButtonPush(View view) {
@@ -73,6 +74,7 @@ public class EnterWaterPerGramActivity extends AppCompatActivity {
         Intent intent = new Intent(EnterWaterPerGramActivity.this, EnterGramsActivity.class);
         intent.putExtra("brewValues", brewValues);
         startActivity(intent);
+        finish();
     }
 
 

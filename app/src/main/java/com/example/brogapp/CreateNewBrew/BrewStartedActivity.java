@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.SeekBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.brogapp.BrewMainActivity;
@@ -19,78 +18,77 @@ import com.example.brogapp.ProfilePage;
 import com.example.brogapp.R;
 import com.example.brogapp.ScanActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import java.text.SimpleDateFormat;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
-public class EnterGrindActivity extends AppCompatActivity {
+public class BrewStartedActivity extends AppCompatActivity {
 
     ArrayList<String> brewValues;
-    SeekBar seekBar;
-    TextView grindValueTextView;
+    FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
+    String userID;
+    Date date;
+    String dateName;
 
-    public void grindNextButtonPushed(View view) {
-        Log.i("Grind", "Next button pushed");
-        brewValues.set(2,grindValueTextView.getText().toString());
-        Intent intent = new Intent(EnterGrindActivity.this, EnterTempActivity.class);
-        intent.putExtra("brewValues", brewValues);
-        startActivity(intent);
+    public void okPushed(View view){
+        Toast.makeText(this,"OK",Toast.LENGTH_SHORT).show();
         finish();
     }
 
-    public void GrindPreviousButtonPushed(View view) {
-        Log.i("Grind", "Previous button pushed");
-        brewValues.set(2, grindValueTextView.getText().toString());
-        Intent intent = new Intent(EnterGrindActivity.this, EnterWaterPerGramActivity.class);
-        intent.putExtra("brewValues", brewValues);
-        startActivity(intent);
-        finish();
-    }
+    private void saveBrew(){
+
+        date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM HH:mm",Locale.GERMAN);
+        dateName = formatter.format(date);
+        Log.i("date",formatter.format(date));
+        Toast.makeText(this,formatter.format(date),Toast.LENGTH_SHORT).show();
+
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+        userID = fAuth.getCurrentUser().getUid();
+
+        Map<String, Object> newbrew = new HashMap<>();
+        newbrew.put("brewName", dateName);
+        newbrew.put("brewDescription", "Nyt bryg. Du har endnu ikke tilføjet en beskrivelse.");
+        newbrew.put("brewScore", "0.0");
+        newbrew.put("imageRessource", "0");
+        newbrew.put("coffeeAmount", brewValues.get(0));
+        newbrew.put("grindSize", brewValues.get(2));
+        newbrew.put("waterRatio", brewValues.get(1));
+        newbrew.put("brewTemp", brewValues.get(3));
+        newbrew.put("bloomWater", brewValues.get(4));
+        newbrew.put("bloomTime", brewValues.get(5));
+        newbrew.put("brewTime", brewValues.get(6));
+        newbrew.put("timeStamp",System.currentTimeMillis());
+
+        fStore.collection("users").document(userID).collection("history").document().set(newbrew);
 
 
-    public void grindUpButtonPush(View view) {
-        Log.i("Grind", "Up button pushed");
-        if (!grindValueTextView.getText().equals("Grov")) {
-            if (grindValueTextView.getText().equals("Fin")) {
-                grindValueTextView.setText("Medium");
-            } else {
-                grindValueTextView.setText("Grov");
-            }
-        }
-    }
-
-    public void grindDownButtonPush(View view) {
-        Log.i("Grind", "Down button pushed");
-        if (!grindValueTextView.getText().equals("Fin")) {
-            if (grindValueTextView.getText().equals("Grov")) {
-                grindValueTextView.setText("Medium");
-            } else {
-                grindValueTextView.setText("Fin");
-            }
-        }
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_enter_grind);
+        setContentView(R.layout.activity_brew_started);
 
-        seekBar = findViewById(R.id.grindSeekBar);
-        seekBar.setEnabled(false);
-        seekBar.setProgress(2);
 
         brewValues = (ArrayList<String>) getIntent().getSerializableExtra("brewValues");
-
-        grindValueTextView = findViewById(R.id.grindValueTextView);
-        grindValueTextView.setText(brewValues.get(2));
-
         Toast.makeText(this,brewValues.toString(),Toast.LENGTH_SHORT).show();
 
+        saveBrew();
 
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);
 
         //Set home iteam as selected
-        bottomNavigationView.setSelectedItemId(R.id.nav_brew);
+        bottomNavigationView.setSelectedItemId(R.id.nav_wash);
 
         //Set up listener, for determine if other icon is pressed
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -123,7 +121,6 @@ public class EnterGrindActivity extends AppCompatActivity {
                         overridePendingTransition(0,0); //Dont know what this does
                         return true;
                 }
-
                 return false;
             }
         });

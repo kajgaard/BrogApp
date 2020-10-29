@@ -1,4 +1,4 @@
-package com.example.brogapp.Favorites;
+package com.example.brogapp.History;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import com.example.brogapp.BrewItem;
 import com.example.brogapp.BrewMainActivity;
 import com.example.brogapp.CleanActivity;
+import com.example.brogapp.Favorites.FavoritesAdapter;
 import com.example.brogapp.HomePage;
 import com.example.brogapp.ProfilePage;
 import com.example.brogapp.R;
@@ -22,36 +23,43 @@ import com.firebase.ui.firestore.SnapshotParser;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-public class FavoritesActivity extends AppCompatActivity implements FavoritesAdapter.OnListItemClick {
+import static com.example.brogapp.R.id.historyHolderRV;
 
-    private static final String TAG = "FavoritesActivity";
+public class HistoryActivity extends AppCompatActivity implements HistoryAdapter.OnListItemClick{
+
+    private static final String TAG = "HistoryActivity";
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
-    FavoritesAdapter mAdapter;
+    HistoryAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favorites);
+        setContentView(R.layout.activity_history);
 
         fStore = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
         userID = fAuth.getCurrentUser().getUid();
+
         //Query for database
-        Query query = fStore.collection("users").document(userID).collection("favorites");
+        CollectionReference timeStampRef = fStore.collection("users").document(userID).collection("history");
+        Query query = timeStampRef.orderBy("timeStamp", Query.Direction.DESCENDING);
+        //Query query = fStore.collection("users").document(userID).collection("history");
 
         //Paging so in case we have a lot of data in database, it loads in pages
         PagedList.Config config = new PagedList.Config.Builder()
                 .setInitialLoadSizeHint(15)
                 .setPageSize(5)
                 .build();
+
 
         //Recycler options (github dependency) //se youtube.com/watch?v=LatlcDZhpd4
         FirestorePagingOptions<BrewItem> options = new FirestorePagingOptions.Builder<BrewItem>()
@@ -69,9 +77,9 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesAda
                 .build();
 
         //Adapter
-        mAdapter = new FavoritesAdapter(options, this);
+        mAdapter = new HistoryAdapter(options, this);
 
-        mRecyclerView = findViewById(R.id.historyHolderRV);
+        mRecyclerView = findViewById(historyHolderRV);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         //mAdapter = new BrewListAdapter(listOfFaves);
@@ -86,7 +94,7 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesAda
         //Set home iteam as selected
         bottomNavigationView.setSelectedItemId(R.id.nav_profile);
 
-        //Set up listener, for determine if other icon is pressed
+//Set up listener, for determine if other icon is pressed
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -121,11 +129,11 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesAda
                 return false;
             }
         });
-
     }
 
     @Override
     public void onItemClick(DocumentSnapshot snapshot, int position) {
         Log.d("CLICK","item was clicked at pos. " + position + "\nID is " + snapshot.getId());
+
     }
 }

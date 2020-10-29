@@ -52,6 +52,7 @@ public class EnterBrewTimeActivity extends AppCompatActivity {
         Intent intent = new Intent(EnterBrewTimeActivity.this, EnterFinalPageActivity.class);
         intent.putExtra("brewValues", brewValues);
         startActivity(intent);
+        finish();
     }
 
     public void brewTimePreviousButtonPushed(View view) {
@@ -60,6 +61,7 @@ public class EnterBrewTimeActivity extends AppCompatActivity {
         Intent intent = new Intent(EnterBrewTimeActivity.this, EnterBloomTimeActivity.class);
         intent.putExtra("brewValues", brewValues);
         startActivity(intent);
+        finish();
     }
 
     public String convertTime(int totalTime) {
