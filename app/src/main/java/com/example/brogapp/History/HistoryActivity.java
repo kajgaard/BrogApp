@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.brogapp.BrewItem;
 import com.example.brogapp.BrewMainActivity;
@@ -137,5 +138,6 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
         Log.d("CLICK","item was clicked at pos. " + position + "\nID is " + snapshot.getId());
         HistoryAddToFavorites hatf = new HistoryAddToFavorites();
         hatf.show(getSupportFragmentManager(),"test");
+
     }
 }

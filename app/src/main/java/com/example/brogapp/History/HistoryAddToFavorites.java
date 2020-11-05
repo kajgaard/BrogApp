@@ -25,26 +25,16 @@ public class HistoryAddToFavorites extends DialogFragment implements View.OnClic
     private  Button chooseIconButton;
     public int selectedIcon = 0;
 
-    public void chooseIcon(View view){
-        Log.i("icon button","pushed");
-    }
-
     @Nullable
     @Override
     public View onCreateView(@Nonnull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         return inflater.inflate(R.layout.fragment_history_add_to_favorites, container, false);
-
-
     }
-
-
 
     @Override
     public void onViewCreated(@NonNull View view, @androidx.annotation.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-
 
         iconPic = view.findViewById(R.id.pickIconIV);
         chooseIconButton = view.findViewById(R.id.pickIconButton);
@@ -67,7 +57,7 @@ public class HistoryAddToFavorites extends DialogFragment implements View.OnClic
             case 4:
                 iconPic.setImageResource(R.drawable.coffeefive_pic);
                 break;
-            case  5:
+            case 5:
                 iconPic.setImageResource(R.drawable.coffeesix_pic);
                 break;
             default:
@@ -80,7 +70,10 @@ public class HistoryAddToFavorites extends DialogFragment implements View.OnClic
     public void onClick(View view) {
         if(view == iconPic || view == chooseIconButton){
             Log.i("iconbutton","pushed");
+            HistorySelectIconFragment hsif = new HistorySelectIconFragment();
+            hsif.show(getFragmentManager(),"test");
 
+            Toast.makeText(getActivity(),"Toast i fragment "+selectedIcon,Toast.LENGTH_SHORT).show();
 
         }
     }
