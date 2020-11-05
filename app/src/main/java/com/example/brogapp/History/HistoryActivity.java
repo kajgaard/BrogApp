@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import com.example.brogapp.BrewItem;
 import com.example.brogapp.BrewMainActivity;
 import com.example.brogapp.CleanActivity;
+import com.example.brogapp.DialogFragmentBrewFromHistory;
 import com.example.brogapp.Favorites.FavoritesAdapter;
 import com.example.brogapp.HomePage;
 import com.example.brogapp.ProfilePage;
@@ -39,6 +40,7 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
     FirebaseFirestore fStore;
     String userID;
     HistoryAdapter mAdapter;
+    String clickedBrewID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,6 +136,10 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
     @Override
     public void onItemClick(DocumentSnapshot snapshot, int position) {
         Log.d("CLICK","item was clicked at pos. " + position + "\nID is " + snapshot.getId());
+        Log.d("CLICK","in snapshot is " + snapshot + "");
+        clickedBrewID = snapshot.getId();
+        DialogFragmentBrewFromHistory myFragment = new DialogFragmentBrewFromHistory();
+        myFragment.show(getSupportFragmentManager(),"Brew from History Fragment");
 
     }
 }
