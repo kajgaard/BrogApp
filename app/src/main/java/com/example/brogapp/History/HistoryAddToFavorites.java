@@ -1,6 +1,7 @@
 package com.example.brogapp.History;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +22,7 @@ import javax.annotation.Nullable;
 
 public class HistoryAddToFavorites extends DialogFragment implements View.OnClickListener {
 
-    private ImageView iconPic;
+    public ImageView iconPic;
     private  Button chooseIconButton;
     public int selectedIcon = 0;
 
@@ -41,7 +42,14 @@ public class HistoryAddToFavorites extends DialogFragment implements View.OnClic
         iconPic.setOnClickListener(this);
         chooseIconButton.setOnClickListener(this);
 
-        switch (selectedIcon){
+        setIconImage();
+    }
+
+
+
+    private void setIconImage(){
+        Toast.makeText(getContext(),""+HistoryHoldIconNumber.iconNumber,Toast.LENGTH_SHORT).show();
+        switch (HistoryHoldIconNumber.iconNumber){
             case 0:
                 iconPic.setImageResource(R.drawable.coffee_pic);
                 break;
@@ -62,8 +70,8 @@ public class HistoryAddToFavorites extends DialogFragment implements View.OnClic
                 break;
             default:
                 iconPic.setImageResource(R.drawable.coffee_pic);
-
         }
+
     }
 
     @Override
@@ -72,9 +80,6 @@ public class HistoryAddToFavorites extends DialogFragment implements View.OnClic
             Log.i("iconbutton","pushed");
             HistorySelectIconFragment hsif = new HistorySelectIconFragment();
             hsif.show(getFragmentManager(),"test");
-
-            Toast.makeText(getActivity(),"Toast i fragment "+selectedIcon,Toast.LENGTH_SHORT).show();
-
         }
     }
 }

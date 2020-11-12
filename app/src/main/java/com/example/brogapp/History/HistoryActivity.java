@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -89,7 +90,6 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
 
-
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);
 
@@ -131,13 +131,22 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
                 return false;
             }
         });
+
     }
+
+
+
 
     @Override
     public void onItemClick(DocumentSnapshot snapshot, int position) {
         Log.d("CLICK","item was clicked at pos. " + position + "\nID is " + snapshot.getId());
         HistoryAddToFavorites hatf = new HistoryAddToFavorites();
         hatf.show(getSupportFragmentManager(),"test");
+    }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Toast.makeText(getApplicationContext(),"Activity HistoryActivity paused",Toast.LENGTH_SHORT).show();
     }
 }

@@ -7,7 +7,7 @@
     android:padding="24dp">
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/coffeeIM0"
         android:layout_width="100dp"
         android:layout_height="100dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -15,49 +15,49 @@
         app:srcCompat="@drawable/coffee_pic" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/coffeeIM1"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="16dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView5"
-        app:layout_constraintTop_toTopOf="@+id/imageView5"
+        app:layout_constraintStart_toEndOf="@+id/coffeeIM0"
+        app:layout_constraintTop_toTopOf="@+id/coffeeIM0"
         app:srcCompat="@drawable/coffeetwo_pic" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/coffeeIM2"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@+id/imageView5"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintStart_toStartOf="@+id/coffeeIM0"
+        app:layout_constraintTop_toBottomOf="@+id/coffeeIM0"
         app:srcCompat="@drawable/coffeethree_pic" />
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/coffeeIM3"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView7"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:layout_constraintStart_toEndOf="@+id/coffeeIM2"
+        app:layout_constraintTop_toBottomOf="@+id/coffeeIM1"
         app:srcCompat="@drawable/coffeefour_pic" />
 
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/coffeeIM4"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@+id/imageView7"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7"
+        app:layout_constraintStart_toStartOf="@+id/coffeeIM2"
+        app:layout_constraintTop_toBottomOf="@+id/coffeeIM2"
         app:srcCompat="@drawable/coffeefive_pic" />
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/coffeeIM5"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView9"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8"
+        app:layout_constraintStart_toEndOf="@+id/coffeeIM4"
+        app:layout_constraintTop_toBottomOf="@+id/coffeeIM3"
         app:srcCompat="@drawable/coffeesix_pic" />
 </androidx.constraintlayout.widget.ConstraintLayout>
