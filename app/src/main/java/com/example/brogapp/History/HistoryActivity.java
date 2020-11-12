@@ -81,7 +81,6 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
 
         //Adapter
         mAdapter = new HistoryAdapter(options, this);
-
         mRecyclerView = findViewById(historyHolderRV);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
@@ -131,17 +130,18 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
                 return false;
             }
         });
-
     }
-
-
-
 
     @Override
     public void onItemClick(DocumentSnapshot snapshot, int position) {
         Log.d("CLICK","item was clicked at pos. " + position + "\nID is " + snapshot.getId());
-        HistoryAddToFavorites hatf = new HistoryAddToFavorites();
-        hatf.show(getSupportFragmentManager(),"test");
+
+        Intent intent = new Intent(HistoryActivity.this,HistoryAddToF.class);
+        intent.putExtra("historyToFav",snapshot.getId());
+        startActivity(intent);
+
+//        HistoryAddToFavorites hatf = new HistoryAddToFavorites();
+//        hatf.show(getSupportFragmentManager(),"test");
     }
 
     @Override

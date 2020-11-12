@@ -67,8 +67,9 @@ public class HistorySelectIconFragment extends DialogFragment implements OnClick
         }
 
         Log.i("coffee icon: " , ""+HistoryHoldIconNumber.iconNumber);
+
+        ((HistoryAddToF)getActivity()).setIconImage();
+
         dismiss();
     }
-
-
 }

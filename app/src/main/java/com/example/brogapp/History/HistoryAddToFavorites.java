@@ -45,8 +45,6 @@ public class HistoryAddToFavorites extends DialogFragment implements View.OnClic
         setIconImage();
     }
 
-
-
     private void setIconImage(){
         Toast.makeText(getContext(),""+HistoryHoldIconNumber.iconNumber,Toast.LENGTH_SHORT).show();
         switch (HistoryHoldIconNumber.iconNumber){

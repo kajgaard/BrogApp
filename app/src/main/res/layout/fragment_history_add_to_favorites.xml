@@ -13,6 +13,7 @@
         android:layout_height="71dp"
 
         android:background="@drawable/rounded_button"
+        android:onClick="pickIconButtonPushed"
         android:text="Vælg ikon"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="24sp"
