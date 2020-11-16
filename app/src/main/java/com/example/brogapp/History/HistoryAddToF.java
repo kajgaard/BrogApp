@@ -4,10 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -15,17 +13,16 @@ import android.widget.Toast;
 
 import com.example.brogapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 public class HistoryAddToF extends AppCompatActivity {
@@ -36,51 +33,50 @@ public class HistoryAddToF extends AppCompatActivity {
     private RatingBar stars;
     private int selectedIcon = 0;
     private String IdOfSelectedHistory;
-
+    public Map<String,Object> HistoryDocumentFromFirebase = new HashMap<>();
 
     ArrayList<String> brewValues;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
 
-    public void saveToFave(View view){
-        ArrayList<String> brewInfoPackage = new ArrayList<>();
-        brewInfoPackage.add(brewName.getText().toString());
-        brewInfoPackage.add(description.getText().toString());
-        brewInfoPackage.add(Float.toString(stars.getRating()));
-        brewInfoPackage.add(Integer.toString(selectedIcon));
+    public void saveToFave(View view) {
+        Map<String, Object> newbrew = new HashMap<>();
 
-        Toast.makeText(this,brewInfoPackage.toString(),Toast.LENGTH_SHORT).show();
+        newbrew.put("brewName", brewName.getText().toString());
+        newbrew.put("brewDescription", description.getText().toString());
+        newbrew.put("brewScore", Float.toString(stars.getRating()));
+        newbrew.put("imageRessource", Integer.toString(selectedIcon));
+        newbrew.put("coffeeAmount", (String) HistoryDocumentFromFirebase.get("coffeeAmount"));
+        newbrew.put("grindSize", (String) HistoryDocumentFromFirebase.get("grindSize"));
+        newbrew.put("waterRatio", (String) HistoryDocumentFromFirebase.get("waterRatio"));
+        newbrew.put("brewTemp", (String) HistoryDocumentFromFirebase.get("brewTemp"));
+        newbrew.put("bloomWater",(String) HistoryDocumentFromFirebase.get("bloomWater"));
+        newbrew.put("bloomTime", (String) HistoryDocumentFromFirebase.get("bloomTime"));
+        newbrew.put("brewTime", (String) HistoryDocumentFromFirebase.get("brewTime"));
 
-        // From googles guide: https://firebase.google.com/docs/firestore/query-data/get-data#java_2
-        fAuth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
-        userID = fAuth.getCurrentUser().getUid();
+        fStore.collection("users").document(userID).collection("favorites").document().set(newbrew);
 
-        DocumentReference dr = fStore
-                .collection("users")
+        fStore.collection("users")
                 .document(userID)
                 .collection("history")
-                .document(IdOfSelectedHistory);
-
-        dr.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if(task.isSuccessful()){
-                    DocumentSnapshot document = task.getResult();
-                    if(document.exists()){
-                        Log.d("TAG","Document data: "+document.getData());
-                    } else {
-                        Log.d("TAG","No doc found");
+                .document(IdOfSelectedHistory)
+                .delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("TAG", "DocumentSnapshot successfully deleted!");
                     }
-                } else {
-                    Log.d("TAG","get failed with ",task.getException());
-                }
-            }
-        });
-//      End of google snippet
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("TAG", "Error deleting document", e);
+                    }
+                });
 
-        //saveBrewToFavorites(brewInfoPackage);
+
+
     }
 
     public void pickIconButtonPushed(View view) {
@@ -94,7 +90,7 @@ public class HistoryAddToF extends AppCompatActivity {
         setContentView(R.layout.fragment_history_add_to_favorites);
 
         IdOfSelectedHistory = (String) getIntent().getSerializableExtra("IdOfSelectedHistory");
-        Toast.makeText(this,IdOfSelectedHistory,Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, IdOfSelectedHistory, Toast.LENGTH_SHORT).show();
 
 //        DisplayMetrics dm = new DisplayMetrics();
 //        getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -108,6 +104,39 @@ public class HistoryAddToF extends AppCompatActivity {
         stars = findViewById(R.id.ratingBar);
 
         setIconImage(0);
+        getHistoryDataFromFirebase();
+    }
+
+    public void getHistoryDataFromFirebase(){
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+        userID = fAuth.getCurrentUser().getUid();
+
+        // From googles guide: https://firebase.google.com/docs/firestore/query-data/get-data#java_2
+        DocumentReference dr = fStore
+                .collection("users")
+                .document(userID)
+                .collection("history")
+                .document(IdOfSelectedHistory);
+
+        dr.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Log.d("TAG", "Document data: " + document.getData());
+                        HistoryDocumentFromFirebase = document.getData();
+                        Toast.makeText(getApplicationContext(),"Done",Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        Log.d("TAG", "No doc found");
+                    }
+                } else {
+                    Log.d("TAG", "get failed with ", task.getException());
+                }
+            }
+        });
     }
 
     public void setIconImage(int selectedIcon) {
@@ -139,27 +168,13 @@ public class HistoryAddToF extends AppCompatActivity {
 
     }
 
-    private void saveBrewToFavorites(ArrayList<String> brewInfoPackage){
+    private void saveBrewToFavorites(ArrayList<String> brewInfoPackage) {
 
 
-        fAuth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
-        userID = fAuth.getCurrentUser().getUid();
+//        fAuth = FirebaseAuth.getInstance();
+//        fStore = FirebaseFirestore.getInstance();
+//        userID = fAuth.getCurrentUser().getUid();
 
-        Map<String, Object> newbrew = new HashMap<>();
-        newbrew.put("brewName", brewInfoPackage.get(0));
-        newbrew.put("brewDescription", brewInfoPackage.get(1));
-        newbrew.put("brewScore", brewInfoPackage.get(2));
-        newbrew.put("imageRessource", brewInfoPackage.get(3));
-//        newbrew.put("coffeeAmount", brewValues.get(0));
-//        newbrew.put("grindSize", brewValues.get(2));
-//        newbrew.put("waterRatio", brewValues.get(1));
-//        newbrew.put("brewTemp", brewValues.get(3));
-//        newbrew.put("bloomWater", brewValues.get(4));
-//        newbrew.put("bloomTime", brewValues.get(5));
-//        newbrew.put("brewTime", brewValues.get(6));
-//        newbrew.put("timeStamp",System.currentTimeMillis());
 
-        fStore.collection("users").document(userID).collection("favorites").document().set(newbrew);
     }
 }
