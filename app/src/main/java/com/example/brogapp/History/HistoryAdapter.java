@@ -67,7 +67,6 @@ public class HistoryAdapter extends FirestorePagingAdapter<BrewItem, HistoryAdap
             case LOADING_INITIAL:
                 Log.d("PAGING_LOG","Loading first page" + getItemCount());
                 break;
-
         }
     }
 
@@ -95,6 +94,4 @@ public class HistoryAdapter extends FirestorePagingAdapter<BrewItem, HistoryAdap
     public interface OnListItemClick {
         void onItemClick (DocumentSnapshot snapshot, int position);
     }
-
-
 }

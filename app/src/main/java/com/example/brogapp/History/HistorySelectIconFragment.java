@@ -21,7 +21,6 @@ public class HistorySelectIconFragment extends DialogFragment implements OnClick
 
     private ImageView pic0, pic1, pic2, pic3, pic4, pic5;
     int selectedIcon = 0;
-    ImageView iconImage;
 
     @Nullable
     @Override
@@ -41,7 +40,6 @@ public class HistorySelectIconFragment extends DialogFragment implements OnClick
         pic4 = view.findViewById(R.id.coffeeIM4);
         pic5 = view.findViewById(R.id.coffeeIM5);
 
-
         pic0.setOnClickListener(this);
         pic1.setOnClickListener(this);
         pic2.setOnClickListener(this);
@@ -53,22 +51,25 @@ public class HistorySelectIconFragment extends DialogFragment implements OnClick
     @Override
     public void onClick(View view) {
         if (view == pic0) {
-            HistoryHoldIconNumber.iconNumber = 0;
+            selectedIcon = 0;
         } else if (view == pic1) {
-            HistoryHoldIconNumber.iconNumber = 1;
+            selectedIcon = 1;
         } else if (view == pic2) {
-            HistoryHoldIconNumber.iconNumber = 2;
+            selectedIcon = 2;
         } else if (view == pic3) {
-            HistoryHoldIconNumber.iconNumber = 3;
+            selectedIcon = 3;
         } else if (view == pic4) {
-            HistoryHoldIconNumber.iconNumber = 4;
+            selectedIcon = 4;
         } else if (view == pic5) {
-            HistoryHoldIconNumber.iconNumber = 5;
+            selectedIcon = 5;
         }
 
-        Log.i("coffee icon: " , ""+HistoryHoldIconNumber.iconNumber);
 
-        ((HistoryAddToF)getActivity()).setIconImage();
+        try {               // To mitigate risk of nullpointer exeption
+            ((HistoryAddToF) getActivity()).setIconImage(selectedIcon);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
         dismiss();
     }

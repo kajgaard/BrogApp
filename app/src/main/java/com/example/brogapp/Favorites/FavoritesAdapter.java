@@ -93,5 +93,4 @@ public class FavoritesAdapter extends FirestorePagingAdapter<BrewItem, Favorites
     public interface OnListItemClick {
         void onItemClick (DocumentSnapshot snapshot, int position);
     }
-
 }

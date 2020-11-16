@@ -70,12 +70,10 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesAda
 
         //Adapter
         mAdapter = new FavoritesAdapter(options, this);
-
         mRecyclerView = findViewById(R.id.historyHolderRV);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         //mAdapter = new BrewListAdapter(listOfFaves);
-
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
 
@@ -121,7 +119,6 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesAda
                 return false;
             }
         });
-
     }
 
     @Override

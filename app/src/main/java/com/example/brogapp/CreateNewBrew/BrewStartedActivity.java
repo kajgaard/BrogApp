@@ -69,8 +69,6 @@ public class BrewStartedActivity extends AppCompatActivity {
         newbrew.put("timeStamp",System.currentTimeMillis());
 
         fStore.collection("users").document(userID).collection("history").document().set(newbrew);
-
-
     }
 
     @Override

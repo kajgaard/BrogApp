@@ -31,7 +31,6 @@ public class EnterBloomWaterActivity extends AppCompatActivity {
     int maximumBloomWater = 80;
     TextView bloomWaterValueTextView;
 
-
     public void bloomWaterDownButtonPush(View view) {
         Log.i("BloomWater", "Up button pushed");
         if (bloomWaterInteger > minimumBloomWater) {
