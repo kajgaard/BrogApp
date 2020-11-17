@@ -58,7 +58,7 @@ public class BrewStartedActivity extends AppCompatActivity {
         newbrew.put("brewName", dateName);
         newbrew.put("brewDescription", "Nyt bryg. Du har endnu ikke tilføjet en beskrivelse.");
         newbrew.put("brewScore", "0.0");
-        newbrew.put("imageRessource", "0");
+        newbrew.put("imageRessource", 0);
         newbrew.put("coffeeAmount", brewValues.get(0));
         newbrew.put("grindSize", brewValues.get(2));
         newbrew.put("waterRatio", brewValues.get(1));

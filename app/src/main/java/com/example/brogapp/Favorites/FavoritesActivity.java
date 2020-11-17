@@ -115,7 +115,6 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesAda
                         overridePendingTransition(0,0); //Dont know what this does
                         return true;
                 }
-
                 return false;
             }
         });

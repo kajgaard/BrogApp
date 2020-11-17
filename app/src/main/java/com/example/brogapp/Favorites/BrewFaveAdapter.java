@@ -1,10 +1,12 @@
 package com.example.brogapp.Favorites;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,7 +32,7 @@ public class BrewFaveAdapter extends RecyclerView.Adapter<BrewFaveAdapter.BrewFa
         }
     }
 
-    public BrewFaveAdapter (ArrayList<BrewItem> brewList){
+    public BrewFaveAdapter(ArrayList<BrewItem> brewList) {
         mList = brewList;
     }
 
@@ -45,16 +47,15 @@ public class BrewFaveAdapter extends RecyclerView.Adapter<BrewFaveAdapter.BrewFa
     @Override
     public void onBindViewHolder(@NonNull BrewFaveHolder holder, int position) {
         BrewItem currentItem = mList.get(position);
-        holder.mImage.setImageResource(currentItem.getImageResource());
+        holder.mImage.setImageResource(currentItem.getImageRessource());
         holder.brewName.setText(currentItem.getBrewName());
         holder.brewScore.setText(currentItem.getBrewScore());
+        Log.i("BrewFaveAdapter getImageResource",Integer.toString(currentItem.getImageRessource()));
+        Log.i("BrewFaveAdapter getBrewName",currentItem.getBrewName());
     }
 
     @Override
     public int getItemCount() {
         return mList.size();
     }
-
-
-
 }

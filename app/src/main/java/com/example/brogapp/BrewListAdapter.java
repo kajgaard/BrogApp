@@ -42,7 +42,7 @@ public class BrewListAdapter extends RecyclerView.Adapter<BrewListAdapter.BrewVi
     @Override
     public void onBindViewHolder(@NonNull BrewViewHolder holder, int position) {
         BrewItem currentItem = mList.get(position);
-        holder.mImage.setImageResource(currentItem.getImageResource());
+        holder.mImage.setImageResource(currentItem.getImageRessource());
         holder.brewName.setText(currentItem.getBrewName());
         holder.brewDescription.setText(currentItem.getBrewDescription());
         holder.brewScore.setText(currentItem.getBrewScore());

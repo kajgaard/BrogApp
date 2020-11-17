@@ -30,7 +30,7 @@ public class HistoryAdapter extends FirestorePagingAdapter<BrewItem, HistoryAdap
 
     @Override
     protected void onBindViewHolder(@NonNull HistoryAdapter.HistoryViewHolder holder, int position, @NonNull BrewItem model) {
-        holder.mImage.setImageResource(model.getImageResource());
+        holder.mImage.setImageResource(model.getImageRessource());
         holder.brewName.setText(model.getBrewName());
         holder.brewDescription.setText(model.getBrewDescription());
         holder.brewScore.setText(model.getBrewScore());

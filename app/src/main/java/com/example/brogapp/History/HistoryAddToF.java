@@ -33,30 +33,33 @@ public class HistoryAddToF extends AppCompatActivity {
     private RatingBar stars;
     private int selectedIcon = 0;
     private String IdOfSelectedHistory;
-    public Map<String,Object> HistoryDocumentFromFirebase = new HashMap<>();
+    public Map<String, Object> HistoryDocumentFromFirebase = new HashMap<>();
 
     ArrayList<String> brewValues;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
 
-    public void saveToFave(View view) {
-        Map<String, Object> newbrew = new HashMap<>();
+    public void saveToFave(View view) {     // When user presses "GEM" in order to save History to Favorites
+        Map<String, Object> newbrew = new HashMap<>();      // HashMap to store all brew details
 
+        // Populate the HashMap with values entered by the user + brew data from the brew
         newbrew.put("brewName", brewName.getText().toString());
         newbrew.put("brewDescription", description.getText().toString());
         newbrew.put("brewScore", Float.toString(stars.getRating()));
-        newbrew.put("imageRessource", Integer.toString(selectedIcon));
+        newbrew.put("imageRessource", selectedIcon);
         newbrew.put("coffeeAmount", (String) HistoryDocumentFromFirebase.get("coffeeAmount"));
         newbrew.put("grindSize", (String) HistoryDocumentFromFirebase.get("grindSize"));
         newbrew.put("waterRatio", (String) HistoryDocumentFromFirebase.get("waterRatio"));
         newbrew.put("brewTemp", (String) HistoryDocumentFromFirebase.get("brewTemp"));
-        newbrew.put("bloomWater",(String) HistoryDocumentFromFirebase.get("bloomWater"));
+        newbrew.put("bloomWater", (String) HistoryDocumentFromFirebase.get("bloomWater"));
         newbrew.put("bloomTime", (String) HistoryDocumentFromFirebase.get("bloomTime"));
         newbrew.put("brewTime", (String) HistoryDocumentFromFirebase.get("brewTime"));
 
+        // Store the populated brew in FireStore Favorites
         fStore.collection("users").document(userID).collection("favorites").document().set(newbrew);
 
+        // Delete the brew from History, as it is now available in favorites
         fStore.collection("users")
                 .document(userID)
                 .collection("history")
@@ -75,10 +78,11 @@ public class HistoryAddToF extends AppCompatActivity {
                     }
                 });
 
-
-
+        Toast.makeText(this,"Dit bryg er gemt i favoritter!",Toast.LENGTH_SHORT).show();
+        finish();
     }
 
+    // Display fragment when user wants to pick an Icon
     public void pickIconButtonPushed(View view) {
         HistorySelectIconFragment hsif = new HistorySelectIconFragment();
         hsif.show(getSupportFragmentManager(), "test");
@@ -89,9 +93,11 @@ public class HistoryAddToF extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_history_add_to_favorites);
 
+        // Receive ID of the History Brew, that the user selected
         IdOfSelectedHistory = (String) getIntent().getSerializableExtra("IdOfSelectedHistory");
         Toast.makeText(this, IdOfSelectedHistory, Toast.LENGTH_SHORT).show();
 
+        // Early attempt to make the activity "pop out". Looked bad.
 //        DisplayMetrics dm = new DisplayMetrics();
 //        getWindowManager().getDefaultDisplay().getMetrics(dm);
 //        int width = dm.widthPixels;
@@ -103,22 +109,25 @@ public class HistoryAddToF extends AppCompatActivity {
         description = findViewById(R.id.addToFaveDiscripOfBrewET);
         stars = findViewById(R.id.ratingBar);
 
-        setIconImage(0);
+        setIconImage(0);        // Pick basic icon when the brew is displayed to the user for the first time.
         getHistoryDataFromFirebase();
     }
 
-    public void getHistoryDataFromFirebase(){
+    // Method to establish contact with Firestore and retreive all brew data from the selected brew
+    public void getHistoryDataFromFirebase() {
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         userID = fAuth.getCurrentUser().getUid();
 
         // From googles guide: https://firebase.google.com/docs/firestore/query-data/get-data#java_2
+        // Get a handle on the specific brew we want to move to Favorites
         DocumentReference dr = fStore
                 .collection("users")
                 .document(userID)
                 .collection("history")
                 .document(IdOfSelectedHistory);
 
+        // Get the data. This is an asynchronous task. Listener added to check when done.
         dr.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -126,9 +135,8 @@ public class HistoryAddToF extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
                         Log.d("TAG", "Document data: " + document.getData());
-                        HistoryDocumentFromFirebase = document.getData();
-                        Toast.makeText(getApplicationContext(),"Done",Toast.LENGTH_SHORT).show();
-
+                        HistoryDocumentFromFirebase = document.getData(); // Copy data so we can access it outside this class
+                        Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
                     } else {
                         Log.d("TAG", "No doc found");
                     }
@@ -139,6 +147,7 @@ public class HistoryAddToF extends AppCompatActivity {
         });
     }
 
+    // This is called from the select icon fragment, so the selected icon is displayed in the activity
     public void setIconImage(int selectedIcon) {
 
         this.selectedIcon = selectedIcon;
@@ -165,16 +174,5 @@ public class HistoryAddToF extends AppCompatActivity {
             default:
                 iconPic.setImageResource(R.drawable.coffee_pic);
         }
-
-    }
-
-    private void saveBrewToFavorites(ArrayList<String> brewInfoPackage) {
-
-
-//        fAuth = FirebaseAuth.getInstance();
-//        fStore = FirebaseFirestore.getInstance();
-//        userID = fAuth.getCurrentUser().getUid();
-
-
     }
 }
