@@ -1,14 +1,17 @@
 package com.example.brogapp.Favorites;
 
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.brogapp.BrewItem;
@@ -29,12 +32,31 @@ public class FavoritesAdapter extends FirestorePagingAdapter<BrewItem, Favorites
 
     @Override
     protected void onBindViewHolder(@NonNull FavoritesViewHolder holder, int position, @NonNull BrewItem model) {
-        holder.mImage.setImageResource(model.getImageRessource());
+        switch (model.getImageRessource()){
+            case 0:
+                holder.mImage.setImageResource(R.drawable.coffee_pic);
+                break;
+            case 1:
+                holder.mImage.setImageResource(R.drawable.coffeetwo_pic);
+                break;
+            case 2:
+                holder.mImage.setImageResource(R.drawable.coffeethree_pic);
+                break;
+            case 3:
+                holder.mImage.setImageResource(R.drawable.coffeefour_pic);
+                break;
+            case 4:
+                holder.mImage.setImageResource(R.drawable.coffeefive_pic);
+                break;
+            case 5:
+                holder.mImage.setImageResource(R.drawable.coffeesix_pic);
+                break;
+            default:
+                holder.mImage.setImageResource(R.drawable.coffee_pic);
+        }
         holder.brewName.setText(model.getBrewName());
         holder.brewDescription.setText(model.getBrewDescription());
         holder.brewScore.setText(model.getBrewScore());
-        Log.d("FavoritesAdapter getImageResource", Integer.toString(model.getImageRessource()));
-        Log.d("FavoritesAdapter getBrewDescription", model.getBrewDescription());
     }
 
     @NonNull
