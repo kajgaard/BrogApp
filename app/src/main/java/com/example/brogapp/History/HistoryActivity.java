@@ -13,9 +13,11 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.brogapp.BrewFromFirestore;
 import com.example.brogapp.BrewItem;
 import com.example.brogapp.BrewMainActivity;
 import com.example.brogapp.CleanActivity;
+import com.example.brogapp.DialogFragmentBrewFromHistory;
 import com.example.brogapp.Favorites.FavoritesAdapter;
 import com.example.brogapp.HomePage;
 import com.example.brogapp.ProfilePage;
@@ -33,15 +35,17 @@ import com.google.firebase.firestore.Query;
 import static com.example.brogapp.R.id.container;
 import static com.example.brogapp.R.id.historyHolderRV;
 
-public class HistoryActivity extends AppCompatActivity implements HistoryAdapter.OnListItemClick {
+public class HistoryActivity extends AppCompatActivity implements HistoryAdapter.OnListItemClick{
 
     private static final String TAG = "HistoryActivity";
     RecyclerView mRecyclerView;
+    BrewFromFirestore brewFromFirestore;
     RecyclerView.LayoutManager mLayoutManager;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
     HistoryAdapter mAdapter;
+    String clickedBrewID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,7 +137,19 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
 
     @Override
     public void onItemClick(DocumentSnapshot snapshot, int position) {
-        Log.d("CLICK", "item was clicked at pos. " + position + "\nID is " + snapshot.getId());
+        Log.d("CLICK","item was clicked at pos. " + position + "\nID is " + snapshot.getId());
+        /*Log.d("CLICK","in snapshot is " + snapshot.getData() + "");
+        clickedBrewID = snapshot.getId();
+
+
+        brewFromFirestore.brewThis(snapshot);
+
+        DialogFragmentBrewFromHistory myFragment = new DialogFragmentBrewFromHistory();
+        myFragment.show(getSupportFragmentManager(),"Brew from History Fragment");
+
+         */
+
+
 
         Intent intent = new Intent(HistoryActivity.this, HistoryAddToF.class);
         intent.putExtra("IdOfSelectedHistory", snapshot.getId());

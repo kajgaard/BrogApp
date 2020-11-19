@@ -57,6 +57,7 @@ public class FavoritesAdapter extends FirestorePagingAdapter<BrewItem, Favorites
         holder.brewName.setText(model.getBrewName());
         holder.brewDescription.setText(model.getBrewDescription());
         holder.brewScore.setText(model.getBrewScore());
+
     }
 
     @NonNull
