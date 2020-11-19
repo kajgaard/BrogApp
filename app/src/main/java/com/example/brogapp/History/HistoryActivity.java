@@ -8,8 +8,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.brogapp.BrewFromFirestore;
 import com.example.brogapp.BrewItem;
@@ -30,6 +32,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
+import static com.example.brogapp.R.id.container;
 import static com.example.brogapp.R.id.historyHolderRV;
 
 public class HistoryActivity extends AppCompatActivity implements HistoryAdapter.OnListItemClick{
@@ -64,7 +67,6 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
                 .setPageSize(5)
                 .build();
 
-
         //Recycler options (github dependency) //se youtube.com/watch?v=LatlcDZhpd4
         FirestorePagingOptions<BrewItem> options = new FirestorePagingOptions.Builder<BrewItem>()
                 .setLifecycleOwner(this) //No longer need onStart() and onStop()
@@ -82,7 +84,6 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
 
         //Adapter
         mAdapter = new HistoryAdapter(options, this);
-
         mRecyclerView = findViewById(historyHolderRV);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
@@ -91,42 +92,41 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
 
-
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);
 
         //Set home iteam as selected
         bottomNavigationView.setSelectedItemId(R.id.nav_profile);
 
-//Set up listener, for determine if other icon is pressed
+        //Set up listener, for determine if other icon is pressed
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()){
+                switch (menuItem.getItemId()) {
 
                     case R.id.nav_home:
                         startActivity(new Intent(getApplicationContext(), HomePage.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0, 0); //Dont know what this does
                         return true;
 
                     case R.id.nav_scan:
                         startActivity(new Intent(getApplicationContext(), ScanActivity.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0, 0); //Dont know what this does
                         return true;
 
                     case R.id.nav_brew:
                         startActivity(new Intent(getApplicationContext(), BrewMainActivity.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0, 0); //Dont know what this does
                         return true;
 
                     case R.id.nav_wash:
                         startActivity(new Intent(getApplicationContext(), CleanActivity.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0, 0); //Dont know what this does
                         return true;
 
                     case R.id.nav_profile:
                         startActivity(new Intent(getApplicationContext(), ProfilePage.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0, 0); //Dont know what this does
                         return true;
                 }
 
@@ -138,7 +138,7 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
     @Override
     public void onItemClick(DocumentSnapshot snapshot, int position) {
         Log.d("CLICK","item was clicked at pos. " + position + "\nID is " + snapshot.getId());
-        Log.d("CLICK","in snapshot is " + snapshot.getData() + "");
+        /*Log.d("CLICK","in snapshot is " + snapshot.getData() + "");
         clickedBrewID = snapshot.getId();
 
 
@@ -147,7 +147,12 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
         DialogFragmentBrewFromHistory myFragment = new DialogFragmentBrewFromHistory();
         myFragment.show(getSupportFragmentManager(),"Brew from History Fragment");
 
+         */
 
 
+
+        Intent intent = new Intent(HistoryActivity.this, HistoryAddToF.class);
+        intent.putExtra("IdOfSelectedHistory", snapshot.getId());
+        startActivity(intent);
     }
 }

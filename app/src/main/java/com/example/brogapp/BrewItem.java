@@ -1,23 +1,24 @@
 package com.example.brogapp;
 
 public class BrewItem {
-    private int mImageResource;
+    private int imageRessource;
     private String brewName, brewDescription, brewScore, brewID;
 
     public BrewItem(){} //Empty constructor for Firestore
 
-    public BrewItem(int imageResource, String name, String description, String score, String brewID){
-       //mImageResource = imageResource;
-        brewName = name;
-        brewDescription = description;
-        brewScore = score;
+    public BrewItem(int imageRessource, String brewName, String brewDescription, String brewScore, String brewID) {
+        this.imageRessource = imageRessource;
+        this.brewName = brewName;
+        this.brewDescription = brewDescription;
+        this.brewScore = brewScore;
         this.brewID = brewID;
     }
 
-    public String setbrewID(){return brewID;};
+    public String setbrewID(){
+        return brewID;};
 
-    public int getImageResource() {
-        return mImageResource;
+    public int getImageRessource() {
+        return imageRessource;
     }
 
     public String getBrewName() {
@@ -31,5 +32,4 @@ public class BrewItem {
     public String getBrewScore() {
         return brewScore;
     }
-
 }

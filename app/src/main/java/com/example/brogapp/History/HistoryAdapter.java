@@ -30,7 +30,29 @@ public class HistoryAdapter extends FirestorePagingAdapter<BrewItem, HistoryAdap
 
     @Override
     protected void onBindViewHolder(@NonNull HistoryAdapter.HistoryViewHolder holder, int position, @NonNull BrewItem model) {
-        holder.mImage.setImageResource(model.getImageResource());
+        switch (model.getImageRessource()){
+            case 0:
+                holder.mImage.setImageResource(R.drawable.coffee_pic);
+                break;
+            case 1:
+                holder.mImage.setImageResource(R.drawable.coffeetwo_pic);
+                break;
+            case 2:
+                holder.mImage.setImageResource(R.drawable.coffeethree_pic);
+                break;
+            case 3:
+                holder.mImage.setImageResource(R.drawable.coffeefour_pic);
+                break;
+            case 4:
+                holder.mImage.setImageResource(R.drawable.coffeefive_pic);
+                break;
+            case 5:
+                holder.mImage.setImageResource(R.drawable.coffeesix_pic);
+                break;
+            default:
+                holder.mImage.setImageResource(R.drawable.coffee_pic);
+        }
+        //holder.mImage.setImageResource(model.getImageRessource());
         holder.brewName.setText(model.getBrewName());
         holder.brewDescription.setText(model.getBrewDescription());
         holder.brewScore.setText(model.getBrewScore());
@@ -67,7 +89,6 @@ public class HistoryAdapter extends FirestorePagingAdapter<BrewItem, HistoryAdap
             case LOADING_INITIAL:
                 Log.d("PAGING_LOG","Loading first page" + getItemCount());
                 break;
-
         }
     }
 
@@ -95,6 +116,4 @@ public class HistoryAdapter extends FirestorePagingAdapter<BrewItem, HistoryAdap
     public interface OnListItemClick {
         void onItemClick (DocumentSnapshot snapshot, int position);
     }
-
-
 }

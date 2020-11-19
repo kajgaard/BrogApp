@@ -70,8 +70,6 @@ public class BrewMainActivity extends AppCompatActivity {
         faveRecyclerView.setLayoutManager(faveLayoutManager);
         faveRecyclerView.setAdapter(faveAdapter);
 
-
-
         //Fill out recyclerView Flere Forslag
         ArrayList<BrewItem> listOfFlereForslag = new ArrayList<>();
         listOfFlereForslag.add(new BrewItem(0,"Manhatten", "None","4.6","none"));

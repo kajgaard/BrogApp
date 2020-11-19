@@ -41,7 +41,7 @@ public class BrewForslagAdapter extends RecyclerView.Adapter<BrewForslagAdapter.
     @Override
     public void onBindViewHolder(@NonNull BrewForslagHolder holder, int position) {
         BrewItem currentItem = mList.get(position);
-        holder.mImage.setImageResource(currentItem.getImageResource());
+        holder.mImage.setImageResource(currentItem.getImageRessource());
         holder.brewName.setText(currentItem.getBrewName());
         holder.brewScore.setText(currentItem.getBrewScore());
     }

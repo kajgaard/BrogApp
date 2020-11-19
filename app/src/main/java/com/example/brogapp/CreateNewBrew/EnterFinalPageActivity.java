@@ -121,9 +121,6 @@ public class EnterFinalPageActivity extends AppCompatActivity {
                 convertTime(brewValues.get(5))+"\n"+
                 convertTime(brewValues.get(6))+"";
 
-
-
-
         finalValuesTextView.setText(finalValues);
 
         //Initialize and assign navbar variable

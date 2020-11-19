@@ -25,7 +25,7 @@
         android:layout_marginTop="40dp"
         android:text="FAVORITTER"
         android:textColor="@color/TextColor"
-        android:textSize="45sp"
+        android:textSize="35sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

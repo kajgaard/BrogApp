@@ -88,13 +88,18 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
     }
 
     @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+    }
+
+    @Override
     public void onClick(View view) {
         if(view == favorites){
             startActivity(new Intent(getApplicationContext(), FavoritesActivity.class));
-            finish();
+            //finish();
         }else if(view == history){
             startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
-            finish();
+            //finish();
         }
     }
 }

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp">
+
+    <ImageView
+        android:id="@+id/coffeeIM0"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/coffee_pic" />
+
+    <ImageView
+        android:id="@+id/coffeeIM1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toEndOf="@+id/coffeeIM0"
+        app:layout_constraintTop_toTopOf="@+id/coffeeIM0"
+        app:srcCompat="@drawable/coffeetwo_pic" />
+
+    <ImageView
+        android:id="@+id/coffeeIM2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/coffeeIM0"
+        app:layout_constraintTop_toBottomOf="@+id/coffeeIM0"
+        app:srcCompat="@drawable/coffeethree_pic" />
+
+    <ImageView
+        android:id="@+id/coffeeIM3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/coffeeIM2"
+        app:layout_constraintTop_toBottomOf="@+id/coffeeIM1"
+        app:srcCompat="@drawable/coffeefour_pic" />
+
+    <ImageView
+        android:id="@+id/coffeeIM4"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/coffeeIM2"
+        app:layout_constraintTop_toBottomOf="@+id/coffeeIM2"
+        app:srcCompat="@drawable/coffeefive_pic" />
+
+    <ImageView
+        android:id="@+id/coffeeIM5"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/coffeeIM4"
+        app:layout_constraintTop_toBottomOf="@+id/coffeeIM3"
+        app:srcCompat="@drawable/coffeesix_pic" />
+</androidx.constraintlayout.widget.ConstraintLayout>

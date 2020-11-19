@@ -70,12 +70,10 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesAda
 
         //Adapter
         mAdapter = new FavoritesAdapter(options, this);
-
         mRecyclerView = findViewById(R.id.historyHolderRV);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         //mAdapter = new BrewListAdapter(listOfFaves);
-
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
 
@@ -117,11 +115,9 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesAda
                         overridePendingTransition(0,0); //Dont know what this does
                         return true;
                 }
-
                 return false;
             }
         });
-
     }
 
     @Override
