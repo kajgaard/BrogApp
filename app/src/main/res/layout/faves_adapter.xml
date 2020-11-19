@@ -34,47 +34,49 @@
             android:id="@+id/brewNameTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="130dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="10dp"
             android:text="Manhatten"
             android:textColor="@color/TextColor"
             android:textSize="26sp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/itemPicIV"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/brewDescriptionTV"
-            android:layout_width="190dp"
+            android:layout_width="0dp"
             android:layout_height="75dp"
-            android:layout_marginLeft="130dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:lineSpacingMultiplier="0.9"
             android:text="Super god kaffe som bare er mega god og lækker og jeg vil have den hver dag"
             android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toStartOf="@+id/starIV"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/itemPicIV"
+            app:layout_constraintTop_toBottomOf="@+id/brewNameTV" />
 
         <ImageView
             android:id="@+id/starIV"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
-            android:layout_marginStart="325dp"
-            android:layout_marginTop="35dp"
+            android:layout_width="48dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
             android:src="@drawable/star_icon"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/scoreTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="330dp"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
             android:text="4.3"
             android:textColor="@color/TextColor"
             android:textSize="26sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/starIV" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

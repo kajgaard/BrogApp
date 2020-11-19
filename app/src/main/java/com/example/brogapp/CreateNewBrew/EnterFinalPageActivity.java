@@ -40,6 +40,7 @@ public class EnterFinalPageActivity extends AppCompatActivity {
         Log.i("Final Page", "Bryg button pushed");
         Intent intent = new Intent(EnterFinalPageActivity.this, BrewStartedActivity.class);
         intent.putExtra("brewValues", brewValues);
+        intent.putExtra("text","Det nye bryg er nu gemt i din historik");
         startActivity(intent);
         finish();
     }

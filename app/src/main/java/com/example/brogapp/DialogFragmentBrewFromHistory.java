@@ -1,31 +1,27 @@
 package com.example.brogapp;
 
-import android.app.Activity;
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.brogapp.BrewFromFirestore;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.brogapp.CreateNewBrew.BrewStartedActivity;
-import com.example.brogapp.Favorites.FavoritesActivity;
+import com.example.brogapp.History.HistoryAddToF;
+import com.google.firebase.firestore.DocumentSnapshot;
+
+import java.util.ArrayList;
 
 public class DialogFragmentBrewFromHistory extends DialogFragment implements View.OnClickListener {
 
-    Button yesBtn;
-    TextView noBtn;
-    BrewFromFirestore brewFromFirestore;
+    Button brewBtn;
+    Button toFavBtn;
+    DocumentSnapshot snapshot;
 
     public DialogFragmentBrewFromHistory() {
         // Empty constructor is required for DialogFragment
@@ -43,18 +39,41 @@ public class DialogFragmentBrewFromHistory extends DialogFragment implements Vie
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        yesBtn = view.findViewById(R.id.yesBtn);
-        yesBtn.setOnClickListener(this);
+        brewBtn = view.findViewById(R.id.brewBtn);
+        brewBtn.setOnClickListener(this);
+        toFavBtn = view.findViewById(R.id.toFaveBtn);
+        toFavBtn.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        if(view == yesBtn){
-            //brewFromFirestore.extractUserValues("3Xki8keCiRPH8T6ZYZzv",false);
+        if(view == brewBtn){
 
-            Toast.makeText(this.getContext(), "Arraylist: ", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(getContext(),CleanActivity.class));
+            ArrayList<String> brewValues = new ArrayList<>();
+            brewValues.add("20");       // Grams of coffee
+            brewValues.add("60");       // grams of coffee per liter of water
+            brewValues.add("Medium");   // Coffee ground coarseness
+            brewValues.add("92");       // Water temperature
+            brewValues.add("40");       // Bloom water
+            brewValues.add("30");       // Bloom Time
+            brewValues.add("180");      // Brew time
 
+            Intent intent = new Intent(getContext(), BrewStartedActivity.class);
+            intent.putExtra("brewValues", brewValues);
+            intent.putExtra("text","Velbekomme!");
+            startActivity(intent);
+            dismiss();
         }
+        if (view == toFavBtn){
+
+            Intent intent = new Intent(getContext(), HistoryAddToF.class);
+            intent.putExtra("IdOfSelectedHistory", snapshot.getId());
+            startActivity(intent);
+            dismiss();
+        }
+    }
+
+    public void setDocumentSnapshot (DocumentSnapshot snapshot){
+        this.snapshot = snapshot;
     }
 }
