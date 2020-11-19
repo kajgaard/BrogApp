@@ -7,7 +7,7 @@ public class BrewItem {
     public BrewItem(){} //Empty constructor for Firestore
 
     public BrewItem(int imageResource, String name, String description, String score, String brewID){
-       // mImageResource = imageResource;
+       //mImageResource = imageResource;
         brewName = name;
         brewDescription = description;
         brewScore = score;

@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 
+import com.example.brogapp.BrewFromFirestore;
 import com.example.brogapp.BrewItem;
 import com.example.brogapp.BrewMainActivity;
 import com.example.brogapp.CleanActivity;
@@ -35,6 +36,7 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
 
     private static final String TAG = "HistoryActivity";
     RecyclerView mRecyclerView;
+    BrewFromFirestore brewFromFirestore;
     RecyclerView.LayoutManager mLayoutManager;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
@@ -136,10 +138,16 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
     @Override
     public void onItemClick(DocumentSnapshot snapshot, int position) {
         Log.d("CLICK","item was clicked at pos. " + position + "\nID is " + snapshot.getId());
-        Log.d("CLICK","in snapshot is " + snapshot + "");
+        Log.d("CLICK","in snapshot is " + snapshot.getData() + "");
         clickedBrewID = snapshot.getId();
+
+
+        brewFromFirestore.brewThis(snapshot);
+
         DialogFragmentBrewFromHistory myFragment = new DialogFragmentBrewFromHistory();
         myFragment.show(getSupportFragmentManager(),"Brew from History Fragment");
+
+
 
     }
 }

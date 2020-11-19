@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.brogapp.BrewFromFirestore;
 
 import androidx.annotation.NonNull;
@@ -28,7 +30,6 @@ public class DialogFragmentBrewFromHistory extends DialogFragment implements Vie
     public DialogFragmentBrewFromHistory() {
         // Empty constructor is required for DialogFragment
         // Make sure not to add arguments to the constructor
-        // Use `newInstance` instead as shown below
     }
 
 
@@ -49,7 +50,9 @@ public class DialogFragmentBrewFromHistory extends DialogFragment implements Vie
     @Override
     public void onClick(View view) {
         if(view == yesBtn){
-            brewFromFirestore.extractUserValues("3Xki8keCiRPH8T6ZYZzv",true);
+            //brewFromFirestore.extractUserValues("3Xki8keCiRPH8T6ZYZzv",false);
+
+            Toast.makeText(this.getContext(), "Arraylist: ", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(getContext(),CleanActivity.class));
 
         }
