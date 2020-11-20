@@ -2,11 +2,13 @@ package com.example.brogapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.paging.PagedList;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,11 +16,25 @@ import android.widget.Toast;
 
 import com.example.brogapp.CreateNewBrew.EnterGramsActivity;
 import com.example.brogapp.Favorites.BrewFaveAdapter;
+import com.example.brogapp.Favorites.FavoritesAdapter;
+import com.firebase.ui.firestore.SnapshotParser;
+import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 import java.util.ArrayList;
 
-public class BrewMainActivity extends AppCompatActivity {
+public class BrewMainActivity extends AppCompatActivity implements FavoritesAdapter.OnListItemClick {
+
+    FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
+    String userID;
+    BrewFaveAdapter mAdapter;
+    RecyclerView mRecyclerView;
+    RecyclerView.LayoutManager mLayoutManager;
 
     RecyclerView faveRecyclerView;
     RecyclerView.Adapter faveAdapter;
@@ -52,25 +68,41 @@ public class BrewMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_brew_main);
 
-        //Fill out recyclerView Favoritter
-        ArrayList<BrewItem> listOfFaves = new ArrayList<>();
-        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"Manhatten", "None","4.6","none"));
-        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"New York", "None","4.6","none"));
-        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"Torronto", "None","4.6","none"));
-        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"Skagen", "None","4.6","none"));
-        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"San Francisco", "None","4.6","none"));
-        listOfFaves.add(new BrewItem(R.drawable.coffee_pic,"Malmø", "None","4.6","none"));
+        fStore = FirebaseFirestore.getInstance();
+        fAuth = FirebaseAuth.getInstance();
+        userID = fAuth.getCurrentUser().getUid();
+        //Query for database
+        Query query = fStore.collection("users").document(userID).collection("favorites");
 
-        faveRecyclerView = findViewById(R.id.favesRV);
-        faveRecyclerView.setHasFixedSize(true);
+        //Paging so in case we have a lot of data in database, it loads in pages
+        PagedList.Config config = new PagedList.Config.Builder()
+                .setInitialLoadSizeHint(15)
+                .setPageSize(5)
+                .build();
 
-        faveLayoutManager = new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
-        faveAdapter = new BrewFaveAdapter(listOfFaves);
+        //Recycler options (github dependency) //se youtube.com/watch?v=LatlcDZhpd4
+        FirestorePagingOptions<BrewItem> options = new FirestorePagingOptions.Builder<BrewItem>()
+                .setLifecycleOwner(this) //No longer need onStart() and onStop()
+                .setQuery(query, config, new SnapshotParser<BrewItem>() {
+                    @NonNull
+                    @Override
+                    public BrewItem parseSnapshot(@NonNull DocumentSnapshot snapshot) { //so we can get ID for all documents in collection
+                        BrewItem brewItem = snapshot.toObject(BrewItem.class);
+                        String brewId = snapshot.getId();
+                        brewItem.setbrewID();
+                        return brewItem;
+                    }
+                })
+                .build();
 
-        faveRecyclerView.setLayoutManager(faveLayoutManager);
-        faveRecyclerView.setAdapter(faveAdapter);
+        mAdapter = new BrewFaveAdapter(options, this);
+        mRecyclerView = findViewById(R.id.favesRV);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mAdapter);
 
-        //Fill out recyclerView Flere Forslag
+
         ArrayList<BrewItem> listOfFlereForslag = new ArrayList<>();
         listOfFlereForslag.add(new BrewItem(0,"Manhatten", "None","4.6","none"));
         listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"yo yo yo", "None","4.6","none"));
@@ -87,7 +119,6 @@ public class BrewMainActivity extends AppCompatActivity {
 
         flereForslagRecyclerView.setLayoutManager(flereForslagLayoutManager);
         flereForslagRecyclerView.setAdapter(flereForslagAdapter);
-
 
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);
@@ -130,5 +161,10 @@ public class BrewMainActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    @Override
+    public void onItemClick(DocumentSnapshot snapshot, int position) {
+        Log.d("CLICK","item was clicked at pos. " + position + "\nID is " + snapshot.getId());
     }
 }
