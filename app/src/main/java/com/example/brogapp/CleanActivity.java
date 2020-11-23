@@ -109,7 +109,6 @@ public class CleanActivity extends AppCompatActivity implements View.OnClickList
             newbrew1.put("bloomTime", "30");
             newbrew1.put("brewTime", "180");
 
-
             Map<String, Object> newbrew2 = new HashMap<>();
             newbrew2.put("brewName", "New York");
             newbrew2.put("brewDescription", "Når veninderne er på besøg!");
@@ -136,12 +135,10 @@ public class CleanActivity extends AppCompatActivity implements View.OnClickList
             newbrew3.put("bloomTime", "30");
             newbrew3.put("brewTime", "180");
 
-
-
-            fStore.collection("users").document(userID).collection("favorites").document().set(newbrew);
-            fStore.collection("users").document(userID).collection("favorites").document().set(newbrew1);
-            fStore.collection("users").document(userID).collection("favorites").document().set(newbrew2);
-            fStore.collection("users").document(userID).collection("favorites").document().set(newbrew3);
+            fStore.collection("brews").document().set(newbrew);
+            fStore.collection("brews").document().set(newbrew1);
+            fStore.collection("brews").document().set(newbrew2);
+            fStore.collection("brews").document().set(newbrew3);
         }
     }
 }
