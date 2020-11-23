@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,17 +31,14 @@ public class BrewMainActivity extends AppCompatActivity implements FavoritesAdap
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
-    BrewFaveAdapter mAdapter;
-    RecyclerView mRecyclerView;
-    RecyclerView.LayoutManager mLayoutManager;
 
-    RecyclerView faveRecyclerView;
-    RecyclerView.Adapter faveAdapter;
-    RecyclerView.LayoutManager faveLayoutManager;
+    BrewFaveAdapter mFaveAdapter;
+    RecyclerView mFaveRecyclerView;
+    RecyclerView.LayoutManager mFaveLayoutManager;
 
-    RecyclerView flereForslagRecyclerView;
-    RecyclerView.Adapter flereForslagAdapter;
-    RecyclerView.LayoutManager flereForslagLayoutManager;
+    BrewForslagAdapter mForslagAdapter;
+    RecyclerView mForslagRecyclerView;
+    RecyclerView.LayoutManager mForslagLayoutManager;
 
     // When pushing the "nyt bryg" button
     public void newBrewButtonPushed(View view){
@@ -60,7 +56,6 @@ public class BrewMainActivity extends AppCompatActivity implements FavoritesAdap
         Intent intent = new Intent(BrewMainActivity.this, EnterGramsActivity.class);
         intent.putExtra("brewValues",brewValues);
         startActivity(intent);
-
     }
 
     @Override
@@ -72,7 +67,7 @@ public class BrewMainActivity extends AppCompatActivity implements FavoritesAdap
         fAuth = FirebaseAuth.getInstance();
         userID = fAuth.getCurrentUser().getUid();
         //Query for database
-        Query query = fStore.collection("users").document(userID).collection("favorites");
+        Query queryFavorites = fStore.collection("users").document(userID).collection("favorites");
 
         //Paging so in case we have a lot of data in database, it loads in pages
         PagedList.Config config = new PagedList.Config.Builder()
@@ -83,7 +78,7 @@ public class BrewMainActivity extends AppCompatActivity implements FavoritesAdap
         //Recycler options (github dependency) //se youtube.com/watch?v=LatlcDZhpd4
         FirestorePagingOptions<BrewItem> options = new FirestorePagingOptions.Builder<BrewItem>()
                 .setLifecycleOwner(this) //No longer need onStart() and onStop()
-                .setQuery(query, config, new SnapshotParser<BrewItem>() {
+                .setQuery(queryFavorites, config, new SnapshotParser<BrewItem>() {
                     @NonNull
                     @Override
                     public BrewItem parseSnapshot(@NonNull DocumentSnapshot snapshot) { //so we can get ID for all documents in collection
@@ -95,30 +90,45 @@ public class BrewMainActivity extends AppCompatActivity implements FavoritesAdap
                 })
                 .build();
 
-        mAdapter = new BrewFaveAdapter(options, this);
-        mRecyclerView = findViewById(R.id.favesRV);
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
+        mFaveAdapter = new BrewFaveAdapter(options, this);
+        mFaveRecyclerView = findViewById(R.id.favesRV);
+        mFaveRecyclerView.setHasFixedSize(true);
+        mFaveLayoutManager = new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
+        mFaveRecyclerView.setLayoutManager(mFaveLayoutManager);
+        mFaveRecyclerView.setAdapter(mFaveAdapter);
 
 
-        ArrayList<BrewItem> listOfFlereForslag = new ArrayList<>();
-        listOfFlereForslag.add(new BrewItem(0,"Manhatten", "None","4.6","none"));
-        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"yo yo yo", "None","4.6","none"));
-        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"Torronto", "None","4.6","none"));
-        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"Skagen", "None","4.6","none"));
-        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"San Francisco", "None","4.6","none"));
-        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"Malmø", "None","4.6","none"));
 
-        flereForslagRecyclerView = findViewById(R.id.flereForslagRV);
-        flereForslagRecyclerView.setHasFixedSize(true);
+        Query queryForslag = fStore.collection("brews");
 
-        flereForslagLayoutManager = new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
-        flereForslagAdapter = new BrewForslagAdapter(listOfFlereForslag);
+        //Paging so in case we have a lot of data in database, it loads in pages
+        PagedList.Config config2 = new PagedList.Config.Builder()
+                .setInitialLoadSizeHint(15)
+                .setPageSize(5)
+                .build();
 
-        flereForslagRecyclerView.setLayoutManager(flereForslagLayoutManager);
-        flereForslagRecyclerView.setAdapter(flereForslagAdapter);
+        //Recycler options (github dependency) //se youtube.com/watch?v=LatlcDZhpd4
+        FirestorePagingOptions<BrewItem> options2 = new FirestorePagingOptions.Builder<BrewItem>()
+                .setLifecycleOwner(this) //No longer need onStart() and onStop()
+                .setQuery(queryForslag, config2, new SnapshotParser<BrewItem>() {
+                    @NonNull
+                    @Override
+                    public BrewItem parseSnapshot(@NonNull DocumentSnapshot snapshot) { //so we can get ID for all documents in collection
+                        BrewItem brewItem = snapshot.toObject(BrewItem.class);
+                        String brewId = snapshot.getId();
+                        brewItem.setbrewID();
+                        return brewItem;
+                    }
+                })
+                .build();
+
+        mForslagAdapter = new BrewForslagAdapter(options2, this);
+        mForslagRecyclerView = findViewById(R.id.flereForslagRV);
+        mForslagRecyclerView.setHasFixedSize(true);
+        mForslagLayoutManager = new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
+        mForslagRecyclerView.setLayoutManager(mForslagLayoutManager);
+        mForslagRecyclerView.setAdapter(mForslagAdapter);
+
 
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);
@@ -157,7 +167,6 @@ public class BrewMainActivity extends AppCompatActivity implements FavoritesAdap
                         overridePendingTransition(0,0); //Dont know what this does
                         return true;
                 }
-
                 return false;
             }
         });

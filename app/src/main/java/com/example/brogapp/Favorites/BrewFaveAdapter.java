@@ -16,7 +16,6 @@ import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 import com.firebase.ui.firestore.paging.LoadingState;
 
-import java.util.ArrayList;
 
 public class BrewFaveAdapter extends FirestorePagingAdapter<BrewItem, BrewFaveAdapter.BrewFaveViewHolder> {
 

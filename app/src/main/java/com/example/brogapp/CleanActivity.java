@@ -100,7 +100,7 @@ public class CleanActivity extends AppCompatActivity implements View.OnClickList
             newbrew1.put("brewName", "London");
             newbrew1.put("brewDescription", "God med Starbuks bønnerne!");
             newbrew1.put("brewScore", "4.5");
-            newbrew1.put("imageRessource", 0);
+            newbrew1.put("imageRessource", 1);
             newbrew1.put("coffeeAmount", "20");
             newbrew1.put("grindSize", "medium");
             newbrew1.put("waterRatio", "60");
@@ -113,7 +113,7 @@ public class CleanActivity extends AppCompatActivity implements View.OnClickList
             newbrew2.put("brewName", "New York");
             newbrew2.put("brewDescription", "Når veninderne er på besøg!");
             newbrew2.put("brewScore", "3.8");
-            newbrew2.put("imageRessource", 0);
+            newbrew2.put("imageRessource", 2);
             newbrew2.put("coffeeAmount", "20");
             newbrew2.put("grindSize", "medium");
             newbrew2.put("waterRatio", "60");
@@ -126,7 +126,7 @@ public class CleanActivity extends AppCompatActivity implements View.OnClickList
             newbrew3.put("brewName", "Copenhagen");
             newbrew3.put("brewDescription", "Svigermors ynglings! Peter kan ikke lide den så meget");
             newbrew3.put("brewScore", "4.3");
-            newbrew3.put("imageRessource", 0);
+            newbrew3.put("imageRessource", 3);
             newbrew3.put("coffeeAmount", "20");
             newbrew3.put("grindSize", "medium");
             newbrew3.put("waterRatio", "60");
