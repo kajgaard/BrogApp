@@ -62,9 +62,9 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
 
         date = findViewById(R.id.dateTV);
         date.setText(dayString+" "+new SimpleDateFormat("d. MMMM").format(cal.getTime()).toUpperCase());
-        favorites = findViewById(R.id.favesBtn);
+        favorites = findViewById(R.id.newFavBtn);
         favorites.setOnClickListener(this);
-        history = findViewById(R.id.histBtn);
+        history = findViewById(R.id.newHistBtn);
         history.setOnClickListener(this);
         content = findViewById(R.id.contentHolderRV);
         content.setHasFixedSize(true);
