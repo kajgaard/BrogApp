@@ -87,7 +87,7 @@ public class CleanActivity extends AppCompatActivity implements View.OnClickList
             newbrew.put("brewName", "Sunday");
             newbrew.put("brewDescription", "Smager meget godt");
             newbrew.put("brewScore", "4.1");
-            newbrew.put("imageRessource", "2131165293");
+            newbrew.put("imageRessource", "3");
             newbrew.put("coffeeAmount", "30");
             newbrew.put("grindSize", "medium");
             newbrew.put("waterRatio", "70");

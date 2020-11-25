@@ -8,6 +8,45 @@
 
     tools:context=".HomePage">
 
+    <LinearLayout
+        android:id="@+id/linLay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="1dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/contentHolderRV"
+        app:layout_constraintTop_toBottomOf="@+id/headerTV"
+        tools:layout_editor_absoluteX="188dp">
+
+
+        <Button
+            android:id="@+id/newFavBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginRight="5dp"
+            android:text="FAVORITES"
+            android:elevation="50dp"
+            android:background="@drawable/rounded_square"
+            android:backgroundTint="@color/AccentColorGreen"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/newHistBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginLeft="5dp"
+            android:text="HISTORY"
+            android:elevation="50dp"
+            android:background="@drawable/rounded_square"
+            android:backgroundTint="@color/light_blue"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigationbar"
         android:layout_width="match_parent"
@@ -28,7 +67,7 @@
         android:id="@+id/dateTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="30dp"
         android:text="17. SEPTEMPER"
         android:textColor="@color/TextColor"
@@ -40,7 +79,7 @@
         android:id="@+id/headerTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="15dp"
         android:text="Dagens Udvalgte"
         android:textColor="@color/TextColor"
         android:textSize="36sp"
@@ -49,9 +88,10 @@
 
     <ImageView
         android:id="@+id/logoIV"
-        android:layout_width="59dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="20dp"
+        android:layout_width="41dp"
+        android:layout_height="66dp"
+        android:layout_marginEnd="15dp"
+        android:alpha="0.7"
         android:scaleType="centerInside"
         android:src="@drawable/big_logo"
         app:layout_constraintBottom_toBottomOf="@+id/headerTV"
@@ -62,24 +102,25 @@
         android:id="@+id/contentHolderRV"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigationbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/favesBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/linLay" />
 
     <Button
         android:id="@+id/favesBtn"
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:layout_marginTop="10dp"
-        android:text="Favorites"
         android:background="@drawable/rounded_square"
         android:backgroundTint="@color/AccentColorGreen"
+        android:text="Favorites"
 
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/histBtn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,13 +130,16 @@
         android:id="@+id/histBtn"
         android:layout_width="150dp"
         android:layout_height="60dp"
-        android:text="History"
         android:background="@drawable/rounded_square"
         android:backgroundTint="@color/light_blue"
+        android:text="History"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/favesBtn"
         app:layout_constraintTop_toTopOf="@+id/favesBtn" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
