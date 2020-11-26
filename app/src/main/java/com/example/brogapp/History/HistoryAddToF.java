@@ -54,7 +54,7 @@ public class HistoryAddToF extends AppCompatActivity {
         newbrew.put("brewTemp", (String) HistoryDocumentFromFirebase.get("brewTemp"));
         newbrew.put("bloomWater", (String) HistoryDocumentFromFirebase.get("bloomWater"));
         newbrew.put("bloomTime", (String) HistoryDocumentFromFirebase.get("bloomTime"));
-        //newbrew.put("brewTime", (String) HistoryDocumentFromFirebase.get("brewTime"));
+        newbrew.put("brewTime", (String) HistoryDocumentFromFirebase.get("brewTime"));
 
         // Store the populated brew in FireStore Favorites
         fStore.collection("users").document(userID).collection("favorites").document().set(newbrew);
