@@ -2,6 +2,8 @@ package com.example.brogapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,25 +11,87 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.example.brogapp.Favorites.BrewFaveAdapter;
 import com.example.brogapp.Favorites.FavoritesActivity;
 import com.example.brogapp.History.HistoryActivity;
 import com.example.brogapp.LogOnActivities.LogInActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
+
 public class HomePage extends AppCompatActivity implements View.OnClickListener {
 
     Button favorites, history;
+    TextView date;
+    String dayString;
+    RecyclerView content;
+    RecyclerView.Adapter contentAdapter;
+    RecyclerView.LayoutManager contentLayoutManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        favorites = findViewById(R.id.favesBtn);
+        Calendar cal = Calendar.getInstance();
+
+        switch(cal.get(Calendar.DAY_OF_WEEK)){
+            case 2: dayString = "MANDAG";
+                    break;
+            case 3: dayString = "TIRSDAG";
+                break;
+            case 4: dayString = "ONSDAG";
+                break;
+            case 5: dayString = "TORSDAG";
+                break;
+            case 6: dayString = "FREDAG";
+                break;
+            case 0: dayString = "LØRDAG";
+                break;
+            case 1: dayString = "SØNDAG";
+                break;
+            default: dayString = "";
+        }
+
+
+        date = findViewById(R.id.dateTV);
+        date.setText(dayString+" "+new SimpleDateFormat("d. MMMM").format(cal.getTime()).toUpperCase());
+        favorites = findViewById(R.id.newFavBtn);
         favorites.setOnClickListener(this);
-        history = findViewById(R.id.histBtn);
+        history = findViewById(R.id.newHistBtn);
         history.setOnClickListener(this);
+        content = findViewById(R.id.contentHolderRV);
+        content.setHasFixedSize(true);
+
+        //Fill out recyclerView Favoritter
+        ArrayList<Integer> contentList = new ArrayList<>();
+        contentList.add(R.drawable.news1);
+        contentList.add(R.drawable.news2);
+        contentList.add(R.drawable.news3);
+
+
+        contentLayoutManager = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
+        contentAdapter = new ContentAdapter(contentList);
+
+        content.setLayoutManager(contentLayoutManager);
+        content.setAdapter(contentAdapter);
+
+        //Fill out recyclerView Flere Forslag
+        ArrayList<BrewItem> listOfFlereForslag = new ArrayList<>();
+        listOfFlereForslag.add(new BrewItem(0,"Manhatten", "None","4.6","none"));
+        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"yo yo yo", "None","4.6","none"));
+        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"Torronto", "None","4.6","none"));
+        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"Skagen", "None","4.6","none"));
+        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"San Francisco", "None","4.6","none"));
+        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"Malmø", "None","4.6","none"));
+
+
 
         /*
         Button crashButton = new Button(this);

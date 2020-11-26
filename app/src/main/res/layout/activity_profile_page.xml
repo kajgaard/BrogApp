@@ -38,12 +38,13 @@
         android:layout_marginTop="40dp"
         android:elevation="10dp"
         android:background="@drawable/circle"
+        android:padding="5dp"
         android:backgroundTint="@color/Highlight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/smallpb" />
+        app:srcCompat="@drawable/default_pb" />
 
 
     <TextView
@@ -51,7 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="Velkommen Gitte!"
+        android:text="Velkommen"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
