@@ -82,7 +82,6 @@ public class EnterTempActivity extends AppCompatActivity {
 
         tempInteger = Integer.parseInt(brewValues.get(3));
 
-        Toast.makeText(this,brewValues.toString(),Toast.LENGTH_SHORT).show();
 
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);

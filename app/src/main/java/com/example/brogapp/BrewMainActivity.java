@@ -50,7 +50,6 @@ public class BrewMainActivity extends AppCompatActivity implements FavoritesAdap
         brewValues.add("40");       // Bloom water
         brewValues.add("30");       // Bloom Time
         brewValues.add("180");      // Brew time
-        Toast.makeText(this, brewValues.toString(), Toast.LENGTH_SHORT).show();
         Log.i("Button","New brew button pushed");
 
         Intent intent = new Intent(BrewMainActivity.this, EnterGramsActivity.class);

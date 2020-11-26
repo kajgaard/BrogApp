@@ -36,7 +36,6 @@ public class EnterFinalPageActivity extends AppCompatActivity {
     String finalValues;
 
     public void finalStartButtonPushed(View view) {
-        Toast.makeText(this, brewValues.toString(), Toast.LENGTH_SHORT).show();
         Log.i("Final Page", "Bryg button pushed");
         Intent intent = new Intent(EnterFinalPageActivity.this, BrewStartedActivity.class);
         intent.putExtra("brewValues", brewValues);
@@ -63,8 +62,8 @@ public class EnterFinalPageActivity extends AppCompatActivity {
         if (toastRemoveFromFavorites.getView().isShown()) {
             toastRemoveFromFavorites.cancel();
         }
-        toastAddToFavorites = Toast.makeText(this, "Tilføjet til favoritter!", Toast.LENGTH_SHORT);
-        toastAddToFavorites.show();
+//        toastAddToFavorites = Toast.makeText(this, "Tilføjet til favoritter!", Toast.LENGTH_SHORT);
+//        toastAddToFavorites.show();
     }
 
     public void pushRedHeart(View view) {
@@ -76,8 +75,8 @@ public class EnterFinalPageActivity extends AppCompatActivity {
         if (toastAddToFavorites.getView().isShown()) {
             toastAddToFavorites.cancel();
         }
-        toastRemoveFromFavorites = Toast.makeText(this, "Fjernet fra favoritter", Toast.LENGTH_SHORT);
-        toastRemoveFromFavorites.show();
+//        toastRemoveFromFavorites = Toast.makeText(this, "Fjernet fra favoritter", Toast.LENGTH_SHORT);
+//        toastRemoveFromFavorites.show();
     }
 
     public String convertTime(String totalTime) {
@@ -166,6 +165,4 @@ public class EnterFinalPageActivity extends AppCompatActivity {
             }
         });
     }
-
-
 }

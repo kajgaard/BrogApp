@@ -42,7 +42,6 @@ public class BrewStartedActivity extends AppCompatActivity {
     TextView message;
 
     public void okPushed(View view){
-        Toast.makeText(this,"OK",Toast.LENGTH_SHORT).show();
         finish();
     }
 
@@ -52,7 +51,6 @@ public class BrewStartedActivity extends AppCompatActivity {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM HH:mm",Locale.GERMAN);
         dateName = formatter.format(date);
         Log.i("date",formatter.format(date));
-        Toast.makeText(this,formatter.format(date),Toast.LENGTH_SHORT).show();
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -86,8 +84,6 @@ public class BrewStartedActivity extends AppCompatActivity {
         brewValues = (ArrayList<String>) getIntent().getSerializableExtra("brewValues");
         text = (String) getIntent().getSerializableExtra("text");
         message.setText(text);
-
-        Toast.makeText(this,brewValues.toString(),Toast.LENGTH_SHORT).show();
 
         saveBrew();
 
