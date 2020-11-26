@@ -26,7 +26,8 @@
 
         android:layout_marginStart="45dp"
         android:layout_marginBottom="168dp"
-        android:background="@drawable/rounded_button"
+        android:background="@drawable/rounded_square"
+        android:backgroundTint="@color/Highlight"
         android:onClick="bloomWaterPreviousButtonPushed"
         android:text="Forrige"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
@@ -42,7 +43,8 @@
         android:layout_marginEnd="45dp"
 
         android:layout_marginBottom="168dp"
-        android:background="@drawable/rounded_button"
+        android:background="@drawable/rounded_square"
+        android:backgroundTint="@color/Highlight"
         android:onClick="bloomWaterNextButtonPushed"
         android:text="Næste"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
@@ -56,10 +58,11 @@
         android:layout_width="111dp"
         android:layout_height="80dp"
         android:layout_marginTop="16dp"
+        android:alpha="0.8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/big_logo"/>
+        app:srcCompat="@drawable/big_logo" />
 
     <ImageView
         android:id="@+id/bloomWaterBottomImageView"
@@ -90,11 +93,11 @@
     <TextView
         android:id="@+id/bloomWaterValueTextView"
         android:layout_width="157dp"
-        android:layout_height="69dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:text="45 ml"
         android:textAlignment="center"
-        android:textSize="40sp"
+        android:textSize="50sp"
         app:layout_constraintBottom_toTopOf="@+id/bloomWaterNextButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -103,29 +106,29 @@
 
     <Button
         android:id="@+id/bloomWaterUpButton"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:background="@drawable/up"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:alpha="0.8"
+        android:background="@drawable/arrow_icon_up"
         android:onClick="bloomWaterUpButtonPush"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/bloomWaterValueTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.326"
         app:layout_constraintStart_toEndOf="@+id/bloomWaterValueTextView"
-        app:layout_constraintTop_toTopOf="@+id/bloomWaterValueTextView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@+id/bloomWaterValueTextView" />
 
     <Button
         android:id="@+id/bloomWaterDownButton"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:background="@drawable/down"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:alpha="0.8"
+        android:background="@drawable/arrow_icon_down"
         android:onClick="bloomWaterDownButtonPush"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/bloomWaterValueTextView"
         app:layout_constraintEnd_toStartOf="@+id/bloomWaterValueTextView"
         app:layout_constraintHorizontal_bias="0.673"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/bloomWaterValueTextView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@+id/bloomWaterValueTextView" />
 
     <SeekBar
         android:id="@+id/bloomWaterSeekBar"

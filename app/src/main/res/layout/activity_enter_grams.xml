@@ -23,7 +23,8 @@
         android:id="@+id/gramsNextButton"
         android:layout_width="130dp"
         android:layout_height="71dp"
-        android:background="@drawable/rounded_button"
+        android:background="@drawable/rounded_square"
+        android:backgroundTint="@color/Highlight"
         android:onClick="nextButtonPushed"
         android:text="Næste"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
@@ -41,14 +42,13 @@
         android:layout_width="111dp"
         android:layout_height="80dp"
         android:layout_marginTop="16dp"
+        android:alpha="0.8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/big_logo"
 
 
-
-        />
+        app:srcCompat="@drawable/big_logo" />
 
     <ImageView
         android:id="@+id/gramsBottomImageView"
@@ -90,29 +90,29 @@
 
     <Button
         android:id="@+id/gramsUpButton"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:background="@drawable/up"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:alpha="0.8"
+        android:background="@drawable/arrow_icon_up"
         android:onClick="upButtonpush"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/gramsTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.368"
         app:layout_constraintStart_toEndOf="@+id/gramsTextView"
-        app:layout_constraintTop_toTopOf="@+id/gramsTextView"
-        app:layout_constraintVertical_bias="0.073" />
+        app:layout_constraintTop_toTopOf="@+id/gramsTextView" />
 
     <Button
         android:id="@+id/gramsDownButton"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:background="@drawable/down"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:alpha="0.8"
+        android:background="@drawable/arrow_icon_down"
         android:onClick="downButtonpush"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/gramsTextView"
         app:layout_constraintEnd_toStartOf="@+id/gramsTextView"
         app:layout_constraintHorizontal_bias="0.649"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/gramsTextView"
-        app:layout_constraintVertical_bias="0.073" />
+        app:layout_constraintTop_toTopOf="@+id/gramsTextView" />
 
     <SeekBar
         android:id="@+id/gramsSeekBar"
