@@ -30,7 +30,8 @@
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="@+id/coffeeIM0"
         app:layout_constraintTop_toBottomOf="@+id/coffeeIM0"
-        app:srcCompat="@drawable/coffeethree_pic" />
+        app:srcCompat="@drawable/coffeethree_pic"
+        android:background="@drawable/rounded_square"/>
 
     <ImageView
         android:id="@+id/coffeeIM3"
@@ -40,7 +41,8 @@
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toEndOf="@+id/coffeeIM2"
         app:layout_constraintTop_toBottomOf="@+id/coffeeIM1"
-        app:srcCompat="@drawable/coffeefour_pic" />
+        app:srcCompat="@drawable/coffeefour_pic"
+        android:background="@drawable/rounded_square"/>
 
     <ImageView
         android:id="@+id/coffeeIM4"
@@ -49,7 +51,8 @@
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="@+id/coffeeIM2"
         app:layout_constraintTop_toBottomOf="@+id/coffeeIM2"
-        app:srcCompat="@drawable/coffeefive_pic" />
+        app:srcCompat="@drawable/coffeefive_pic"
+        android:background="@drawable/rounded_square"/>
 
     <ImageView
         android:id="@+id/coffeeIM5"
@@ -59,5 +62,6 @@
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toEndOf="@+id/coffeeIM4"
         app:layout_constraintTop_toBottomOf="@+id/coffeeIM3"
-        app:srcCompat="@drawable/coffeesix_pic" />
+        app:srcCompat="@drawable/coffeesix_pic"
+        android:background="@drawable/rounded_square"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
