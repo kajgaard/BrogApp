@@ -32,7 +32,9 @@ public class BrewFromFirestore {
     Boolean isFavorite;
     String userCollection;
 
-    public BrewFromFirestore(){}
+    public BrewFromFirestore(){
+        connectTo();
+    }
 
     public ArrayList<String> brewThis(DocumentSnapshot value){
 
@@ -104,9 +106,6 @@ public class BrewFromFirestore {
                 }
             }
         });
-
-
-
 
         return mList;
     }

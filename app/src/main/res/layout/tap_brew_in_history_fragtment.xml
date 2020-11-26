@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/cardview_default_elevation"
-    android:backgroundTint="@color/AccentColorGreenLight">
+    android:backgroundTint="@color/AccentColorGreenLight"
+    android:paddingTop="30dp"
+    android:paddingBottom="30dp">
 
 
     <TextView
         android:id="@+id/inquiryTV"
         android:layout_width="217dp"
         android:layout_height="74dp"
-        android:layout_marginTop="30dp"
         android:text="Vil du brygge denne kaffe? "
         android:textAlignment="center"
         android:textSize="30sp"
@@ -20,34 +21,49 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/inquiryTV2"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:text="Eller tilføje den til Favoritter?"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/brewBtn" />
+
     <Button
-        android:id="@+id/yesBtn"
+        android:id="@+id/brewBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/rounded_square"
         android:backgroundTint="@color/Highlight"
-        android:text="Ja"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="BRYG!"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inquiryTV" />
 
-    <TextView
-        android:id="@+id/noTV"
+    <Button
+        android:id="@+id/toFaveBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
         android:layout_marginTop="16dp"
-
-        android:layout_marginEnd="30dp"
-        android:text="...nej tak"
+        android:background="@drawable/rounded_square"
+        android:backgroundTint="@color/Highlight"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Til Favoritter"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/yesBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/yesBtn"
-        app:layout_constraintTop_toTopOf="@+id/yesBtn" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inquiryTV2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -39,7 +39,7 @@ public class EnterGramsActivity extends AppCompatActivity {
         Intent intent = new Intent(EnterGramsActivity.this,EnterWaterPerGramActivity.class);
         intent.putExtra("brewValues",brewValues);
         startActivity(intent);
-finish();
+        finish();
     }
 
     public void upButtonpush(View view){

@@ -138,21 +138,12 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
     @Override
     public void onItemClick(DocumentSnapshot snapshot, int position) {
         Log.d("CLICK","item was clicked at pos. " + position + "\nID is " + snapshot.getId());
-        /*Log.d("CLICK","in snapshot is " + snapshot.getData() + "");
+        Log.d("CLICK","in snapshot is " + snapshot.getData() + "");
         clickedBrewID = snapshot.getId();
 
 
-        brewFromFirestore.brewThis(snapshot);
-
         DialogFragmentBrewFromHistory myFragment = new DialogFragmentBrewFromHistory();
+        myFragment.setDocumentSnapshot(snapshot);
         myFragment.show(getSupportFragmentManager(),"Brew from History Fragment");
-
-         */
-
-
-
-        Intent intent = new Intent(HistoryActivity.this, HistoryAddToF.class);
-        intent.putExtra("IdOfSelectedHistory", snapshot.getId());
-        startActivity(intent);
     }
 }

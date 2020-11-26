@@ -7,8 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.TextureView;
 import android.view.View;
 import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.brogapp.BrewMainActivity;
@@ -36,6 +38,8 @@ public class BrewStartedActivity extends AppCompatActivity {
     String userID;
     Date date;
     String dateName;
+    String text;
+    TextView message;
 
     public void okPushed(View view){
         Toast.makeText(this,"OK",Toast.LENGTH_SHORT).show();
@@ -56,7 +60,7 @@ public class BrewStartedActivity extends AppCompatActivity {
 
         Map<String, Object> newbrew = new HashMap<>();
         newbrew.put("brewName", dateName);
-        newbrew.put("brewDescription", "Nyt bryg. Du har endnu ikke tilføjet en beskrivelse.");
+        newbrew.put("brewDescription", "Nyt bryg. Der er ikke tilføjet beskrivelse.");
         newbrew.put("brewScore", "0.0");
         newbrew.put("imageRessource", 0);
         newbrew.put("coffeeAmount", brewValues.get(0));
@@ -76,8 +80,13 @@ public class BrewStartedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_brew_started);
 
+        message = findViewById(R.id.finalIntroTextView3);
+
 
         brewValues = (ArrayList<String>) getIntent().getSerializableExtra("brewValues");
+        text = (String) getIntent().getSerializableExtra("text");
+        message.setText(text);
+
         Toast.makeText(this,brewValues.toString(),Toast.LENGTH_SHORT).show();
 
         saveBrew();
