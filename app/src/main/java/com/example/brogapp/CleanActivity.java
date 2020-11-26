@@ -81,12 +81,14 @@ public class CleanActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
+
+
         if (view == tv){
             //For populating database
             Map<String, Object> newbrew = new HashMap<>();
-            newbrew.put("brewName", "Sunday");
-            newbrew.put("brewDescription", "Smager meget godt");
-            newbrew.put("brewScore", "4.1");
+            newbrew.put("brewName", "Athens");
+            newbrew.put("brewDescription", "Et mildere bryg, der med mælk kan nydes af nybegyndere");
+            newbrew.put("brewScore", "3.4");
             newbrew.put("imageRessource", 0);
             newbrew.put("coffeeAmount", "30");
             newbrew.put("grindSize", "medium");
@@ -95,12 +97,12 @@ public class CleanActivity extends AppCompatActivity implements View.OnClickList
             newbrew.put("bloomWater", "45");
             newbrew.put("bloomTime", "30");
             newbrew.put("brewTime", "180");
-            //newbrew.put("timeStamp",1605771956572);
+            newbrew.put("timeStamp",1605771956572l);
 
             Map<String, Object> newbrew1 = new HashMap<>();
-            newbrew1.put("brewName", "London");
-            newbrew1.put("brewDescription", "God med Starbuks bønnerne!");
-            newbrew1.put("brewScore", "4.5");
+            newbrew1.put("brewName", "Washington");
+            newbrew1.put("brewDescription", "Er det tid til iskaffe, så er dette bryg perfekt til dig");
+            newbrew1.put("brewScore", "4.3");
             newbrew1.put("imageRessource", 1);
             newbrew1.put("coffeeAmount", "20");
             newbrew1.put("grindSize", "medium");
@@ -109,12 +111,12 @@ public class CleanActivity extends AppCompatActivity implements View.OnClickList
             newbrew1.put("bloomWater", "45");
             newbrew1.put("bloomTime", "30");
             newbrew1.put("brewTime", "180");
-            //newbrew.put("timeStamp",1606383638000);
+            newbrew1.put("timeStamp",1606383638000l);
 
             Map<String, Object> newbrew2 = new HashMap<>();
-            newbrew2.put("brewName", "New York");
-            newbrew2.put("brewDescription", "Når veninderne er på besøg!");
-            newbrew2.put("brewScore", "3.8");
+            newbrew2.put("brewName", "Tokyo");
+            newbrew2.put("brewDescription", "Til de kolde regnfulde dage, er denne bryg god at varme sig på");
+            newbrew2.put("brewScore", "3.9");
             newbrew2.put("imageRessource", 2);
             newbrew2.put("coffeeAmount", "20");
             newbrew2.put("grindSize", "medium");
@@ -123,10 +125,11 @@ public class CleanActivity extends AppCompatActivity implements View.OnClickList
             newbrew2.put("bloomWater", "45");
             newbrew2.put("bloomTime", "30");
             newbrew2.put("brewTime", "180");
+            newbrew2.put("timeStamp",1605112838000l);
 
             Map<String, Object> newbrew3 = new HashMap<>();
-            newbrew3.put("brewName", "Copenhagen");
-            newbrew3.put("brewDescription", "Svigermors ynglings! Peter kan ikke lide den så meget");
+            newbrew3.put("brewName", "Shanghai");
+            newbrew3.put("brewDescription", "En grov bønnegrind, med ekstra bloomvand, gør denne bryg kraftig, og fremhæver bønnens noter");
             newbrew3.put("brewScore", "4.3");
             newbrew3.put("imageRessource", 3);
             newbrew3.put("coffeeAmount", "20");
@@ -136,6 +139,7 @@ public class CleanActivity extends AppCompatActivity implements View.OnClickList
             newbrew3.put("bloomWater", "45");
             newbrew3.put("bloomTime", "30");
             newbrew3.put("brewTime", "180");
+            newbrew3.put("timeStamp",1606302758000l);
 
             fStore.collection("brews").document().set(newbrew);
             fStore.collection("brews").document().set(newbrew1);
