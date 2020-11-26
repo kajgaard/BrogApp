@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_marginRight="5dp"
-            android:text="FAVORITES"
+            android:text="FAVORITTER"
             android:elevation="50dp"
             android:background="@drawable/rounded_square"
             android:backgroundTint="@color/AccentColorGreen"
@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_marginLeft="5dp"
-            android:text="HISTORY"
+            android:text="HISTORIK"
             android:elevation="50dp"
             android:background="@drawable/rounded_square"
             android:backgroundTint="@color/light_blue"
@@ -82,7 +82,7 @@
         android:layout_marginStart="15dp"
         android:text="Dagens Udvalgte"
         android:textColor="@color/TextColor"
-        android:textSize="36sp"
+        android:textSize="34sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dateTV" />
 
