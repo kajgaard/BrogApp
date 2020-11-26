@@ -108,7 +108,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:alpha="0.8"
-        android:background="@drawable/arrow_icon_down"
+        android:background="@drawable/arrow_icon_up"
         android:onClick="brewTimeUpButtonPush"
         app:layout_constraintBottom_toBottomOf="@+id/brewTimeValueTextView"
         app:layout_constraintEnd_toEndOf="parent"
