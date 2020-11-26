@@ -1,6 +1,7 @@
 package com.example.brogapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.paging.PagedList;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,8 +12,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.brogapp.CreateNewBrew.BrewStartedActivity;
 import com.example.brogapp.CreateNewBrew.EnterGramsActivity;
 import com.example.brogapp.Favorites.BrewFaveAdapter;
 import com.example.brogapp.Favorites.FavoritesAdapter;
@@ -20,8 +23,11 @@ import com.firebase.ui.firestore.SnapshotParser;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 
 import java.util.ArrayList;
@@ -40,8 +46,11 @@ public class BrewMainActivity extends AppCompatActivity implements FavoritesAdap
     RecyclerView mForslagRecyclerView;
     RecyclerView.LayoutManager mForslagLayoutManager;
 
+    StartBrewFragment startBrewFragment;
+
+
     // When pushing the "nyt bryg" button
-    public void newBrewButtonPushed(View view){
+    public void newBrewButtonPushed(View view) {
         ArrayList<String> brewValues = new ArrayList<>();
         brewValues.add("20");       // Grams of coffee
         brewValues.add("60");       // grams of coffee per liter of water
@@ -50,10 +59,10 @@ public class BrewMainActivity extends AppCompatActivity implements FavoritesAdap
         brewValues.add("40");       // Bloom water
         brewValues.add("30");       // Bloom Time
         brewValues.add("180");      // Brew time
-        Log.i("Button","New brew button pushed");
+        Log.i("Button", "New brew button pushed");
 
         Intent intent = new Intent(BrewMainActivity.this, EnterGramsActivity.class);
-        intent.putExtra("brewValues",brewValues);
+        intent.putExtra("brewValues", brewValues);
         startActivity(intent);
     }
 
@@ -65,6 +74,8 @@ public class BrewMainActivity extends AppCompatActivity implements FavoritesAdap
         fStore = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
         userID = fAuth.getCurrentUser().getUid();
+
+
         //Query for database
         Query queryFavorites = fStore.collection("users").document(userID).collection("favorites");
 
@@ -92,10 +103,9 @@ public class BrewMainActivity extends AppCompatActivity implements FavoritesAdap
         mFaveAdapter = new BrewFaveAdapter(options, this);
         mFaveRecyclerView = findViewById(R.id.favesRV);
         mFaveRecyclerView.setHasFixedSize(true);
-        mFaveLayoutManager = new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
+        mFaveLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
         mFaveRecyclerView.setLayoutManager(mFaveLayoutManager);
         mFaveRecyclerView.setAdapter(mFaveAdapter);
-
 
 
         Query queryForslag = fStore.collection("brews");
@@ -124,7 +134,7 @@ public class BrewMainActivity extends AppCompatActivity implements FavoritesAdap
         mForslagAdapter = new BrewForslagAdapter(options2, this);
         mForslagRecyclerView = findViewById(R.id.flereForslagRV);
         mForslagRecyclerView.setHasFixedSize(true);
-        mForslagLayoutManager = new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
+        mForslagLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
         mForslagRecyclerView.setLayoutManager(mForslagLayoutManager);
         mForslagRecyclerView.setAdapter(mForslagAdapter);
 
@@ -139,31 +149,31 @@ public class BrewMainActivity extends AppCompatActivity implements FavoritesAdap
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()){
+                switch (menuItem.getItemId()) {
 
                     case R.id.nav_home:
-                        startActivity(new Intent(getApplicationContext(),HomePage.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        startActivity(new Intent(getApplicationContext(), HomePage.class));
+                        overridePendingTransition(0, 0); //Dont know what this does
                         return true;
 
                     case R.id.nav_scan:
-                        startActivity(new Intent(getApplicationContext(),ScanActivity.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        startActivity(new Intent(getApplicationContext(), ScanActivity.class));
+                        overridePendingTransition(0, 0); //Dont know what this does
                         return true;
 
                     case R.id.nav_brew:
-                        startActivity(new Intent(getApplicationContext(),BrewMainActivity.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        startActivity(new Intent(getApplicationContext(), BrewMainActivity.class));
+                        overridePendingTransition(0, 0); //Dont know what this does
                         return true;
 
                     case R.id.nav_wash:
-                        startActivity(new Intent(getApplicationContext(),CleanActivity.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        startActivity(new Intent(getApplicationContext(), CleanActivity.class));
+                        overridePendingTransition(0, 0); //Dont know what this does
                         return true;
 
                     case R.id.nav_profile:
-                        startActivity(new Intent(getApplicationContext(),ProfilePage.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        startActivity(new Intent(getApplicationContext(), ProfilePage.class));
+                        overridePendingTransition(0, 0); //Dont know what this does
                         return true;
                 }
                 return false;
@@ -173,6 +183,31 @@ public class BrewMainActivity extends AppCompatActivity implements FavoritesAdap
 
     @Override
     public void onItemClick(DocumentSnapshot snapshot, int position) {
-        Log.d("CLICK","item was clicked at pos. " + position + "\nID is " + snapshot.getId());
+        Log.d("CLICK", "item was clicked at pos. " + position + "\nID is " + snapshot.getId());
+
+        startBrewFragment = new StartBrewFragment();
+        startBrewFragment.setDocumentSnapshot(snapshot);
+        startBrewFragment.show(getSupportFragmentManager(), "Getting ready to brew");
+    }
+
+    public void tilbagePush(View view) {
+        startBrewFragment.dismiss();
+    }
+
+    public void brygPush(View view) {
+        ArrayList<String> brewValues = new ArrayList<>();
+        brewValues.add("20");       // Grams of coffee
+        brewValues.add("60");       // grams of coffee per liter of water
+        brewValues.add("Medium");   // Coffee ground coarseness
+        brewValues.add("92");       // Water temperature
+        brewValues.add("40");       // Bloom water
+        brewValues.add("30");       // Bloom Time
+        brewValues.add("180");      // Brew time
+
+        Intent intent = new Intent(BrewMainActivity.this, BrewStartedActivity.class);
+        intent.putExtra("brewValues", brewValues);
+        intent.putExtra("text","Velbekomme!");
+        startActivity(intent);
+        startBrewFragment.dismiss();
     }
 }

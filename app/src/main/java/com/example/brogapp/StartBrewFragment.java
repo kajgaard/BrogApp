@@ -21,6 +21,8 @@ public class StartBrewFragment extends DialogFragment implements View.OnClickLis
     Button backButton;
     TextView brewValues;
     DocumentSnapshot snapshot;
+    TextView titel;
+    TextView descrip;
 
     String name;
     String description;
@@ -52,8 +54,10 @@ public class StartBrewFragment extends DialogFragment implements View.OnClickLis
         // startBrewButton.setOnClickListener(this);
         // backButton = view.findViewById(R.id.YYYYYYYYY);
         // backButton.setOnClickListener(this);
-
         brewValues = view.findViewById(R.id.brewValuesTV);
+        titel = view.findViewById(R.id.titelTV);
+        descrip = view.findViewById(R.id.descriptionTV);
+
         brewValues.setOnClickListener(this);
         name = snapshot.get("brewName").toString();
         description = snapshot.get("brewDescription").toString();
@@ -76,6 +80,9 @@ public class StartBrewFragment extends DialogFragment implements View.OnClickLis
         Log.i("toast",finalValues);
         Log.i("toast",snapshot.getData().toString());
         brewValues.setText(finalValues);
+        titel.setText(name);
+        descrip.setText(description);
+
 
     }
 
@@ -101,4 +108,6 @@ public class StartBrewFragment extends DialogFragment implements View.OnClickLis
             return "" + seconds + " sek";
         }
     }
+
+
 }
