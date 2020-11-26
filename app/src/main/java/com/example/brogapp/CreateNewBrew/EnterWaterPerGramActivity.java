@@ -100,7 +100,7 @@ public class EnterWaterPerGramActivity extends AppCompatActivity {
             waterValueTextView.setText(gramsInteger + " g");
             totalBrew = (int) (Integer.parseInt(brewValues.get(0)) * 1000 / gramsInteger);
         }
-        waterTotalTextView.setText("Samlet mængde kaffebryg: " + totalBrew);
+        waterTotalTextView.setText("Samlet mængde kaffebryg: " + totalBrew + " ml");
 
         Toast.makeText(this,brewValues.toString(),Toast.LENGTH_SHORT).show();
 

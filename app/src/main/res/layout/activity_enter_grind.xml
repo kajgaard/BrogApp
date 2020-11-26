@@ -25,7 +25,6 @@
         android:layout_height="71dp"
 
         android:layout_marginStart="45dp"
-        android:layout_marginBottom="168dp"
         android:background="@drawable/rounded_square"
         android:backgroundTint="@color/Highlight"
         android:onClick="GrindPreviousButtonPushed"
@@ -33,8 +32,9 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/grindSeekBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/grindValueTextView" />
 
     <Button
         android:id="@+id/grindNextButton"
@@ -42,7 +42,6 @@
         android:layout_height="71dp"
         android:layout_marginEnd="45dp"
 
-        android:layout_marginBottom="168dp"
         android:background="@drawable/rounded_square"
         android:backgroundTint="@color/Highlight"
         android:onClick="grindNextButtonPushed"
@@ -50,14 +49,15 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/grindSeekBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/grindValueTextView" />
 
     <ImageView
         android:id="@+id/grindLogoImageView"
-        android:layout_width="111dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="65dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="30dp"
         android:alpha="0.8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,26 +66,26 @@
 
     <ImageView
         android:id="@+id/grindBottomImageView"
-        android:layout_width="0dp"
-        android:layout_height="105dp"
+        android:layout_width="422dp"
+        android:layout_height="130dp"
+        android:background="@drawable/coffee_beans_wide4"
         android:scaleType="fitCenter"
-
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/gradient"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigationbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.545"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/coffee_beans_wide"
-        />
+
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/grindIntroTextView"
-        android:layout_width="327dp"
-        android:layout_height="134dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:gravity="center"
-        android:text="Hvilken kværnstørrelse anvendes?"
+        android:text="Hvilken kværnstørrelse\nanvendes?"
         android:textAlignment="center"
-        android:textSize="30sp"
+        android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
@@ -95,14 +95,13 @@
         android:id="@+id/grindValueTextView"
         android:layout_width="157dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:gravity="center_horizontal"
         android:text="Medium"
         android:textSize="45sp"
-        app:layout_constraintBottom_toTopOf="@+id/grindNextButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/grindIntroTextView"
-        app:layout_constraintVertical_bias="0.297" />
+        app:layout_constraintTop_toBottomOf="@+id/grindIntroTextView" />
 
     <Button
         android:id="@+id/grindUpButton"
@@ -135,12 +134,12 @@
         style="@android:style/Widget.Material.SeekBar.Discrete"
         android:layout_width="341dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="110dp"
         android:max="7"
         android:progress="0"
         android:progressDrawable="@drawable/seek_bar"
         android:thumb="@drawable/seek_thumb"
-        app:layout_constraintBottom_toTopOf="@+id/grindBottomImageView"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigationbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
