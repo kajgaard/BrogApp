@@ -102,8 +102,6 @@ public class EnterWaterPerGramActivity extends AppCompatActivity {
         }
         waterTotalTextView.setText("Samlet mængde kaffebryg: " + totalBrew + " ml");
 
-        Toast.makeText(this,brewValues.toString(),Toast.LENGTH_SHORT).show();
-
 
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);

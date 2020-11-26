@@ -70,9 +70,6 @@ public class EnterGramsActivity extends AppCompatActivity {
         gramsInteger=Integer.parseInt(brewValues.get(0));
         gramsTextView.setText(gramsInteger+" g");
 
-        Toast.makeText(this,brewValues.toString(),Toast.LENGTH_SHORT).show();
-
-
 
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);

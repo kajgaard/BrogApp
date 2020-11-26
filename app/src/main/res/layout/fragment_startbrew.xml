@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/conLay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@color/BackgroundGrey"
+    android:paddingBottom="10dp">
+
+    <Button
+        android:id="@+id/brygBtn"
+        android:layout_width="130dp"
+        android:layout_height="71dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/rounded_button"
+        android:onClick="brygPush"
+        android:text="Bryg!"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/brewValuesTV" />
+
+    <Button
+        android:id="@+id/tilbageBtn"
+        android:layout_width="130dp"
+        android:layout_height="71dp"
+
+        android:layout_marginStart="16dp"
+        android:background="@drawable/rounded_button"
+        android:onClick="tilbagePush"
+        android:text="Tilbage"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/valueListTV"
+        app:layout_constraintTop_toBottomOf="@+id/valueListTV" />
+
+    <TextView
+        android:id="@+id/brewValuesTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:gravity="end"
+        android:padding="10dp"
+        android:text="5 g\n5 ml / g\nMedium\n5 \u00B0C\n5 ml\n1 min 50 sek\n2 min 10 sek"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/valueListTV"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/valueListTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:padding="10dp"
+        android:text="Kaffemængde\nVand pr. gram\nKværnstørrelse\nTemperatur\nBloom-vand\nBloom-tid\nBryggetid"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toStartOf="@+id/brewValuesTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionTV" />
+
+    <TextView
+        android:id="@+id/titelTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:text="Titel"
+        android:textSize="45sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/brewValuesTV"
+        app:layout_constraintStart_toStartOf="@+id/valueListTV"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/descriptionTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Description"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="@+id/brewValuesTV"
+        app:layout_constraintStart_toStartOf="@+id/valueListTV"
+        app:layout_constraintTop_toBottomOf="@+id/titelTV" />
+</androidx.constraintlayout.widget.ConstraintLayout>

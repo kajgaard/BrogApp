@@ -48,7 +48,6 @@ public class DialogFragmentBrewFromHistory extends DialogFragment implements Vie
     @Override
     public void onClick(View view) {
         if(view == brewBtn){
-
             ArrayList<String> brewValues = new ArrayList<>();
             brewValues.add("20");       // Grams of coffee
             brewValues.add("60");       // grams of coffee per liter of water
@@ -64,6 +63,7 @@ public class DialogFragmentBrewFromHistory extends DialogFragment implements Vie
             startActivity(intent);
             dismiss();
         }
+
         if (view == toFavBtn){
 
             Intent intent = new Intent(getContext(), HistoryAddToF.class);

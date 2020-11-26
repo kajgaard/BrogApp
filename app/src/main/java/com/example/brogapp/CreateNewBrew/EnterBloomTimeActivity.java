@@ -95,7 +95,6 @@ public class EnterBloomTimeActivity extends AppCompatActivity {
         bloomTimeValueTextView = findViewById(R.id.bloomTimeValueTextView);
         bloomTimeValueTextView.setText(convertTime(bloomTimeInteger));
 
-        Toast.makeText(this, brewValues.toString(), Toast.LENGTH_SHORT).show();
 
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);

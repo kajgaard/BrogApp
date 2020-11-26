@@ -83,8 +83,6 @@ public class EnterGrindActivity extends AppCompatActivity {
         grindValueTextView = findViewById(R.id.grindValueTextView);
         grindValueTextView.setText(brewValues.get(2));
 
-        Toast.makeText(this,brewValues.toString(),Toast.LENGTH_SHORT).show();
-
 
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);

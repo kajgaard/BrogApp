@@ -81,7 +81,6 @@ public class EnterBloomWaterActivity extends AppCompatActivity {
 
         bloomWaterInteger = Integer.parseInt(brewValues.get(4));
 
-        Toast.makeText(this,brewValues.toString(),Toast.LENGTH_SHORT).show();
 
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);
