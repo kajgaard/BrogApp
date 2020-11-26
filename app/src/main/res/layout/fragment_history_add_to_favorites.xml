@@ -58,51 +58,72 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+<LinearLayout
+    android:id="@+id/linLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@id/saveFaveHeadlineTV"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:orientation="vertical"
+    >
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:counterEnabled="true"
+        app:counterMaxLength="15"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/addToFaveNameOfBrewET"
+            android:layout_width="270dp"
+            android:layout_height="50dp"
+            android:padding="15dp"
+            android:textSize="20sp"
+            android:background="@drawable/rounded_square"
+            android:backgroundTint="@color/Highlight"
+            android:hint="Indtast navn på bryg"
+            >
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        app:counterEnabled="true"
+        app:counterMaxLength="40"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/addToFaveDiscripOfBrewET"
+            android:layout_width="270dp"
+            android:layout_height="50dp"
+            android:padding="15dp"
+            android:textSize="20sp"
+            android:background="@drawable/rounded_square"
+            android:backgroundTint="@color/Highlight"
+            android:hint="Indtast beskrivelse på bryg"
+            >
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
 
 
-    <EditText
-        android:id="@+id/addToFaveNameOfBrewET"
-        android:layout_width="270dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_square"
-        android:backgroundTint="@color/Highlight"
-        android:ems="10"
-        android:hint="Indtast navn på bryg"
-        android:inputType="textPersonName"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/saveFaveHeadlineTV" />
 
 
-    <EditText
-        android:id="@+id/addToFaveDiscripOfBrewET"
-        android:layout_width="270dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_square"
-        android:backgroundTint="@color/Highlight"
-        android:ems="10"
-        android:hint="Indtast beskrivelse af bryg"
-        android:inputType="textPersonName"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addToFaveNameOfBrewET" />
+</LinearLayout>
+
 
     <RatingBar
         android:id="@+id/ratingBar"
         style="@android:style/Widget.Material.Light.RatingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:max="5"
         android:numStars="5"
         android:progressTint="#FFD740"
@@ -110,7 +131,7 @@
         android:stepSize=".5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addToFaveDiscripOfBrewET" />
+        app:layout_constraintTop_toBottomOf="@+id/linLayout" />
 
     <ImageView
         android:id="@+id/pickIconIV"
