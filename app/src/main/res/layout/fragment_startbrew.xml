@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center">
+
+    <TextView
+        android:id="@+id/brewValuesTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginEnd="28dp"
+        android:gravity="end"
+        android:text="5 g\n5 ml / g\nMedium\n5 \u00B0C\n5 ml\n1 min 50 sek\n2 min 10 sek"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/valueListTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/finalListTextView" />
+
+    <TextView
+        android:id="@+id/valueListTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="Kaffemængde\nVand pr. gram\nKværnstørrelse\nTemperatur\nBloom-vand\nBloom-tid\nBryggetid"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toStartOf="@+id/brewValuesTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -141,7 +141,6 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
         Log.d("CLICK","in snapshot is " + snapshot.getData() + "");
         clickedBrewID = snapshot.getId();
 
-
         DialogFragmentBrewFromHistory myFragment = new DialogFragmentBrewFromHistory();
         myFragment.setDocumentSnapshot(snapshot);
         myFragment.show(getSupportFragmentManager(),"Brew from History Fragment");

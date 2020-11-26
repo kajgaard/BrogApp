@@ -156,6 +156,7 @@ public class ProfilePage extends AppCompatActivity implements View.OnClickListen
             FirebaseAuth.getInstance().signOut(); //logs user out
             startActivity(new Intent(getApplicationContext(), LogInActivity.class));
             finish();
+
         } else if (v==settings || v == settingsIV || v == settingsArrow){
             Toast.makeText(this,"Ikke implementeret",Toast.LENGTH_SHORT).show();
         } else if (v==support || v == supportIV || v == supportArrow) {
@@ -165,11 +166,6 @@ public class ProfilePage extends AppCompatActivity implements View.OnClickListen
         } else if (v==editProfile){
             Toast.makeText(this,"Ikke implementeret",Toast.LENGTH_SHORT).show();
         }
-
-
-
-
-
 
     }
 }
