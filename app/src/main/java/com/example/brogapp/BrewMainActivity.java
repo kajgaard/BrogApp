@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.brogapp.CreateNewBrew.BrewStartedActivity;
 import com.example.brogapp.CreateNewBrew.EnterGramsActivity;
 import com.example.brogapp.Favorites.BrewFaveAdapter;
+import com.example.brogapp.Favorites.FavoritesActivity;
 import com.example.brogapp.Favorites.FavoritesAdapter;
 import com.firebase.ui.firestore.SnapshotParser;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
@@ -209,5 +210,9 @@ public class BrewMainActivity extends AppCompatActivity implements FavoritesAdap
         intent.putExtra("text","Velbekomme!");
         startActivity(intent);
         startBrewFragment.dismiss();
+    }
+
+    public void favoClick (View view){
+        startActivity(new Intent(getApplicationContext(), FavoritesActivity.class));
     }
 }

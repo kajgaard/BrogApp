@@ -10,14 +10,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.brogapp.BrewItem;
 import com.example.brogapp.BrewMainActivity;
 import com.example.brogapp.CleanActivity;
+import com.example.brogapp.CreateNewBrew.BrewStartedActivity;
 import com.example.brogapp.HomePage;
 import com.example.brogapp.ProfilePage;
 import com.example.brogapp.R;
 import com.example.brogapp.ScanActivity;
+import com.example.brogapp.StartBrewFragment;
 import com.firebase.ui.firestore.SnapshotParser;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -25,6 +28,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+
+import java.util.ArrayList;
 
 public class FavoritesActivity extends AppCompatActivity implements FavoritesAdapter.OnListItemClick {
 
@@ -35,6 +40,8 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesAda
     FirebaseFirestore fStore;
     String userID;
     FavoritesAdapter mAdapter;
+    StartBrewFragment startBrewFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,5 +129,30 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesAda
     @Override
     public void onItemClick(DocumentSnapshot snapshot, int position) {
         Log.d("CLICK","item was clicked at pos. " + position + "\nID is " + snapshot.getId());
+
+        startBrewFragment = new StartBrewFragment();
+        startBrewFragment.setDocumentSnapshot(snapshot);
+        startBrewFragment.show(getSupportFragmentManager(), "Getting ready to brew");
+    }
+
+    public void tilbagePush(View view) {
+        startBrewFragment.dismiss();
+    }
+
+    public void brygPush(View view) {
+        ArrayList<String> brewValues = new ArrayList<>();
+        brewValues.add("20");       // Grams of coffee
+        brewValues.add("60");       // grams of coffee per liter of water
+        brewValues.add("Medium");   // Coffee ground coarseness
+        brewValues.add("92");       // Water temperature
+        brewValues.add("40");       // Bloom water
+        brewValues.add("30");       // Bloom Time
+        brewValues.add("180");      // Brew time
+
+        Intent intent = new Intent(FavoritesActivity.this, BrewStartedActivity.class);
+        intent.putExtra("brewValues", brewValues);
+        intent.putExtra("text","Velbekomme!");
+        startActivity(intent);
+        startBrewFragment.dismiss();
     }
 }
