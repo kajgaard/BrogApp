@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -93,7 +94,27 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
 
         }else if(view == forgotPswd){
-            Toast.makeText(this, "Ikke implementeret endnu", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Du logger nu ind som testbruger", Toast.LENGTH_SHORT).show();
+            String email1 = "test@test.dk";
+            String password1 = "123456";
+            progressBar.setVisibility(View.VISIBLE);
+            fAuth.signInWithEmailAndPassword(email1,password1).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+
+                    if(task.isSuccessful()){
+                        startActivity(new Intent(getApplicationContext(),HomePage.class));
+                        Toast.makeText(LogInActivity.this, "Login succesfuld", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }else{
+                        Toast.makeText(LogInActivity.this, "Fejl: "+ task.getException().toString(), Toast.LENGTH_SHORT).show();
+                        Log.d("LOGIN","Fejlen er "+task.getException().toString());
+                    }
+
+                }
+
+            });
+
         }else if(view == createUser){
             startActivity(new Intent(getApplicationContext(), CreateUserActivity.class));
             finish();
