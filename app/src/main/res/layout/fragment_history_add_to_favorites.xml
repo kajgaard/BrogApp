@@ -7,19 +7,21 @@
     android:layout_height="match_parent"
     android:background="@color/BackgroundGrey">
 
-    <Button
-        android:id="@+id/pickIconButton"
-        android:layout_width="130dp"
-        android:layout_height="71dp"
+    <!--android:background="@drawable/rounded_square"
+     android:backgroundTint="@color/Highlight" -->
 
-        android:background="@drawable/rounded_button"
+    <TextView
+        android:id="@+id/pickIconButton"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
         android:onClick="pickIconButtonPushed"
-        android:text="Vælg ikon"
+        android:text="@string/choose_icon"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="24sp"
-        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/pickIconIV"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
 
@@ -27,10 +29,8 @@
         android:id="@+id/bloomWaterNextButton3"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/rounded_button"
+        android:background="@drawable/rounded_square"
+        android:backgroundTint="@color/Highlight"
         android:onClick="saveToFave"
         android:text="Gem"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
@@ -38,18 +38,21 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pickIconIV" />
+    <!--android:background="@drawable/rounded_square"
+       android:backgroundTint="@color/Highlight" -->
 
     <TextView
         android:id="@+id/saveFaveHeadlineTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="32dp"
         android:gravity="center"
-        android:text="Gem bryg i Favoritter"
+        android:text="Gem bryg i\nFavoritter"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,12 +62,17 @@
         android:id="@+id/addToFaveNameOfBrewET"
         android:layout_width="270dp"
         android:layout_height="50dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_square"
+        android:backgroundTint="@color/Highlight"
         android:ems="10"
         android:hint="Indtast navn på bryg"
         android:inputType="textPersonName"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/saveFaveHeadlineTV" />
 
@@ -72,12 +80,17 @@
         android:id="@+id/addToFaveDiscripOfBrewET"
         android:layout_width="270dp"
         android:layout_height="48dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_square"
+        android:backgroundTint="@color/Highlight"
         android:ems="10"
         android:hint="Indtast beskrivelse af bryg"
         android:inputType="textPersonName"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addToFaveNameOfBrewET" />
 
@@ -98,13 +111,15 @@
 
     <ImageView
         android:id="@+id/pickIconIV"
-        android:layout_width="131dp"
-        android:layout_height="127dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
         android:src="@drawable/coffeetwo_pic"
+        android:onClick="pickIconButtonPushed"
+        app:layout_constraintBottom_toTopOf="@+id/bloomWaterNextButton3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pickIconButton" />
+        app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
