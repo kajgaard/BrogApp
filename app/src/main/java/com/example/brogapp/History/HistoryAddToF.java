@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -40,46 +41,72 @@ public class HistoryAddToF extends AppCompatActivity {
     FirebaseFirestore fStore;
     String userID;
 
-    public void saveToFave(View view) {     // When user presses "GEM" in order to save History to Favorites
-        Map<String, Object> newbrew = new HashMap<>();      // HashMap to store all brew details
+    public void saveToFave(View view) {// When user presses "GEM" in order to save History to Favorites
 
-        // Populate the HashMap with values entered by the user + brew data from the brew
-        newbrew.put("brewName", brewName.getText().toString());
-        newbrew.put("brewDescription", description.getText().toString());
-        newbrew.put("brewScore", Float.toString(stars.getRating()));
-        newbrew.put("imageRessource", selectedIcon);
-        newbrew.put("coffeeAmount", (String) HistoryDocumentFromFirebase.get("coffeeAmount"));
-        newbrew.put("grindSize", (String) HistoryDocumentFromFirebase.get("grindSize"));
-        newbrew.put("waterRatio", (String) HistoryDocumentFromFirebase.get("waterRatio"));
-        newbrew.put("brewTemp", (String) HistoryDocumentFromFirebase.get("brewTemp"));
-        newbrew.put("bloomWater", (String) HistoryDocumentFromFirebase.get("bloomWater"));
-        newbrew.put("bloomTime", (String) HistoryDocumentFromFirebase.get("bloomTime"));
-        //newbrew.put("brewTime", (String) HistoryDocumentFromFirebase.get("brewTime"));
 
-        // Store the populated brew in FireStore Favorites
-        fStore.collection("users").document(userID).collection("favorites").document().set(newbrew);
+        final String name = brewName.getText().toString();
+        final String mDescription = description.getText().toString();
 
-        // Delete the brew from History, as it is now available in favorites
-        fStore.collection("users")
-                .document(userID)
-                .collection("history")
-                .document(IdOfSelectedHistory)
-                .delete()
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d("TAG", "DocumentSnapshot successfully deleted!");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w("TAG", "Error deleting document", e);
-                    }
-                });
+        if(TextUtils.isEmpty(name)){
+            brewName.setError("Feltet skal udfyldes");
+        }else{
 
-        Toast.makeText(this,"Dit bryg er gemt i favoritter!",Toast.LENGTH_SHORT).show();
-        finish();
+            Map<String, Object> newbrew = new HashMap<>();      // HashMap to store all brew details
+
+                // Populate the HashMap with values entered by the user + brew data from the brew
+                newbrew.put("brewName", brewName.getText().toString());
+                newbrew.put("brewDescription", description.getText().toString());
+                newbrew.put("brewScore", Float.toString(stars.getRating()));
+                newbrew.put("imageRessource", selectedIcon);
+                newbrew.put("coffeeAmount", (String) HistoryDocumentFromFirebase.get("coffeeAmount"));
+                newbrew.put("grindSize", (String) HistoryDocumentFromFirebase.get("grindSize"));
+                newbrew.put("waterRatio", (String) HistoryDocumentFromFirebase.get("waterRatio"));
+                newbrew.put("brewTemp", (String) HistoryDocumentFromFirebase.get("brewTemp"));
+                newbrew.put("bloomWater", (String) HistoryDocumentFromFirebase.get("bloomWater"));
+                newbrew.put("bloomTime", (String) HistoryDocumentFromFirebase.get("bloomTime"));
+                newbrew.put("brewTime", (String) HistoryDocumentFromFirebase.get("brewTime"));
+
+            if(TextUtils.isEmpty(mDescription)) {
+                newbrew.put("brewName", brewName.getText().toString());
+                newbrew.put("brewDescription", "Du har ikke skrevet en beskrivelse...");
+                newbrew.put("brewScore", Float.toString(stars.getRating()));
+                newbrew.put("imageRessource", selectedIcon);
+                newbrew.put("coffeeAmount", (String) HistoryDocumentFromFirebase.get("coffeeAmount"));
+                newbrew.put("grindSize", (String) HistoryDocumentFromFirebase.get("grindSize"));
+                newbrew.put("waterRatio", (String) HistoryDocumentFromFirebase.get("waterRatio"));
+                newbrew.put("brewTemp", (String) HistoryDocumentFromFirebase.get("brewTemp"));
+                newbrew.put("bloomWater", (String) HistoryDocumentFromFirebase.get("bloomWater"));
+                newbrew.put("bloomTime", (String) HistoryDocumentFromFirebase.get("bloomTime"));
+                newbrew.put("brewTime", (String) HistoryDocumentFromFirebase.get("brewTime"));
+            }
+
+            // Store the populated brew in FireStore Favorites
+            fStore.collection("users").document(userID).collection("favorites").document().set(newbrew);
+
+            // Delete the brew from History, as it is now available in favorites
+            fStore.collection("users")
+                    .document(userID)
+                    .collection("history")
+                    .document(IdOfSelectedHistory)
+                    .delete()
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Log.d("TAG", "DocumentSnapshot successfully deleted!");
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.w("TAG", "Error deleting document", e);
+                        }
+                    });
+
+            Toast.makeText(this,"Dit bryg er gemt i favoritter!",Toast.LENGTH_SHORT).show();
+            finish();
+        }
+
+
     }
 
     // Display fragment when user wants to pick an Icon
