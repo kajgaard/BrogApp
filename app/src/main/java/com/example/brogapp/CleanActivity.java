@@ -95,6 +95,7 @@ public class CleanActivity extends AppCompatActivity implements View.OnClickList
             newbrew.put("bloomWater", "45");
             newbrew.put("bloomTime", "30");
             newbrew.put("brewTime", "180");
+            //newbrew.put("timeStamp",1605771956572);
 
             Map<String, Object> newbrew1 = new HashMap<>();
             newbrew1.put("brewName", "London");
@@ -108,6 +109,7 @@ public class CleanActivity extends AppCompatActivity implements View.OnClickList
             newbrew1.put("bloomWater", "45");
             newbrew1.put("bloomTime", "30");
             newbrew1.put("brewTime", "180");
+            //newbrew.put("timeStamp",1606383638000);
 
             Map<String, Object> newbrew2 = new HashMap<>();
             newbrew2.put("brewName", "New York");
