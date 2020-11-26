@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.brogapp.BrewsFromBrog.PreMadeBrewsActivity;
 import com.example.brogapp.CreateNewBrew.BrewStartedActivity;
 import com.example.brogapp.CreateNewBrew.EnterGramsActivity;
 import com.example.brogapp.Favorites.BrewFaveAdapter;
@@ -33,11 +34,12 @@ import com.google.firebase.firestore.Query;
 
 import java.util.ArrayList;
 
-public class BrewMainActivity extends AppCompatActivity implements FavoritesAdapter.OnListItemClick {
+public class BrewMainActivity extends AppCompatActivity implements FavoritesAdapter.OnListItemClick, View.OnClickListener {
 
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
+    TextView moreBrews;
 
     BrewFaveAdapter mFaveAdapter;
     RecyclerView mFaveRecyclerView;
@@ -75,6 +77,8 @@ public class BrewMainActivity extends AppCompatActivity implements FavoritesAdap
         fStore = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
         userID = fAuth.getCurrentUser().getUid();
+        moreBrews = findViewById(R.id.flereForslagTV);
+        moreBrews.setOnClickListener(this);
 
 
         //Query for database
@@ -214,5 +218,12 @@ public class BrewMainActivity extends AppCompatActivity implements FavoritesAdap
 
     public void favoClick (View view){
         startActivity(new Intent(getApplicationContext(), FavoritesActivity.class));
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(view == moreBrews){
+            startActivity(new Intent(getApplicationContext(), PreMadeBrewsActivity.class));
+        }
     }
 }

@@ -15,6 +15,7 @@
         <activity android:name=".History.HistoryAddToF"></activity>
         <activity android:name=".CreateNewBrew.BrewStartedActivity"
             android:screenOrientation="portrait"/>
+
         <activity android:name=".CreateNewBrew.EnterFinalPageActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".CreateNewBrew.EnterBrewTimeActivity"
@@ -57,6 +58,8 @@
         <activity android:name=".ProfilePage"
             android:screenOrientation="portrait"/>
         <activity android:name=".HomePage"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".BrewsFromBrog.PreMadeBrewsActivity"
             android:screenOrientation="portrait"/>
     </application>
 
