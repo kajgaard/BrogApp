@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.brogapp.Favorites.FavoritesActivity;
 import com.example.brogapp.History.HistoryActivity;
@@ -25,8 +26,8 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class ProfilePage extends AppCompatActivity implements View.OnClickListener {
 
-    TextView favorites, logout, header, history;
-    ImageView favoritesIV, historyIV, favoritesArrow, historyArrow;
+    TextView favorites, logout, header, history, settings, support, editProfile;
+    ImageView favoritesIV, historyIV, favoritesArrow, historyArrow, settingsIV,settingsArrow,supportIV,supportArrow,profilePic;
     String name, userID;
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
@@ -56,6 +57,25 @@ public class ProfilePage extends AppCompatActivity implements View.OnClickListen
         historyIV.setOnClickListener(this);
         historyArrow.setOnClickListener(this);
 
+        settings = findViewById(R.id.settingsTV);
+        settingsIV = findViewById(R.id.settingsIV);
+        settingsArrow = findViewById(R.id.arrow3IV);
+        settings.setOnClickListener(this);
+        settingsIV.setOnClickListener(this);
+        settingsArrow.setOnClickListener(this);
+
+        support = findViewById(R.id.supportTV);
+        supportIV = findViewById(R.id.supportIV);
+        supportArrow = findViewById(R.id.arrow4IV);
+        support.setOnClickListener(this);
+        supportIV.setOnClickListener(this);
+        supportArrow.setOnClickListener(this);
+
+        profilePic = findViewById(R.id.profilePicIV);
+        profilePic.setOnClickListener(this);
+
+        editProfile = findViewById(R.id.editProfileTV);
+        editProfile.setOnClickListener(this);
 
         header = findViewById(R.id.welcomeTV);
 
@@ -136,7 +156,20 @@ public class ProfilePage extends AppCompatActivity implements View.OnClickListen
             FirebaseAuth.getInstance().signOut(); //logs user out
             startActivity(new Intent(getApplicationContext(), LogInActivity.class));
             finish();
-
+        } else if (v==settings || v == settingsIV || v == settingsArrow){
+            Toast.makeText(this,"Ikke implementeret",Toast.LENGTH_SHORT).show();
+        } else if (v==support || v == supportIV || v == supportArrow) {
+            Toast.makeText(this,"Ikke implementeret",Toast.LENGTH_SHORT).show();
+        } else if (v==profilePic){
+            Toast.makeText(this,"Ikke implementeret",Toast.LENGTH_SHORT).show();
+        } else if (v==editProfile){
+            Toast.makeText(this,"Ikke implementeret",Toast.LENGTH_SHORT).show();
         }
+
+
+
+
+
+
     }
 }
