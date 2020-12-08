@@ -5,7 +5,7 @@
     android:id="@+id/animation"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateNewBrew.BrewStartedActivity">
+    tools:context="brog.coffee.brogapp.CreateNewBrew.BrewStartedActivity">
 
     <TextView
         android:id="@+id/finalIntroTextView3"

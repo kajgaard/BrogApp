@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/AccentColorGreen"
-    tools:context=".LogOnActivities.LogInActivity">
+    tools:context="brog.coffee.brogapp.LogOnActivities.LogInActivity">
 
     <Button
         android:id="@+id/logInBtn"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateNewBrew.EnterWaterPerGramActivity">
+    tools:context="brog.coffee.brogapp.CreateNewBrew.EnterWaterPerGramActivity">
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
