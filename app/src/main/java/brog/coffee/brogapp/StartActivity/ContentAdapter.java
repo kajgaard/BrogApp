@@ -1,4 +1,4 @@
-package brog.coffee.brogapp;
+package brog.coffee.brogapp.StartActivity;
 
 import android.util.Log;
 import android.view.LayoutInflater;

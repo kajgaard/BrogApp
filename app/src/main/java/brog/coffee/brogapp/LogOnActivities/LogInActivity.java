@@ -14,7 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import brog.coffee.brogapp.HomePage;
+import brog.coffee.brogapp.StartActivity.HomePage;
 
 import brog.coffee.brogapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;

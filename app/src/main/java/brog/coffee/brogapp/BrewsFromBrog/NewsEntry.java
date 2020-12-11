@@ -1,4 +1,4 @@
-package brog.coffee.brogapp;
+package brog.coffee.brogapp.BrewsFromBrog;
 
 public class NewsEntry {
 

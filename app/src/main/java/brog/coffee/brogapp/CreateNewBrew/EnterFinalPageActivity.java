@@ -13,11 +13,11 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import brog.coffee.brogapp.BrewMainActivity;
-import brog.coffee.brogapp.CleanActivity;
-import brog.coffee.brogapp.HomePage;
-import brog.coffee.brogapp.ProfilePage;
-import brog.coffee.brogapp.ScanActivity;
+import brog.coffee.brogapp.BrewActivity.BrewMainActivity;
+import brog.coffee.brogapp.CleanActivity.CleanActivity;
+import brog.coffee.brogapp.StartActivity.HomePage;
+import brog.coffee.brogapp.ProfileActivity.ProfilePage;
+import brog.coffee.brogapp.ScanActivity.ScanActivity;
 
 import brog.coffee.brogapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -161,7 +161,6 @@ public class EnterFinalPageActivity extends AppCompatActivity {
                         overridePendingTransition(0, 0); //Dont know what this does
                         return true;
                 }
-
                 return false;
             }
         });

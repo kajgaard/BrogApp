@@ -1,4 +1,4 @@
-package brog.coffee.brogapp;
+package brog.coffee.brogapp.BrewActivity;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -109,6 +109,4 @@ public class StartBrewFragment extends DialogFragment implements View.OnClickLis
             return "" + seconds + " sek";
         }
     }
-
-
 }

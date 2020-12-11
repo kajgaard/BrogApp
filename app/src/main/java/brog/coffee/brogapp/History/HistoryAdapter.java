@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import brog.coffee.brogapp.BrewItem;
+import brog.coffee.brogapp.BrewActivity.BrewItem;
 
 import brog.coffee.brogapp.R;
 import com.firebase.ui.firestore.paging.FirestorePagingAdapter;

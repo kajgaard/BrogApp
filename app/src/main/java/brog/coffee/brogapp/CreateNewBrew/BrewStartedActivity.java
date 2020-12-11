@@ -10,11 +10,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import brog.coffee.brogapp.BrewMainActivity;
-import brog.coffee.brogapp.CleanActivity;
-import brog.coffee.brogapp.HomePage;
-import brog.coffee.brogapp.ProfilePage;
-import brog.coffee.brogapp.ScanActivity;
+import brog.coffee.brogapp.BrewActivity.BrewMainActivity;
+import brog.coffee.brogapp.CleanActivity.CleanActivity;
+import brog.coffee.brogapp.StartActivity.HomePage;
+import brog.coffee.brogapp.ProfileActivity.ProfilePage;
+import brog.coffee.brogapp.ScanActivity.ScanActivity;
 
 import brog.coffee.brogapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;

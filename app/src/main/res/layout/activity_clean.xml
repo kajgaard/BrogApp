@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="brog.coffee.brogapp.CleanActivity">
+    tools:context="brog.coffee.brogapp.CleanActivity.CleanActivity">
 
     <TextView
         android:id="@+id/textView"

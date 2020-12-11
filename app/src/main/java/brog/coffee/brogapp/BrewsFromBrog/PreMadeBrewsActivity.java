@@ -12,17 +12,17 @@ import androidx.paging.PagedList;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import brog.coffee.brogapp.BrewItem;
-import brog.coffee.brogapp.CleanActivity;
-import brog.coffee.brogapp.ProfilePage;
-import brog.coffee.brogapp.BrewMainActivity;
+import brog.coffee.brogapp.BrewActivity.BrewItem;
+import brog.coffee.brogapp.CleanActivity.CleanActivity;
+import brog.coffee.brogapp.ProfileActivity.ProfilePage;
+import brog.coffee.brogapp.BrewActivity.BrewMainActivity;
 import brog.coffee.brogapp.CreateNewBrew.BrewStartedActivity;
 import brog.coffee.brogapp.Favorites.FavoritesAdapter;
-import brog.coffee.brogapp.HomePage;
+import brog.coffee.brogapp.StartActivity.HomePage;
 
 import brog.coffee.brogapp.R;
-import brog.coffee.brogapp.ScanActivity;
-import brog.coffee.brogapp.StartBrewFragment;
+import brog.coffee.brogapp.ScanActivity.ScanActivity;
+import brog.coffee.brogapp.BrewActivity.StartBrewFragment;
 import com.firebase.ui.firestore.SnapshotParser;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;

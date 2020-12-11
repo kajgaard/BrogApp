@@ -49,15 +49,15 @@
         </activity>
         <activity android:name="brog.coffee.brogapp.Favorites.FavoritesActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="brog.coffee.brogapp.ScanActivity"
+        <activity android:name="brog.coffee.brogapp.ScanActivity.ScanActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="brog.coffee.brogapp.CleanActivity"
+        <activity android:name="brog.coffee.brogapp.CleanActivity.CleanActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="brog.coffee.brogapp.BrewMainActivity"
+        <activity android:name="brog.coffee.brogapp.BrewActivity.BrewMainActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="brog.coffee.brogapp.ProfilePage"
+        <activity android:name="brog.coffee.brogapp.ProfileActivity.ProfilePage"
             android:screenOrientation="portrait"/>
-        <activity android:name="brog.coffee.brogapp.HomePage"
+        <activity android:name="brog.coffee.brogapp.StartActivity.HomePage"
             android:screenOrientation="portrait"/>
         <activity android:name="brog.coffee.brogapp.BrewsFromBrog.PreMadeBrewsActivity"
             android:screenOrientation="portrait"/>

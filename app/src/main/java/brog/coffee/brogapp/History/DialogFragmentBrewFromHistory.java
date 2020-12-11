@@ -1,4 +1,4 @@
-package brog.coffee.brogapp;
+package brog.coffee.brogapp.History;
 
 import android.content.Intent;
 import android.os.Bundle;

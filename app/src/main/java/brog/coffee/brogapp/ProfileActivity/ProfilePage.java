@@ -1,4 +1,4 @@
-package brog.coffee.brogapp;
+package brog.coffee.brogapp.ProfileActivity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,11 +13,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import brog.coffee.brogapp.BrewActivity.BrewMainActivity;
+import brog.coffee.brogapp.CleanActivity.CleanActivity;
 import brog.coffee.brogapp.Favorites.FavoritesActivity;
 import brog.coffee.brogapp.History.HistoryActivity;
 import brog.coffee.brogapp.LogOnActivities.LogInActivity;
 
 import brog.coffee.brogapp.R;
+import brog.coffee.brogapp.ScanActivity.ScanActivity;
+import brog.coffee.brogapp.StartActivity.HomePage;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;

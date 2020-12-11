@@ -11,14 +11,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 
-import brog.coffee.brogapp.BrewFromFirestore;
-import brog.coffee.brogapp.BrewItem;
-import brog.coffee.brogapp.BrewMainActivity;
-import brog.coffee.brogapp.CleanActivity;
-import brog.coffee.brogapp.DialogFragmentBrewFromHistory;
-import brog.coffee.brogapp.HomePage;
-import brog.coffee.brogapp.ProfilePage;
-import brog.coffee.brogapp.ScanActivity;
+import brog.coffee.brogapp.BrewActivity.BrewFromFirestore;
+import brog.coffee.brogapp.BrewActivity.BrewItem;
+import brog.coffee.brogapp.BrewActivity.BrewMainActivity;
+import brog.coffee.brogapp.CleanActivity.CleanActivity;
+import brog.coffee.brogapp.StartActivity.HomePage;
+import brog.coffee.brogapp.ProfileActivity.ProfilePage;
+import brog.coffee.brogapp.ScanActivity.ScanActivity;
 
 import brog.coffee.brogapp.R;
 import com.firebase.ui.firestore.SnapshotParser;

@@ -1,4 +1,4 @@
-package brog.coffee.brogapp;
+package brog.coffee.brogapp.ScanActivity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +8,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import brog.coffee.brogapp.BrewActivity.BrewMainActivity;
+import brog.coffee.brogapp.CleanActivity.CleanActivity;
+import brog.coffee.brogapp.StartActivity.HomePage;
+import brog.coffee.brogapp.ProfileActivity.ProfilePage;
 import brog.coffee.brogapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -33,7 +37,7 @@ public class ScanActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()){
 
                     case R.id.nav_home:
-                        startActivity(new Intent(getApplicationContext(),HomePage.class));
+                        startActivity(new Intent(getApplicationContext(), HomePage.class));
                         overridePendingTransition(0,0); //Dont know what this does
                         return true;
 
@@ -43,17 +47,17 @@ public class ScanActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.nav_brew:
-                        startActivity(new Intent(getApplicationContext(),BrewMainActivity.class));
+                        startActivity(new Intent(getApplicationContext(), BrewMainActivity.class));
                         overridePendingTransition(0,0); //Dont know what this does
                         return true;
 
                     case R.id.nav_wash:
-                        startActivity(new Intent(getApplicationContext(),CleanActivity.class));
+                        startActivity(new Intent(getApplicationContext(), CleanActivity.class));
                         overridePendingTransition(0,0); //Dont know what this does
                         return true;
 
                     case R.id.nav_profile:
-                        startActivity(new Intent(getApplicationContext(),ProfilePage.class));
+                        startActivity(new Intent(getApplicationContext(), ProfilePage.class));
                         overridePendingTransition(0,0); //Dont know what this does
                         return true;
                 }

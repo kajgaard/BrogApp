@@ -1,4 +1,4 @@
-package brog.coffee.brogapp;
+package brog.coffee.brogapp.BrewActivity;
 
 import android.view.LayoutInflater;
 import android.view.View;
