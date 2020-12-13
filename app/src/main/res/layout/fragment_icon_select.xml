@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/BackgroundGrey"
     android:padding="24dp">
 
     <ImageView
@@ -28,10 +29,10 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_square"
         app:layout_constraintStart_toStartOf="@+id/coffeeIM0"
         app:layout_constraintTop_toBottomOf="@+id/coffeeIM0"
-        app:srcCompat="@drawable/coffeethree_pic"
-        android:background="@drawable/rounded_square"/>
+        app:srcCompat="@drawable/coffeethree_pic" />
 
     <ImageView
         android:id="@+id/coffeeIM3"
@@ -39,20 +40,20 @@
         android:layout_height="100dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_square"
         app:layout_constraintStart_toEndOf="@+id/coffeeIM2"
         app:layout_constraintTop_toBottomOf="@+id/coffeeIM1"
-        app:srcCompat="@drawable/coffeefour_pic"
-        android:background="@drawable/rounded_square"/>
+        app:srcCompat="@drawable/coffeefour_pic" />
 
     <ImageView
         android:id="@+id/coffeeIM4"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_square"
         app:layout_constraintStart_toStartOf="@+id/coffeeIM2"
         app:layout_constraintTop_toBottomOf="@+id/coffeeIM2"
-        app:srcCompat="@drawable/coffeefive_pic"
-        android:background="@drawable/rounded_square"/>
+        app:srcCompat="@drawable/coffeefive_pic" />
 
     <ImageView
         android:id="@+id/coffeeIM5"
@@ -60,8 +61,8 @@
         android:layout_height="100dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_square"
         app:layout_constraintStart_toEndOf="@+id/coffeeIM4"
         app:layout_constraintTop_toBottomOf="@+id/coffeeIM3"
-        app:srcCompat="@drawable/coffeesix_pic"
-        android:background="@drawable/rounded_square"/>
+        app:srcCompat="@drawable/coffeesix_pic" />
 </androidx.constraintlayout.widget.ConstraintLayout>

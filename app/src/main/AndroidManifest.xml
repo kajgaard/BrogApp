@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.brogapp">
+    package="brog.coffee.brogapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,34 +12,34 @@
         android:supportsRtl="true"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme">
-        <activity android:name=".History.HistoryAddToF"></activity>
-        <activity android:name=".CreateNewBrew.BrewStartedActivity"
+        <activity android:name="brog.coffee.brogapp.History.HistoryAddToF"></activity>
+        <activity android:name="brog.coffee.brogapp.CreateNewBrew.BrewStartedActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".CreateNewBrew.EnterFinalPageActivity"
+        <activity android:name="brog.coffee.brogapp.CreateNewBrew.EnterFinalPageActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".CreateNewBrew.EnterBrewTimeActivity"
+        <activity android:name="brog.coffee.brogapp.CreateNewBrew.EnterBrewTimeActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".CreateNewBrew.EnterBloomTimeActivity"
+        <activity android:name="brog.coffee.brogapp.CreateNewBrew.EnterBloomTimeActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".CreateNewBrew.EnterBloomWaterActivity"
+        <activity android:name="brog.coffee.brogapp.CreateNewBrew.EnterBloomWaterActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".CreateNewBrew.EnterTempActivity"
+        <activity android:name="brog.coffee.brogapp.CreateNewBrew.EnterTempActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".CreateNewBrew.EnterGrindActivity"
+        <activity android:name="brog.coffee.brogapp.CreateNewBrew.EnterGrindActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".CreateNewBrew.EnterWaterPerGramActivity"
+        <activity android:name="brog.coffee.brogapp.CreateNewBrew.EnterWaterPerGramActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".CreateNewBrew.EnterGramsActivity"
+            android:name="brog.coffee.brogapp.CreateNewBrew.EnterGramsActivity"
             android:label="@string/title_activity_enter_grams"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
-        <activity android:name=".History.HistoryActivity"
+        <activity android:name="brog.coffee.brogapp.History.HistoryActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".LogOnActivities.CreateUserActivity"
+        <activity android:name="brog.coffee.brogapp.LogOnActivities.CreateUserActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".LogOnActivities.LogInActivity"
+        <activity android:name="brog.coffee.brogapp.LogOnActivities.LogInActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,19 +47,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Favorites.FavoritesActivity"
+        <activity android:name="brog.coffee.brogapp.Favorites.FavoritesActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".ScanActivity"
+        <activity android:name="brog.coffee.brogapp.ScanActivity.ScanActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".CleanActivity"
+        <activity android:name="brog.coffee.brogapp.CleanActivity.CleanActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".BrewMainActivity"
+        <activity android:name="brog.coffee.brogapp.BrewActivity.BrewMainActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".ProfilePage"
+        <activity android:name="brog.coffee.brogapp.ProfileActivity.ProfilePage"
             android:screenOrientation="portrait"/>
-        <activity android:name=".HomePage"
+        <activity android:name="brog.coffee.brogapp.StartActivity.HomePage"
             android:screenOrientation="portrait"/>
-        <activity android:name=".BrewsFromBrog.PreMadeBrewsActivity"
+        <activity android:name="brog.coffee.brogapp.BrewsFromBrog.PreMadeBrewsActivity"
             android:screenOrientation="portrait"/>
     </application>
 

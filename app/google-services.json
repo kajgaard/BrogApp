@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:983396391385:android:bb21e9482ff8b1eac8a1c8",
         "android_client_info": {
-          "package_name": "com.example.brogapp"
+          "package_name": "brog.coffee.brogapp"
         }
       },
       "oauth_client": [

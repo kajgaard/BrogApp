@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:backgroundTint="@color/BackgroundGrey"
 
-    tools:context=".HomePage">
+    tools:context="brog.coffee.brogapp.StartActivity.HomePage">
 
     <LinearLayout
         android:id="@+id/linLay"

@@ -60,6 +60,7 @@
         android:padding="10dp"
         android:text="Kaffemængde\nVand pr. gram\nKværnstørrelse\nTemperatur\nBloom-vand\nBloom-tid\nBryggetid"
         android:textSize="22sp"
+        app:layout_constraintEnd_toStartOf="@+id/brewValuesTV"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descriptionTV" />
 
