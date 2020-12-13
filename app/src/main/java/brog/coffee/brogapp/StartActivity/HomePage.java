@@ -1,4 +1,4 @@
-package brog.coffee.brogapp;
+package brog.coffee.brogapp.StartActivity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,10 +12,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import brog.coffee.brogapp.BrewActivity.BrewItem;
+import brog.coffee.brogapp.BrewActivity.BrewMainActivity;
+import brog.coffee.brogapp.CleanActivity.CleanActivity;
 import brog.coffee.brogapp.Favorites.FavoritesActivity;
 import brog.coffee.brogapp.History.HistoryActivity;
 
+import brog.coffee.brogapp.ProfileActivity.ProfilePage;
 import brog.coffee.brogapp.R;
+import brog.coffee.brogapp.ScanActivity.ScanActivity;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.text.SimpleDateFormat;
@@ -124,22 +130,22 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
                         return true;
 
                     case R.id.nav_scan:
-                        startActivity(new Intent(getApplicationContext(),ScanActivity.class));
+                        startActivity(new Intent(getApplicationContext(), ScanActivity.class));
                         overridePendingTransition(0,0); //Dont know what this does
                         return true;
 
                     case R.id.nav_brew:
-                        startActivity(new Intent(getApplicationContext(),BrewMainActivity.class));
+                        startActivity(new Intent(getApplicationContext(), BrewMainActivity.class));
                         overridePendingTransition(0,0); //Dont know what this does
                         return true;
 
                     case R.id.nav_wash:
-                        startActivity(new Intent(getApplicationContext(),CleanActivity.class));
+                        startActivity(new Intent(getApplicationContext(), CleanActivity.class));
                         overridePendingTransition(0,0); //Dont know what this does
                         return true;
 
                     case R.id.nav_profile:
-                        startActivity(new Intent(getApplicationContext(),ProfilePage.class));
+                        startActivity(new Intent(getApplicationContext(), ProfilePage.class));
                         overridePendingTransition(0,0); //Dont know what this does
                         return true;
                 }

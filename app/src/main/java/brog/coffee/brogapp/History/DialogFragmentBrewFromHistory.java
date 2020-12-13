@@ -30,7 +30,6 @@ public class DialogFragmentBrewFromHistory extends DialogFragment implements Vie
         // Make sure not to add arguments to the constructor
     }
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
