@@ -83,13 +83,10 @@ public class StartBrewFragment extends DialogFragment implements View.OnClickLis
         brewValues.setText(finalValues);
         titel.setText(name);
         descrip.setText(description);
-
-
     }
 
     @Override
     public void onClick(View view) {
-        Toast.makeText(getContext(),"test clicked",Toast.LENGTH_SHORT).show();
     }
 
     public void setDocumentSnapshot (DocumentSnapshot snapshot){

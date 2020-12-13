@@ -122,7 +122,6 @@ public class HistoryAddToF extends AppCompatActivity {
 
         // Receive ID of the History Brew, that the user selected
         IdOfSelectedHistory = (String) getIntent().getSerializableExtra("IdOfSelectedHistory");
-        Toast.makeText(this, IdOfSelectedHistory, Toast.LENGTH_SHORT).show();
 
         // Early attempt to make the activity "pop out". Looked bad.
 //        DisplayMetrics dm = new DisplayMetrics();
@@ -163,7 +162,6 @@ public class HistoryAddToF extends AppCompatActivity {
                     if (document.exists()) {
                         Log.d("TAG", "Document data: " + document.getData());
                         HistoryDocumentFromFirebase = document.getData(); // Copy data so we can access it outside this class
-                        Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
                     } else {
                         Log.d("TAG", "No doc found");
                     }
