@@ -89,7 +89,7 @@ public class BrewStartedActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);
 
         //Set home item as selected
-        bottomNavigationView.setSelectedItemId(R.id.nav_wash);
+        bottomNavigationView.setSelectedItemId(R.id.nav_brew);
 
         //Set up listener, for determine if other icon is pressed
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
