@@ -65,7 +65,7 @@ public class HistorySelectIconFragment extends DialogFragment implements OnClick
 
 
         try {               // To mitigate risk of nullpointer exeption
-            ((HistoryAddToF) getActivity()).setIconImage(selectedIcon);
+            ((HistoryAddToF) getActivity()).setIconImage(selectedIcon); // Call method in parent activity
         } catch (Exception e){
             e.printStackTrace();
         }

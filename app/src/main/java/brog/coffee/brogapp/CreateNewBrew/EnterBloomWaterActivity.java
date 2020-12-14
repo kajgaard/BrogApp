@@ -27,11 +27,11 @@ public class EnterBloomWaterActivity extends AppCompatActivity {
     ArrayList<String> brewValues;
     SeekBar seekBar;
     int bloomWaterInteger;
-    int minimumBloomWater = 20;
-    int maximumBloomWater = 80;
+    int minimumBloomWater = 20; // Define minimum possible value for user
+    int maximumBloomWater = 80; // Define max possible value for user
     TextView bloomWaterValueTextView;
 
-    public void bloomWaterDownButtonPush(View view) {
+    public void bloomWaterDownButtonPush(View view) { // User pushes down
         Log.i("BloomWater", "Up button pushed");
         if (bloomWaterInteger > minimumBloomWater) {
             bloomWaterInteger = bloomWaterInteger - 1;
@@ -39,7 +39,7 @@ public class EnterBloomWaterActivity extends AppCompatActivity {
         }
     }
 
-    public void bloomWaterUpButtonPush(View view) {
+    public void bloomWaterUpButtonPush(View view) { // User pushes up
         Log.i("BloomWater", "Up button pushed");
         if (bloomWaterInteger < maximumBloomWater) {
             bloomWaterInteger = bloomWaterInteger + 1;
@@ -47,20 +47,20 @@ public class EnterBloomWaterActivity extends AppCompatActivity {
         }
     }
 
-    public void bloomWaterNextButtonPushed(View view) {
+    public void bloomWaterNextButtonPushed(View view) { // User navigates to next screen
         Log.i("Temp", "Next button pushed");
-        brewValues.set(4, Integer.toString(bloomWaterInteger));
+        brewValues.set(4, Integer.toString(bloomWaterInteger)); // Update brewValues with users selected value
         Intent intent = new Intent(EnterBloomWaterActivity.this, EnterBloomTimeActivity.class);
-        intent.putExtra("brewValues", brewValues);
+        intent.putExtra("brewValues", brewValues); // Transfer brewValues to next activity
         startActivity(intent);
         finish();
     }
 
-    public void bloomWaterPreviousButtonPushed(View view) {
+    public void bloomWaterPreviousButtonPushed(View view) { // User navigates to previous screen
         Log.i("Temp", "Previous button pushed");
-        brewValues.set(4, Integer.toString(bloomWaterInteger));
+        brewValues.set(4, Integer.toString(bloomWaterInteger)); // Update brewValues with users selected value
         Intent intent = new Intent(EnterBloomWaterActivity.this, EnterTempActivity.class);
-        intent.putExtra("brewValues", brewValues);
+        intent.putExtra("brewValues", brewValues); // Transfer brewValues to previous activity
         startActivity(intent);
         finish();
     }
@@ -71,7 +71,7 @@ public class EnterBloomWaterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_enter_bloom_water);
 
         seekBar = findViewById(R.id.bloomWaterSeekBar);
-        seekBar.setEnabled(false);
+        seekBar.setEnabled(false); // User cannot manipulate seekbar
         seekBar.setProgress(4);
 
         brewValues = (ArrayList<String>) getIntent().getSerializableExtra("brewValues");
@@ -96,27 +96,27 @@ public class EnterBloomWaterActivity extends AppCompatActivity {
 
                     case R.id.nav_home:
                         startActivity(new Intent(getApplicationContext(), HomePage.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.nav_scan:
                         startActivity(new Intent(getApplicationContext(), ScanActivity.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.nav_brew:
                         startActivity(new Intent(getApplicationContext(), BrewMainActivity.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.nav_wash:
                         startActivity(new Intent(getApplicationContext(), CleanActivity.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.nav_profile:
                         startActivity(new Intent(getApplicationContext(), ProfilePage.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
                 }
 

@@ -27,41 +27,41 @@ public class EnterTempActivity extends AppCompatActivity {
     ArrayList<String> brewValues;
     SeekBar seekBar;
     int tempInteger;
-    int minimumTemp = 80;
-    int maximumTemp = 100;
+    int minimumTemp = 80; // Min value for the user to input
+    int maximumTemp = 100; // Max value for the user to input
     TextView tempValueTextView;
 
-    public void tempPreviousButtonPushed(View view) {
+    public void tempPreviousButtonPushed(View view) { // User pushing previous
         Log.i("Temp", "Previous button pushed");
         brewValues.set(3, Integer.toString(tempInteger));
         Intent intent = new Intent(EnterTempActivity.this, EnterGrindActivity.class);
-        intent.putExtra("brewValues", brewValues);
+        intent.putExtra("brewValues", brewValues); // Values sent to previous activity
         startActivity(intent);
         finish();
     }
 
-    public void tempNextButtonPushed(View view) {
+    public void tempNextButtonPushed(View view) { // User pushing next
         Log.i("Temp", "Next button pushed");
         brewValues.set(3,Integer.toString(tempInteger));
         Intent intent = new Intent(EnterTempActivity.this, EnterBloomWaterActivity.class);
-        intent.putExtra("brewValues", brewValues);
+        intent.putExtra("brewValues", brewValues); // Values sent to next activity
         startActivity(intent);
         finish();
     }
 
-    public void tempUpButtonPush(View view) {
+    public void tempUpButtonPush(View view) { // User pushing up
         Log.i("Temp", "Up button pushed");
         if (tempInteger < maximumTemp) {
             tempInteger = tempInteger + 1;
-            tempValueTextView.setText(tempInteger + " \u00B0C");
+            tempValueTextView.setText(tempInteger + " \u00B0C"); // UTF code for degree symbol
         }
     }
 
-    public void tempDownButtonPush(View view) {
+    public void tempDownButtonPush(View view) { // User pushing down
         Log.i("Temp", "Down button pushed");
         if (tempInteger > minimumTemp) {
             tempInteger = tempInteger - 1;
-            tempValueTextView.setText(tempInteger + " \u00B0C");
+            tempValueTextView.setText(tempInteger + " \u00B0C"); // UTF code for degree symbol
         }
     }
 
@@ -97,27 +97,27 @@ public class EnterTempActivity extends AppCompatActivity {
 
                     case R.id.nav_home:
                         startActivity(new Intent(getApplicationContext(), HomePage.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.nav_scan:
                         startActivity(new Intent(getApplicationContext(), ScanActivity.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.nav_brew:
                         startActivity(new Intent(getApplicationContext(), BrewMainActivity.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.nav_wash:
                         startActivity(new Intent(getApplicationContext(), CleanActivity.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.nav_profile:
                         startActivity(new Intent(getApplicationContext(), ProfilePage.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
                 }
 

@@ -27,15 +27,15 @@ public class EnterWaterPerGramActivity extends AppCompatActivity {
     ArrayList<String> brewValues;
     SeekBar seekBar;
     int gramsInteger;
-    int minimumGram = 20;
-    int maximumGram = 100;
+    int minimumGram = 20; // min user input
+    int maximumGram = 100; // max user input
     int totalBrew;
     int testTotalBrew;
     TextView waterValueTextView;
     TextView waterTotalTextView;
 
 
-    public void waterNextButtonPushed(View view) {
+    public void waterNextButtonPushed(View view) { // User pushing next
         Log.i("Water per gram", "Next button pushed");
         brewValues.set(1,Integer.toString(gramsInteger));
         Intent intent = new Intent(EnterWaterPerGramActivity.this, EnterGrindActivity.class);
@@ -117,34 +117,31 @@ public class EnterWaterPerGramActivity extends AppCompatActivity {
 
                     case R.id.nav_home:
                         startActivity(new Intent(getApplicationContext(), HomePage.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.nav_scan:
                         startActivity(new Intent(getApplicationContext(), ScanActivity.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.nav_brew:
                         startActivity(new Intent(getApplicationContext(), BrewMainActivity.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.nav_wash:
                         startActivity(new Intent(getApplicationContext(), CleanActivity.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.nav_profile:
                         startActivity(new Intent(getApplicationContext(), ProfilePage.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
                 }
-
                 return false;
             }
         });
     }
-
-
 }

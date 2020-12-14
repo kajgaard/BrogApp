@@ -33,9 +33,7 @@ import static brog.coffee.brogapp.R.id.historyHolderRV;
 
 public class HistoryActivity extends AppCompatActivity implements HistoryAdapter.OnListItemClick{
 
-    private static final String TAG = "HistoryActivity";
     RecyclerView mRecyclerView;
-    BrewFromFirestore brewFromFirestore;
     RecyclerView.LayoutManager mLayoutManager;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
@@ -52,10 +50,10 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
         fAuth = FirebaseAuth.getInstance();
         userID = fAuth.getCurrentUser().getUid();
 
-        //Query for database
+        //Query for database. Ordered by timestamp.
         CollectionReference timeStampRef = fStore.collection("users").document(userID).collection("history");
         Query query = timeStampRef.orderBy("timeStamp", Query.Direction.DESCENDING);
-        //Query query = fStore.collection("users").document(userID).collection("history");
+        //Query query = fStore.collection("users").document(userID).collection("history");  // without ordering
 
         //Paging so in case we have a lot of data in database, it loads in pages
         PagedList.Config config = new PagedList.Config.Builder()
@@ -102,27 +100,27 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
 
                     case R.id.nav_home:
                         startActivity(new Intent(getApplicationContext(), HomePage.class));
-                        overridePendingTransition(0, 0); //Dont know what this does
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.nav_scan:
                         startActivity(new Intent(getApplicationContext(), ScanActivity.class));
-                        overridePendingTransition(0, 0); //Dont know what this does
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.nav_brew:
                         startActivity(new Intent(getApplicationContext(), BrewMainActivity.class));
-                        overridePendingTransition(0, 0); //Dont know what this does
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.nav_wash:
                         startActivity(new Intent(getApplicationContext(), CleanActivity.class));
-                        overridePendingTransition(0, 0); //Dont know what this does
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.nav_profile:
                         startActivity(new Intent(getApplicationContext(), ProfilePage.class));
-                        overridePendingTransition(0, 0); //Dont know what this does
+                        overridePendingTransition(0, 0);
                         return true;
                 }
 
@@ -138,7 +136,7 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
         clickedBrewID = snapshot.getId();
 
         DialogFragmentBrewFromHistory myFragment = new DialogFragmentBrewFromHistory();
-        myFragment.setDocumentSnapshot(snapshot);
+        myFragment.setDocumentSnapshot(snapshot); // The fragment is handed the snapshot before .show()
         myFragment.show(getSupportFragmentManager(),"Brew from History Fragment");
     }
 }

@@ -23,7 +23,7 @@ public class DialogFragmentBrewFromHistory extends DialogFragment implements Vie
 
     Button brewBtn;
     Button toFavBtn;
-    DocumentSnapshot snapshot;
+    DocumentSnapshot snapshot; // This is populated from the activity
 
     public DialogFragmentBrewFromHistory() {
         // Empty constructor is required for DialogFragment
@@ -49,7 +49,7 @@ public class DialogFragmentBrewFromHistory extends DialogFragment implements Vie
     @Override
     public void onClick(View view) {
         if(view == brewBtn){
-            ArrayList<String> brewValues = new ArrayList<>();
+            ArrayList<String> brewValues = new ArrayList<>(); // Dummy values, as coffee machine does not exist
             brewValues.add("20");       // Grams of coffee
             brewValues.add("60");       // grams of coffee per liter of water
             brewValues.add("Medium");   // Coffee ground coarseness
@@ -60,7 +60,7 @@ public class DialogFragmentBrewFromHistory extends DialogFragment implements Vie
 
             Intent intent = new Intent(getContext(), BrewStartedActivity.class);
             intent.putExtra("brewValues", brewValues);
-            intent.putExtra("text","Velbekomme!");
+            intent.putExtra("text","Velbekomme!"); // Text to be shown in next activity
             startActivity(intent);
             dismiss();
         }
@@ -68,12 +68,13 @@ public class DialogFragmentBrewFromHistory extends DialogFragment implements Vie
         if (view == toFavBtn){
 
             Intent intent = new Intent(getContext(), HistoryAddToF.class);
-            intent.putExtra("IdOfSelectedHistory", snapshot.getId());
+            intent.putExtra("IdOfSelectedHistory", snapshot.getId()); // Sending Id of selected brew to next activity
             startActivity(intent);
             dismiss();
         }
     }
 
+    // This method is called from the activity when the fragment is instantiated, so the fragment has the snapshot
     public void setDocumentSnapshot (DocumentSnapshot snapshot){
         this.snapshot = snapshot;
     }

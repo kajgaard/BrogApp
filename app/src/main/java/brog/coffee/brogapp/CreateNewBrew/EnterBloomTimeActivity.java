@@ -24,15 +24,15 @@ import java.util.ArrayList;
 
 public class EnterBloomTimeActivity extends AppCompatActivity {
 
-    ArrayList<String> brewValues;
-    SeekBar seekBar;
-    int bloomTimeInteger;
-    int minimumBloomTime = 20;
-    int maximumBloomTime = 120;
-    TextView bloomTimeValueTextView;
+    private ArrayList<String> brewValues;
+    private SeekBar seekBar;
+    private int bloomTimeInteger;
+    private int minimumBloomTime = 20;          // Set minimum for legal user selection
+    private int maximumBloomTime = 120;         // Set maximum for legal user selection
+    private TextView bloomTimeValueTextView;
 
 
-    public void bloomTimeUpButtonPush(View view) {
+    public void bloomTimeUpButtonPush(View view) { // When user pushes up button
         Log.i("BloomTime", "Up button pushed");
         if (bloomTimeInteger < maximumBloomTime) {
             bloomTimeInteger = bloomTimeInteger + 1;
@@ -40,7 +40,7 @@ public class EnterBloomTimeActivity extends AppCompatActivity {
         }
     }
 
-    public void bloomTimeDownButtonPush(View view) {
+    public void bloomTimeDownButtonPush(View view) { // When user pushes down button
         Log.i("BloomTime", "Up button pushed");
         if (bloomTimeInteger > minimumBloomTime) {
             bloomTimeInteger = bloomTimeInteger - 1;
@@ -48,25 +48,26 @@ public class EnterBloomTimeActivity extends AppCompatActivity {
         }
     }
 
-    public void bloomTimeNextButtonPushed(View view) {
+    public void bloomTimeNextButtonPushed(View view) { // Pushing next
         Log.i("Temp", "Next button pushed");
-        brewValues.set(5, Integer.toString(bloomTimeInteger));
+        brewValues.set(5, Integer.toString(bloomTimeInteger)); // Set value in arraylist
         Intent intent = new Intent(EnterBloomTimeActivity.this, EnterBrewTimeActivity.class);
-        intent.putExtra("brewValues", brewValues);
+        intent.putExtra("brewValues", brewValues); // Transfer arraylist to next activity
         startActivity(intent);
         finish();
     }
 
-    public void bloomTimePreviousButtonPushed(View view) {
+    public void bloomTimePreviousButtonPushed(View view) { // Pushing previous
         Log.i("Temp", "Previous button pushed");
-        brewValues.set(5, Integer.toString(bloomTimeInteger));
+        brewValues.set(5, Integer.toString(bloomTimeInteger)); // Set value in arraylist
         Intent intent = new Intent(EnterBloomTimeActivity.this, EnterBloomWaterActivity.class);
-        intent.putExtra("brewValues", brewValues);
+        intent.putExtra("brewValues", brewValues); // Transfer arraylist to next activity
         startActivity(intent);
         finish();
     }
 
-    public String convertTime(int totalTime) {
+    public String convertTime(int totalTime) { // Function to convert seconds to readable text
+        // E.g. 130 -> 2 minutes 10 seconds
         if (totalTime == 60) {
             return "60 sek";
         }
@@ -86,12 +87,12 @@ public class EnterBloomTimeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_enter_bloom_time);
 
         seekBar = findViewById(R.id.bloomTimeSeekBar);
-        seekBar.setEnabled(false);
+        seekBar.setEnabled(false); // Seekbar cannot be manipulated by user
         seekBar.setProgress(5);
 
         brewValues = (ArrayList<String>) getIntent().getSerializableExtra("brewValues");
 
-        bloomTimeInteger = Integer.parseInt(brewValues.get(5));
+        bloomTimeInteger = Integer.parseInt(brewValues.get(5)); // Get string of seconds and convert to int
         bloomTimeValueTextView = findViewById(R.id.bloomTimeValueTextView);
         bloomTimeValueTextView.setText(convertTime(bloomTimeInteger));
 
@@ -110,30 +111,29 @@ public class EnterBloomTimeActivity extends AppCompatActivity {
 
                     case R.id.nav_home:
                         startActivity(new Intent(getApplicationContext(), HomePage.class));
-                        overridePendingTransition(0, 0); //Dont know what this does
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.nav_scan:
                         startActivity(new Intent(getApplicationContext(), ScanActivity.class));
-                        overridePendingTransition(0, 0); //Dont know what this does
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.nav_brew:
                         startActivity(new Intent(getApplicationContext(), BrewMainActivity.class));
-                        overridePendingTransition(0, 0); //Dont know what this does
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.nav_wash:
                         startActivity(new Intent(getApplicationContext(), CleanActivity.class));
-                        overridePendingTransition(0, 0); //Dont know what this does
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.nav_profile:
                         startActivity(new Intent(getApplicationContext(), ProfilePage.class));
-                        overridePendingTransition(0, 0); //Dont know what this does
+                        overridePendingTransition(0, 0);
                         return true;
                 }
-
                 return false;
             }
         });

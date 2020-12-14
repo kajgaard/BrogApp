@@ -30,7 +30,7 @@ import java.util.Map;
 
 public class BrewStartedActivity extends AppCompatActivity {
 
-    ArrayList<String> brewValues;
+    ArrayList<String> brewValues; // Contains the values from the brew the user just created
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
@@ -41,10 +41,11 @@ public class BrewStartedActivity extends AppCompatActivity {
 
     public void okPushed(View view){
         finish();
-    }
+    } // Simply finishes the activity
 
-    private void saveBrew(){
+    private void saveBrew(){    // Saving the brew to FireStore, history collection
 
+        // Formatting the date to wanted format
         date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM HH:mm",Locale.GERMAN);
         dateName = formatter.format(date);
@@ -54,7 +55,7 @@ public class BrewStartedActivity extends AppCompatActivity {
         fStore = FirebaseFirestore.getInstance();
         userID = fAuth.getCurrentUser().getUid();
 
-        Map<String, Object> newbrew = new HashMap<>();
+        Map<String, Object> newbrew = new HashMap<>(); // New hashmap, will be populated and sent to FireStore
         newbrew.put("brewName", dateName);
         newbrew.put("brewDescription", "Nyt bryg. Der er ikke tilføjet beskrivelse.");
         newbrew.put("brewScore", "0.0");
@@ -68,6 +69,7 @@ public class BrewStartedActivity extends AppCompatActivity {
         newbrew.put("brewTime", brewValues.get(6));
         newbrew.put("timeStamp",System.currentTimeMillis());
 
+        // Storing in FireStore
         fStore.collection("users").document(userID).collection("history").document().set(newbrew);
     }
 
@@ -77,18 +79,16 @@ public class BrewStartedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_brew_started);
 
         message = findViewById(R.id.finalIntroTextView3);
-
-
         brewValues = (ArrayList<String>) getIntent().getSerializableExtra("brewValues");
         text = (String) getIntent().getSerializableExtra("text");
-        message.setText(text);
+        message.setText(text); // Meassage is different depending on where this activity is started from
 
         saveBrew();
 
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);
 
-        //Set home iteam as selected
+        //Set home item as selected
         bottomNavigationView.setSelectedItemId(R.id.nav_wash);
 
         //Set up listener, for determine if other icon is pressed
@@ -99,27 +99,27 @@ public class BrewStartedActivity extends AppCompatActivity {
 
                     case R.id.nav_home:
                         startActivity(new Intent(getApplicationContext(), HomePage.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.nav_scan:
                         startActivity(new Intent(getApplicationContext(), ScanActivity.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.nav_brew:
                         startActivity(new Intent(getApplicationContext(), BrewMainActivity.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.nav_wash:
                         startActivity(new Intent(getApplicationContext(), CleanActivity.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.nav_profile:
                         startActivity(new Intent(getApplicationContext(), ProfilePage.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
                 }
                 return false;

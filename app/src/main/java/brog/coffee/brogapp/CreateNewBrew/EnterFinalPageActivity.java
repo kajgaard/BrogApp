@@ -36,38 +36,38 @@ public class EnterFinalPageActivity extends AppCompatActivity {
     TextView finalValuesTextView;
     String finalValues;
 
-    public void finalStartButtonPushed(View view) {
+    public void finalStartButtonPushed(View view) { // User pushes BREW!
         Log.i("Final Page", "Bryg button pushed");
         Intent intent = new Intent(EnterFinalPageActivity.this, BrewStartedActivity.class);
-        intent.putExtra("brewValues", brewValues);
-        intent.putExtra("text","Det nye bryg er nu gemt i din historik");
+        intent.putExtra("brewValues", brewValues); // Arraylist with all brewvalues transferred to next activity
+        intent.putExtra("text","Det nye bryg er nu gemt i din historik"); // Text to be displayed on next screen
         startActivity(intent);
         finish();
     }
 
-    public void finalPreviousButtonPushed(View view) {
+    public void finalPreviousButtonPushed(View view) { // User pushes previous
         Log.i("Temp", "Previous button pushed");
         Intent intent = new Intent(EnterFinalPageActivity.this, EnterBrewTimeActivity.class);
-        intent.putExtra("brewValues", brewValues);
+        intent.putExtra("brewValues", brewValues); // Arraylist transferred to previous screen
         startActivity(intent);
         finish();
     }
 
-    public void pushGreyHeart(View view) {
+    public void pushGreyHeart(View view) { // Early idea to have heart-button toggling favorited/not favorited
         isFavorited = true;
         greyHeartButton.setAlpha(0);
         redHeartButton.setAlpha(1);
         greyHeartButton.setEnabled(false);
         redHeartButton.setEnabled(true);
 
-        if (toastRemoveFromFavorites.getView().isShown()) {
+        if (toastRemoveFromFavorites.getView().isShown()) { // Early idea to have heart-button toggling favorited/not favorited
             toastRemoveFromFavorites.cancel();
         }
 //        toastAddToFavorites = Toast.makeText(this, "Tilføjet til favoritter!", Toast.LENGTH_SHORT);
 //        toastAddToFavorites.show();
     }
 
-    public void pushRedHeart(View view) {
+    public void pushRedHeart(View view) { // Early idea to have heart-button toggling favorited/not favorited
         isFavorited = false;
         greyHeartButton.setAlpha(1);
         redHeartButton.setAlpha(0);
@@ -80,7 +80,7 @@ public class EnterFinalPageActivity extends AppCompatActivity {
 //        toastRemoveFromFavorites.show();
     }
 
-    public String convertTime(String totalTime) {
+    public String convertTime(String totalTime) { // Convert string of seconds to sec/min
         int timeInteger = Integer.parseInt(totalTime);
         if (timeInteger == 60) {
             return "60 sek";
@@ -102,7 +102,7 @@ public class EnterFinalPageActivity extends AppCompatActivity {
 
         brewValues = (ArrayList<String>) getIntent().getSerializableExtra("brewValues");
 
-        redHeartButton = findViewById(R.id.finalRedHeartButton);
+        redHeartButton = findViewById(R.id.finalRedHeartButton); // Early idea to have heart-button toggling favorited/not favorited
         redHeartButton.setEnabled(false);
         redHeartButton.setAlpha(0);
         greyHeartButton = findViewById(R.id.finalGreyHeartButton);
@@ -114,6 +114,7 @@ public class EnterFinalPageActivity extends AppCompatActivity {
         seekBar.setEnabled(false);
         seekBar.setProgress(7);
 
+        // Creates entire right column with values to show on screen
         finalValues = brewValues.get(0)+" g\n" +
                 brewValues.get(1)+" ml / g\n" +
                 brewValues.get(2)+"\n" +
@@ -138,27 +139,27 @@ public class EnterFinalPageActivity extends AppCompatActivity {
 
                     case R.id.nav_home:
                         startActivity(new Intent(getApplicationContext(), HomePage.class));
-                        overridePendingTransition(0, 0); //Dont know what this does
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.nav_scan:
                         startActivity(new Intent(getApplicationContext(), ScanActivity.class));
-                        overridePendingTransition(0, 0); //Dont know what this does
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.nav_brew:
                         startActivity(new Intent(getApplicationContext(), BrewMainActivity.class));
-                        overridePendingTransition(0, 0); //Dont know what this does
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.nav_wash:
                         startActivity(new Intent(getApplicationContext(), CleanActivity.class));
-                        overridePendingTransition(0, 0); //Dont know what this does
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.nav_profile:
                         startActivity(new Intent(getApplicationContext(), ProfilePage.class));
-                        overridePendingTransition(0, 0); //Dont know what this does
+                        overridePendingTransition(0, 0);
                         return true;
                 }
                 return false;
