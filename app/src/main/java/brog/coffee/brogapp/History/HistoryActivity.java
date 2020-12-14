@@ -89,8 +89,8 @@ public class HistoryActivity extends AppCompatActivity implements HistoryAdapter
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);
 
-        //Set home iteam as selected
-        bottomNavigationView.setSelectedItemId(R.id.nav_profile);
+        //Set brew item as selected
+        bottomNavigationView.setSelectedItemId(R.id.nav_brew);
 
         //Set up listener, for determine if other icon is pressed
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
