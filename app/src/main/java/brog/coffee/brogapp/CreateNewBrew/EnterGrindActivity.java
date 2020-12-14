@@ -28,26 +28,26 @@ public class EnterGrindActivity extends AppCompatActivity {
     SeekBar seekBar;
     TextView grindValueTextView;
 
-    public void grindNextButtonPushed(View view) {
+    public void grindNextButtonPushed(View view) { // User pushes next
         Log.i("Grind", "Next button pushed");
         brewValues.set(2,grindValueTextView.getText().toString());
         Intent intent = new Intent(EnterGrindActivity.this, EnterTempActivity.class);
-        intent.putExtra("brewValues", brewValues);
+        intent.putExtra("brewValues", brewValues); // Brewvalues sent to next activity
         startActivity(intent);
         finish();
     }
 
-    public void GrindPreviousButtonPushed(View view) {
+    public void GrindPreviousButtonPushed(View view) { // User pushes previous
         Log.i("Grind", "Previous button pushed");
         brewValues.set(2, grindValueTextView.getText().toString());
         Intent intent = new Intent(EnterGrindActivity.this, EnterWaterPerGramActivity.class);
-        intent.putExtra("brewValues", brewValues);
+        intent.putExtra("brewValues", brewValues); // Brewvalues sent to previous activity
         startActivity(intent);
         finish();
     }
 
 
-    public void grindUpButtonPush(View view) {
+    public void grindUpButtonPush(View view) { // Pushing up
         Log.i("Grind", "Up button pushed");
         if (!grindValueTextView.getText().equals("Grov")) {
             if (grindValueTextView.getText().equals("Fin")) {
@@ -58,7 +58,7 @@ public class EnterGrindActivity extends AppCompatActivity {
         }
     }
 
-    public void grindDownButtonPush(View view) {
+    public void grindDownButtonPush(View view) { // Pushing down
         Log.i("Grind", "Down button pushed");
         if (!grindValueTextView.getText().equals("Fin")) {
             if (grindValueTextView.getText().equals("Grov")) {
@@ -75,13 +75,13 @@ public class EnterGrindActivity extends AppCompatActivity {
         setContentView(R.layout.activity_enter_grind);
 
         seekBar = findViewById(R.id.grindSeekBar);
-        seekBar.setEnabled(false);
+        seekBar.setEnabled(false); // User cannot manipulate seekbar
         seekBar.setProgress(2);
 
         brewValues = (ArrayList<String>) getIntent().getSerializableExtra("brewValues");
 
         grindValueTextView = findViewById(R.id.grindValueTextView);
-        grindValueTextView.setText(brewValues.get(2));
+        grindValueTextView.setText(brewValues.get(2)); // Textview updated with initial value
 
 
         //Initialize and assign navbar variable
@@ -98,27 +98,27 @@ public class EnterGrindActivity extends AppCompatActivity {
 
                     case R.id.nav_home:
                         startActivity(new Intent(getApplicationContext(), HomePage.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.nav_scan:
                         startActivity(new Intent(getApplicationContext(), ScanActivity.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.nav_brew:
                         startActivity(new Intent(getApplicationContext(), BrewMainActivity.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.nav_wash:
                         startActivity(new Intent(getApplicationContext(), CleanActivity.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.nav_profile:
                         startActivity(new Intent(getApplicationContext(), ProfilePage.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
                 }
 

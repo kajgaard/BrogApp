@@ -36,7 +36,6 @@ public class HistoryAddToF extends AppCompatActivity {
     private String IdOfSelectedHistory;
     public Map<String, Object> HistoryDocumentFromFirebase = new HashMap<>();
 
-    ArrayList<String> brewValues;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;

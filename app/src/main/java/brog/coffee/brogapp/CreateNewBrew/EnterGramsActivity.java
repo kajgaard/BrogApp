@@ -32,24 +32,24 @@ public class EnterGramsActivity extends AppCompatActivity {
 
     TextView gramsTextView;
 
-    public void nextButtonPushed(View view) {
+    public void nextButtonPushed(View view) { // When user pushes next
         brewValues.set(0,Integer.toString(gramsInteger));
         Log.i("Button","Next button pushed");
 
         Intent intent = new Intent(EnterGramsActivity.this,EnterWaterPerGramActivity.class);
-        intent.putExtra("brewValues",brewValues);
+        intent.putExtra("brewValues",brewValues); // Arraylist with brewvalues sent next activity
         startActivity(intent);
         finish();
     }
 
-    public void upButtonpush(View view){
+    public void upButtonpush(View view){ // User pushes up
         if(gramsInteger<maximumGrams) {
             gramsInteger++;
             gramsTextView.setText(gramsInteger + " g");
         }
     }
 
-    public void downButtonpush(View view){
+    public void downButtonpush(View view){ // User pushes down
         if(gramsInteger>minimumGrams) {
             gramsInteger--;
             gramsTextView.setText(gramsInteger + " g");
@@ -62,14 +62,13 @@ public class EnterGramsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_enter_grams);
 
         seekBar = findViewById(R.id.gramsSeekBar);
-        seekBar.setEnabled(false);
+        seekBar.setEnabled(false); // User unable to manipulate seekbar
 
         brewValues = (ArrayList<String>) getIntent().getSerializableExtra("brewValues");
 
         gramsTextView = findViewById(R.id.gramsTextView);
         gramsInteger=Integer.parseInt(brewValues.get(0));
         gramsTextView.setText(gramsInteger+" g");
-
 
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);
@@ -85,30 +84,29 @@ public class EnterGramsActivity extends AppCompatActivity {
 
                     case R.id.nav_home:
                         startActivity(new Intent(getApplicationContext(), HomePage.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.nav_scan:
                         startActivity(new Intent(getApplicationContext(), ScanActivity.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.nav_brew:
                         startActivity(new Intent(getApplicationContext(), BrewMainActivity.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.nav_wash:
                         startActivity(new Intent(getApplicationContext(), CleanActivity.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.nav_profile:
                         startActivity(new Intent(getApplicationContext(), ProfilePage.class));
-                        overridePendingTransition(0,0); //Dont know what this does
+                        overridePendingTransition(0,0);
                         return true;
                 }
-
                 return false;
             }
         });

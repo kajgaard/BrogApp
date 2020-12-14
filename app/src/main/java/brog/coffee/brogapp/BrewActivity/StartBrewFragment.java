@@ -18,8 +18,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 
 public class StartBrewFragment extends DialogFragment implements View.OnClickListener {
 
-    Button startBrewButton;
-    Button backButton;
+
     TextView brewValues;
     DocumentSnapshot snapshot;
     TextView titel;
@@ -51,10 +50,7 @@ public class StartBrewFragment extends DialogFragment implements View.OnClickLis
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        // startBrewButton = view.findViewById(R.id.XXXXXXXXX);
-        // startBrewButton.setOnClickListener(this);
-        // backButton = view.findViewById(R.id.YYYYYYYYY);
-        // backButton.setOnClickListener(this);
+
         brewValues = view.findViewById(R.id.brewValuesTV);
         titel = view.findViewById(R.id.titelTV);
         descrip = view.findViewById(R.id.descriptionTV);
@@ -93,7 +89,7 @@ public class StartBrewFragment extends DialogFragment implements View.OnClickLis
         this.snapshot = snapshot;
     }
 
-    public String convertTime(String totalTime) {
+    public String convertTime(String totalTime) { // Method to convert string of seconds to min/sec
         int timeInteger = Integer.parseInt(totalTime);
         if (timeInteger == 60) {
             return "60 sek";

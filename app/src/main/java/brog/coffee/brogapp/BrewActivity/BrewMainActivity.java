@@ -56,7 +56,7 @@ public class BrewMainActivity extends AppCompatActivity implements FavoritesAdap
 
     // When pushing the "nyt bryg" button
     public void newBrewButtonPushed(View view) {
-        ArrayList<String> brewValues = new ArrayList<>();
+        ArrayList<String> brewValues = new ArrayList<>(); // Initial values to populate screens at first view
         brewValues.add("20");       // Grams of coffee
         brewValues.add("60");       // grams of coffee per liter of water
         brewValues.add("Medium");   // Coffee ground coarseness
@@ -160,27 +160,27 @@ public class BrewMainActivity extends AppCompatActivity implements FavoritesAdap
 
                     case R.id.nav_home:
                         startActivity(new Intent(getApplicationContext(), HomePage.class));
-                        overridePendingTransition(0, 0); //Dont know what this does
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.nav_scan:
                         startActivity(new Intent(getApplicationContext(), ScanActivity.class));
-                        overridePendingTransition(0, 0); //Dont know what this does
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.nav_brew:
                         startActivity(new Intent(getApplicationContext(), BrewMainActivity.class));
-                        overridePendingTransition(0, 0); //Dont know what this does
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.nav_wash:
                         startActivity(new Intent(getApplicationContext(), CleanActivity.class));
-                        overridePendingTransition(0, 0); //Dont know what this does
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.nav_profile:
                         startActivity(new Intent(getApplicationContext(), ProfilePage.class));
-                        overridePendingTransition(0, 0); //Dont know what this does
+                        overridePendingTransition(0, 0);
                         return true;
                 }
                 return false;
