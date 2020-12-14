@@ -6,6 +6,7 @@ public class BrewItem {
 
     public BrewItem(){} //Empty constructor for Firestore
 
+    //Constructor
     public BrewItem(int imageRessource, String brewName, String brewDescription, String brewScore, String brewID) {
         this.imageRessource = imageRessource;
         this.brewName = brewName;
@@ -13,6 +14,8 @@ public class BrewItem {
         this.brewScore = brewScore;
         this.brewID = brewID;
     }
+
+    //Getters og setters
 
     public String setbrewID(){
         return brewID;};

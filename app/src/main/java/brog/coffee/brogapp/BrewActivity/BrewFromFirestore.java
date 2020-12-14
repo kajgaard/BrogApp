@@ -22,7 +22,7 @@ import static android.content.ContentValues.TAG;
 
 
 
-public class BrewFromFirestore {
+public class BrewFromFirestore { //Vi nåede desværre aldrig at få implementeret denne klasse.
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String brewId, userID, bloomtime, bloomwater, brewdescript, brewname,

@@ -16,7 +16,7 @@ import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 import com.firebase.ui.firestore.paging.LoadingState;
 import com.google.firebase.firestore.DocumentSnapshot;
-
+ //Redundant klasse
 public class PremadesAdapter extends FirestorePagingAdapter<BrewItem, PremadesAdapter.FavoritesViewHolder> {
 
     private OnListItemClick onListItemClick;

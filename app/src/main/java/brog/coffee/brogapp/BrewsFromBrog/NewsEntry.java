@@ -1,6 +1,6 @@
 package brog.coffee.brogapp.BrewsFromBrog;
 
-public class NewsEntry {
+public class NewsEntry { //Klasse bruges ikke
 
         private int imageRessource;
 

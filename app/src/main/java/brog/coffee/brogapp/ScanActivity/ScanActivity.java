@@ -15,6 +15,8 @@ import brog.coffee.brogapp.ProfileActivity.ProfilePage;
 import brog.coffee.brogapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+//Denne aktivitet gør inden andet end at illustrere at vi ikke har implementeret denne endnu
+
 public class ScanActivity extends AppCompatActivity {
 
     @Override

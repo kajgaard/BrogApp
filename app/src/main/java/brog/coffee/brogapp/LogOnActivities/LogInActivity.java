@@ -42,8 +42,11 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
         mailET =  findViewById(R.id.emailET);
         pswdET =  findViewById(R.id.passwordET);
+
+        //Dette textview bliver lige nu brugt som testbruger log ind isetdet
         forgotPswd = findViewById(R.id.forgotPswTV);
         forgotPswd.setOnClickListener(this);
+
         createUser = findViewById(R.id.newUserTV);
         createUser.setOnClickListener(this);
 
@@ -95,6 +98,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
 
         }else if(view == forgotPswd){
+            //Der logges ind som testbruger istedet
             Toast.makeText(this, "Du logger nu ind som testbruger", Toast.LENGTH_SHORT).show();
             String email1 = "test@test.dk";
             String password1 = "123456";

@@ -35,6 +35,9 @@ import java.util.ArrayList;
 
 public class FavoritesActivity extends AppCompatActivity implements FavoritesAdapter.OnListItemClick {
 
+    //Denne aktivitet har samme funktion som History Activity og PreMadesActivity.
+    // Denne viser brugerens favoritter
+
     private static final String TAG = "FavoritesActivity";
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
@@ -89,8 +92,8 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesAda
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);
 
-        //Set home iteam as selected
-        bottomNavigationView.setSelectedItemId(R.id.nav_profile);
+        //Set brew iteam as selected
+        bottomNavigationView.setSelectedItemId(R.id.nav_brew);
 
         //Set up listener, for determine if other icon is pressed
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

@@ -43,6 +43,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
+        //Dag i ugen beregnes
         Calendar cal = Calendar.getInstance();
 
         switch(cal.get(Calendar.DAY_OF_WEEK)){
@@ -66,10 +67,13 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
 
         date = findViewById(R.id.dateTV);
         date.setText(dayString+" "+new SimpleDateFormat("d. MMMM").format(cal.getTime()).toUpperCase());
+
         favorites = findViewById(R.id.newFavBtn);
         favorites.setOnClickListener(this);
+
         history = findViewById(R.id.newHistBtn);
         history.setOnClickListener(this);
+
         content = findViewById(R.id.contentHolderRV);
         content.setHasFixedSize(true);
 
@@ -86,17 +90,8 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
         content.setLayoutManager(contentLayoutManager);
         content.setAdapter(contentAdapter);
 
-        //Fill out recyclerView Flere Forslag
-        ArrayList<BrewItem> listOfFlereForslag = new ArrayList<>();
-        listOfFlereForslag.add(new BrewItem(0,"Manhatten", "None","4.6","none"));
-        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"yo yo yo", "None","4.6","none"));
-        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"Torronto", "None","4.6","none"));
-        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"Skagen", "None","4.6","none"));
-        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"San Francisco", "None","4.6","none"));
-        listOfFlereForslag.add(new BrewItem(R.drawable.coffeetwo_pic,"Malmø", "None","4.6","none"));
 
-
-
+        //Test kode for at teste Crashlytics
         /*
         Button crashButton = new Button(this);
         crashButton.setText("Crash!");

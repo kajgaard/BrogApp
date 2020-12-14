@@ -83,7 +83,7 @@ public class BrewMainActivity extends AppCompatActivity implements FavoritesAdap
         moreBrews.setOnClickListener(this);
 
 
-        //Query for database
+        //Query for database //Viser brugerens favoritter
         Query queryFavorites = fStore.collection("users").document(userID).collection("favorites");
 
         //Paging so in case we have a lot of data in database, it loads in pages
@@ -92,7 +92,7 @@ public class BrewMainActivity extends AppCompatActivity implements FavoritesAdap
                 .setPageSize(5)
                 .build();
 
-        //Recycler options (github dependency) //se youtube.com/watch?v=LatlcDZhpd4
+        //Recycler options (github dependency) //kilde: youtube.com/watch?v=LatlcDZhpd4
         FirestorePagingOptions<BrewItem> options = new FirestorePagingOptions.Builder<BrewItem>()
                 .setLifecycleOwner(this) //No longer need onStart() and onStop()
                 .setQuery(queryFavorites, config, new SnapshotParser<BrewItem>() {
@@ -115,7 +115,7 @@ public class BrewMainActivity extends AppCompatActivity implements FavoritesAdap
         mFaveRecyclerView.setAdapter(mFaveAdapter);
 
 
-        Query queryForslag = fStore.collection("brews");
+        Query queryForslag = fStore.collection("brews"); //Preset der er predefineret af BRØG
 
         //Paging so in case we have a lot of data in database, it loads in pages
         PagedList.Config config2 = new PagedList.Config.Builder()
@@ -149,7 +149,7 @@ public class BrewMainActivity extends AppCompatActivity implements FavoritesAdap
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);
 
-        //Set home iteam as selected
+        //Set brew item as selected
         bottomNavigationView.setSelectedItemId(R.id.nav_brew);
 
         //Set up listener, for determine if other icon is pressed
@@ -201,7 +201,7 @@ public class BrewMainActivity extends AppCompatActivity implements FavoritesAdap
         startBrewFragment.dismiss();
     }
 
-    public void brygPush(View view) {
+    public void brygPush(View view) { //Såfremt brugeren ønsker at brygge fra DialogFragment
         ArrayList<String> brewValues = new ArrayList<>();
         brewValues.add("20");       // Grams of coffee
         brewValues.add("60");       // grams of coffee per liter of water
@@ -218,12 +218,12 @@ public class BrewMainActivity extends AppCompatActivity implements FavoritesAdap
         startBrewFragment.dismiss();
     }
 
-    public void favoClick (View view){
+    public void favoClick (View view){ //Tryk på flere favoritter
         startActivity(new Intent(getApplicationContext(), FavoritesActivity.class));
     }
 
     @Override
-    public void onClick(View view) {
+    public void onClick(View view) { //Tryk på flere forslag
         if(view == moreBrews){
             startActivity(new Intent(getApplicationContext(), PreMadeBrewsActivity.class));
         }

@@ -34,8 +34,9 @@ import com.google.firebase.firestore.Query;
 import java.util.ArrayList;
 
 public class PreMadeBrewsActivity extends AppCompatActivity implements FavoritesAdapter.OnListItemClick {
+  //Denne klasse har samme funktioner som FavoritesActivity
 
-    private static final String TAG = "FavoritesActivity";
+    private static final String TAG = "PremadesActivity";
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
     FirebaseAuth fAuth;
@@ -89,8 +90,8 @@ public class PreMadeBrewsActivity extends AppCompatActivity implements Favorites
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);
 
-        //Set home iteam as selected
-        bottomNavigationView.setSelectedItemId(R.id.nav_profile);
+        //Set brew iteam as selected
+        bottomNavigationView.setSelectedItemId(R.id.nav_brew);
 
         //Set up listener, for determine if other icon is pressed
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

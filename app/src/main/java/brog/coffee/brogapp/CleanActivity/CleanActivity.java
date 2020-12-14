@@ -20,6 +20,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+ //Denne aktivitet gør inden andet end at illustrere at vi ikke har implementeret denne endnu
+
 public class CleanActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView tv;
@@ -44,7 +46,7 @@ public class CleanActivity extends AppCompatActivity implements View.OnClickList
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);
 
-        //Set home iteam as selected
+        //Set wash iteam as selected
         bottomNavigationView.setSelectedItemId(R.id.nav_wash);
 
         //Set up listener, for determine if other icon is pressed

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import brog.coffee.brogapp.R;
 
-import java.util.ArrayList;
+import java.util.ArrayList; //Denne klasse bruges ikke
 
 public class BrewListAdapter extends RecyclerView.Adapter<BrewListAdapter.BrewViewHolder> {
 

@@ -20,6 +20,9 @@ import com.firebase.ui.firestore.paging.LoadingState;
 
 public class BrewFaveAdapter extends FirestorePagingAdapter<BrewItem, BrewFaveAdapter.BrewFaveViewHolder> {
 
+    //Denne adapter benyttes på BrewMainAcitvity, hvor der vises
+    // to horisontale recyclerviews med hhv. Favoritter og Forslag
+
     private FavoritesAdapter.OnListItemClick onListItemClick;
 
     public BrewFaveAdapter(@NonNull FirestorePagingOptions<BrewItem> options, FavoritesAdapter.OnListItemClick onListItemClick) {

@@ -80,7 +80,7 @@ public class BrewForslagAdapter extends FirestorePagingAdapter<BrewItem, BrewFor
         }
     }
 
-    @Override
+    @Override //Fejlbeskeder
     protected void onLoadingStateChanged(@NonNull LoadingState state) {
         super.onLoadingStateChanged(state);
 

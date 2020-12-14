@@ -45,23 +45,20 @@ public class CreateUserActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_user);
 
-
-
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         nameET = findViewById(R.id.nameET);
-        nameET.requestFocus();
+        nameET.requestFocus(); //Starter cursoren i denne edittext
         emailET = findViewById(R.id.newEmailET);
         passwordET = findViewById(R.id.newPasswordET);
         alreadyUser = findViewById(R.id.alreadyUserTV);
         alreadyUser.setOnClickListener(this);
 
+        //denne er skjult indtil der bliver aktivieret en onClick metode
         progressBar = findViewById(R.id.progressBar);
+
         save = findViewById(R.id.createUserBtn);
         save.setOnClickListener(this);
-
-
-
 
     }
 

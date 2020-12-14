@@ -99,6 +99,8 @@ public class ProfilePage extends AppCompatActivity implements View.OnClickListen
 
                     name = value.getString("name");
                     //header.setText("Velkommen " + name + "!");
+
+                    //Der trimmes, da der i mange tilfælde ikke var plads til at vise efternavn også
                     header.setText("Velkommen " + name.substring(0, name.indexOf(" ")).trim() + "!");
                     if (error != null) {
                         Log.d("STRING", "fejl " + error.getMessage());
@@ -111,7 +113,7 @@ public class ProfilePage extends AppCompatActivity implements View.OnClickListen
         //Initialize and assign navbar variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigationbar);
 
-        //Set home iteam as selected
+        //Set profile item as selected
         bottomNavigationView.setSelectedItemId(R.id.nav_profile);
 
         //Set up listener, for determine if other icon is pressed

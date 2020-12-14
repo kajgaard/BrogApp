@@ -15,6 +15,8 @@ import java.util.ArrayList;
 
 public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ContentHolder> {
 
+    //Simpel adapter, hvis eneste formål er at vise 3 billeder i et recyclerview på forsiden
+
     private ArrayList<Integer> mList;
 
     public static class ContentHolder extends RecyclerView.ViewHolder {

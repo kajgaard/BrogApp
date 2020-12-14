@@ -20,6 +20,10 @@ import com.google.firebase.firestore.DocumentSnapshot;
 
 public class FavoritesAdapter extends FirestorePagingAdapter<BrewItem, FavoritesAdapter.FavoritesViewHolder> {
 
+    //Denne adapter bruges inde i FavoritesAdapter og faktisk også PremadesActivity,
+    // da disse skal kunne akkurat detsamme, bortset fra den collection de viser documents fra.
+    //Men query hertil er defineret i main klasserne
+
     private OnListItemClick onListItemClick;
 
     public FavoritesAdapter(@NonNull FirestorePagingOptions<BrewItem> options, OnListItemClick onListItemClick) {

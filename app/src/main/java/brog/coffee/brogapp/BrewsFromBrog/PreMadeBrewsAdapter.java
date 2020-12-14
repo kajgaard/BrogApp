@@ -17,6 +17,7 @@ import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 import com.firebase.ui.firestore.paging.LoadingState;
 
+//Redundant klasse
 
 public class PreMadeBrewsAdapter extends FirestorePagingAdapter<BrewItem, PreMadeBrewsAdapter.BrewFaveViewHolder> {
 
